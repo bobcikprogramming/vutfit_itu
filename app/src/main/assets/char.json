@@ -1,0 +1,158 @@
+[
+  {
+    "char": "a",
+    "position" : 1,
+    "morse" : ".-",
+    "numberOfPoints" : 1
+  },
+  {
+    "char": "b",
+    "position" : 2,
+    "morse" : "-...",
+    "numberOfPoints" : 3
+  },
+  {
+    "char": "c",
+    "position" : 3,
+    "morse" : ".-.",
+    "numberOfPoints" : 2
+  },
+  {
+    "char": "d",
+    "position" : 4,
+    "morse" : "-..",
+    "numberOfPoints" : 2
+  },
+  {
+    "char": "e",
+    "position" : 5,
+    "morse" : ".",
+    "numberOfPoints" : 1
+  },
+  {
+    "char": "f",
+    "position" : 6,
+    "morse" : "..-.",
+    "numberOfPoints" : 3
+  },
+  {
+    "char": "g",
+    "position" : 7,
+    "morse" : "--.",
+    "numberOfPoints" : 1
+  },
+  {
+    "char": "h",
+    "position" : 8,
+    "morse" : "....",
+    "numberOfPoints" : 4
+  },
+  {
+    "char": "i",
+    "position" : 9,
+    "morse" : "..",
+    "numberOfPoints" : 2
+  },
+  {
+    "char": "j",
+    "position" : 10,
+    "morse" : ".---",
+    "numberOfPoints" : 1
+  },
+  {
+    "char": "k",
+    "position" : 11,
+    "morse" : "-.-",
+    "numberOfPoints" : 1
+  },
+  {
+    "char": "l",
+    "position" : 12,
+    "morse" : ".-..",
+    "numberOfPoints" : 3
+  },
+  {
+    "char": "m",
+    "position" : 13,
+    "morse" : "--",
+    "numberOfPoints" : 0
+  },
+  {
+    "char": "n",
+    "position" : 14,
+    "morse" : "-.",
+    "numberOfPoints" : 1
+  },
+  {
+    "char": "o",
+    "position" : 15,
+    "morse" : "---",
+    "numberOfPoints" : 0
+  },
+  {
+    "char": "p",
+    "position" : 16,
+    "morse" : ".--.",
+    "numberOfPoints" : 2
+  },
+  {
+    "char": "q",
+    "position" : 17,
+    "morse" : "--.-",
+    "numberOfPoints" : 1
+  },
+  {
+    "char": "r",
+    "position" : 18,
+    "morse" : ".-.",
+    "numberOfPoints" : 2
+  },
+  {
+    "char": "s",
+    "position" : 19,
+    "morse" : "...",
+    "numberOfPoints" : 3
+  },
+  {
+    "char": "t",
+    "position" : 20,
+    "morse" : "-",
+    "numberOfPoints" : 0
+  },
+  {
+    "char": "u",
+    "position" : 21,
+    "morse" : "..-",
+    "numberOfPoints" : 2
+  },
+  {
+    "char": "v",
+    "position" : 22,
+    "morse" : "...-",
+    "numberOfPoints" : 3
+  },
+  {
+    "char": "w",
+    "position" : 23,
+    "morse" : ".--",
+    "numberOfPoints" : 1
+  },
+  {
+    "char": "x",
+    "position" : 24,
+    "morse" : "-..-",
+    "numberOfPoints" : 2
+  },
+  {
+    "char": "y",
+    "position" : 25,
+    "morse" : "-.--",
+    "numberOfPoints" : 1
+  },
+  {
+    "char": "z",
+    "position" : 26,
+    "morse" : "--..",
+    "numberOfPoints" : 2
+  }
+]
