@@ -12,19 +12,19 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView tvPassword;
+    /*private TextView tvPassword;
     private EditText etPhrase;
     private Button btnGenerate;
     private RadioButton rbLetter, rbUpperLetter, rbNumber, rbSymbol;
 
-    boolean hasLetter, hasUpponLetter, hasNumber, hasSymbol;
+    boolean hasLetter, hasUpponLetter, hasNumber, hasSymbol;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity_test);
 
-        setupUI();
+        /*setupUI();
 
         btnGenerate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-        });
+        });*/
 
     }
 
-    private void setupUI(){
+    /*private void setupUI(){
         tvPassword = findViewById(R.id.tvPwd);
         etPhrase = findViewById(R.id.etPhrase);
         btnGenerate = findViewById(R.id.btnGenerate);
@@ -66,5 +66,5 @@ public class MainActivity extends AppCompatActivity {
         this.hasUpponLetter = rbUpperLetter.isChecked();
         this.hasNumber = rbNumber.isChecked();
         this.hasSymbol = rbSymbol.isChecked();
-    }
+    }*/
 }
