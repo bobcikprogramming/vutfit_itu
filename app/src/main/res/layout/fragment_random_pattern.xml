@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentRandomPattern"
+    android:orientation="vertical"
+    android:background="@color/mainBackground"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:text="Vaše heslo:"
+                    android:textSize="15sp"
+                    android:textColor="@color/description"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingTop="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="22sp"
+                            android:paddingBottom="5dp"/>
+
+                    </ScrollView>
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/btnCopy"
+                        android:layout_gravity="bottom"
+                        android:src="@drawable/ic_copy"
+                        android:padding="5dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/MyUnderline"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20sp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Ukázka vzoru:"
+                        android:textColor="@color/description"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="Motocykl"
+                        android:textSize="15sp"
+                        android:textColor="@color/lightGray"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/lightGray"
+                    android:text="Motocykl"
+                    android:textSize="25sp"
+                    android:gravity="center_vertical"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/MyUnderline"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/sLetter"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/MySwitch"
+                    android:text="Písmena"
+                    android:textSize="20sp"/>
+
+                <LinearLayout
+                    style="@style/MyUnderlineSwitch"/>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/sCapLetter"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/MySwitch"
+                    android:text="Velká písmena"
+                    android:textSize="20sp"/>
+
+                <LinearLayout
+                    style="@style/MyUnderlineSwitch"/>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/sNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/MySwitch"
+                    android:text="Čísla"
+                    android:textSize="20sp"/>
+
+                <LinearLayout
+                    style="@style/MyUnderlineSwitch"/>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/Symbol"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/MySwitch"
+                    android:text="Symboly"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/MyUnderline"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:text="Vaše slovo / fráze:"
+                    android:textSize="15sp"
+                    android:textColor="@color/description"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="Vložte prosím slovo / frázi"
+                    android:textColorHint="@color/lightGray"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rounded_button"
+            android:text="Generovat"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/mainBackground"/>
+
+    </LinearLayout>
+
+</LinearLayout>

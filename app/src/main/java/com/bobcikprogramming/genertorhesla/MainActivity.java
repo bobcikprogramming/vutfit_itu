@@ -1,16 +1,21 @@
 package com.bobcikprogramming.genertorhesla;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private LinearLayout btnRandomPattern, btnOwnPattern;
+    private TextView tvRandomPattern, tvOwnPattern;
 
     /*private TextView tvPassword;
     private EditText etPhrase;
@@ -24,9 +29,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity_test);
 
-        /*setupUI();
+        setupUI();
+        getSupportFragmentManager().beginTransaction().replace(R.id.layout, new FragmentRandomPattern()).commit();
+        resetColor();
+        tvRandomPattern.setTextColor(ContextCompat.getColor(this, R.color.navBarSelect));
 
-        btnGenerate.setOnClickListener(new View.OnClickListener() {
+        /*btnGenerate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getPatternSetting();
@@ -49,6 +57,37 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
+    }
+
+    private void setupUI(){
+        btnRandomPattern = findViewById(R.id.tabButtonRandomPattern);
+        btnOwnPattern = findViewById(R.id.tabButtonOwnPattern);
+        tvRandomPattern = findViewById(R.id.tabTextViewRandomPattern);
+        tvOwnPattern = findViewById(R.id.tabTextViewOwnPattern);
+
+        btnRandomPattern.setOnClickListener(this);
+        btnOwnPattern.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.tabButtonRandomPattern:
+                getSupportFragmentManager().beginTransaction().replace(R.id.layout, new FragmentRandomPattern()).commit();
+                resetColor();
+                tvRandomPattern.setTextColor(ContextCompat.getColor(this, R.color.navBarSelect));
+                break;
+            case R.id.tabButtonOwnPattern:
+                //getSupportFragmentManager().beginTransaction().replace(R.id.layout, new AddTransactionTabSell(shortName, longName)).commit();
+                resetColor();
+                tvOwnPattern.setTextColor(ContextCompat.getColor(this, R.color.navBarSelect));
+                break;
+        }
+    }
+
+    private void resetColor(){
+        tvRandomPattern.setTextColor(ContextCompat.getColor(this, R.color.white));
+        tvOwnPattern.setTextColor(ContextCompat.getColor(this, R.color.white));
     }
 
     /*private void setupUI(){

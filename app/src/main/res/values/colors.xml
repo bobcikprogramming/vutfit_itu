@@ -2,6 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="lightGray">#B0B0B0</color>
+
+    <color name="colorAccent">#F9B720</color>
+    <color name="description">#E7B647</color>
+    <color name="cursor">#E7B647</color>
 
     <color name="navBarSelect">#F9B720</color>
     <color name="navBarIconVariant">#E7B647</color>
@@ -11,5 +16,12 @@
 
     <color name="button">#EBB742</color>
 
-    <color name="underline">#20D3D3D3</color>
+    <color name="switchOn">#EBB742</color>
+    <color name="switchOff">#838383</color>
+
+    <color name="underline">#40D3D3D3</color>
+    <color name="underlineSwitch">#20D3D3D3</color>
+
+    <color name="tabbarTextView">#FFFFFF</color>
+    <color name="tabbarLine">#D3D3D3</color>
 </resources>
