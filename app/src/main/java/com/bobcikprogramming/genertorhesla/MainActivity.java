@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tvRandomPattern.setTextColor(ContextCompat.getColor(this, R.color.navBarSelect));
                 break;
             case R.id.tabButtonOwnPattern:
-                //getSupportFragmentManager().beginTransaction().replace(R.id.layout, new AddTransactionTabSell(shortName, longName)).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.layout, new FragmentManualPattern()).commit();
                 resetColor();
                 tvOwnPattern.setTextColor(ContextCompat.getColor(this, R.color.navBarSelect));
                 break;

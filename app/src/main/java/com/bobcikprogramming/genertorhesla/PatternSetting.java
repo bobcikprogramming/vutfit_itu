@@ -17,14 +17,14 @@ package com.bobcikprogramming.genertorhesla;
  *  Pro čísla
  *  0 = Pořadí písmena v abecedě
  *  1 = Pořadí písmena ve slově
- *  2 = Počet znaků písmena v morseově abecedě
- *  3 = Počet teček písmena v morseově abecedě
+ *  2 = Počet znaků písmena v morseovce
+ *  3 = Počet teček písmena v morseovce
  *
  *  Pro znaky
- *  0 = Pvní znak písmena v morseově abecedě
- *  1 = Poslední znak písmena v morseově abecedě
- *  2 = Znak písmena v morseově abecedě na pozici písmena ve slově
- *  3 = Znak písmena v morseově abecedě na pozici písmena v abecedě
+ *  0 = Pvní znak písmena v morseovce
+ *  1 = Poslední znak písmena v morseovce
+ *  2 = Znak v morseovce na pozici písmena ve slově
+ *  3 = Písmeno v morseovce
  */
 
 public class PatternSetting {

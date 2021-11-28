@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentManualPattern"
+    android:orientation="vertical"
+    android:background="@color/mainBackground"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:weightSum="10"
+    android:id="@+id/layoutBackground">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:fillViewport="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.3"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:minHeight="120dp"
+                android:layout_weight="2.5"
+                android:orientation="vertical"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:text="Vaše heslo:"
+                    android:textSize="15sp"
+                    android:textColor="@color/description"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:id="@+id/layoutPassword">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingTop="5dp"
+                        android:fillViewport="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/layoutPasswordScroll">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvPassword"
+                                android:textColor="@color/white"
+                                android:textSize="22sp"
+                                android:paddingBottom="5dp"/>
+
+                        </LinearLayout>
+
+                    </ScrollView>
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/btnCopy"
+                        android:src="@drawable/avd_copy"
+                        android:padding="5dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/MyUnderline"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.35"
+                android:minHeight="70dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:text="Vaše slovo / fráze:"
+                    android:textSize="15sp"
+                    android:textColor="@color/description"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:id="@+id/etPhrase"
+                        android:hint="Vložte prosím slovo / frázi"
+                        android:textColorHint="@color/lightGray"
+                        android:textColor="@color/white"
+                        android:background="@null"/>
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btnDelete"
+                        android:src="@drawable/avd_delete"
+                        android:padding="5dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/MyUnderline"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/layoutPattern"
+                    android:visibility="visible"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.6"
+                                android:text="Každý 1. znak trojice:"
+                                android:textColor="@color/description"
+                                android:textSize="20sp"
+                                android:gravity="center_vertical"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="Písmena"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:gravity="center_vertical|right"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="Lichá písmena jsou velká"
+                                android:textColor="@color/lightGray"
+                                android:textSize="18sp"
+                                android:paddingStart="10dp"
+                                android:gravity="center_vertical"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/MyUnderline"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.6"
+                                android:text="Každý 2. znak trojice:"
+                                android:textColor="@color/description"
+                                android:textSize="20sp"
+                                android:gravity="center_vertical"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="Číslice"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:gravity="center_vertical|right"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="Počet znaků písmena v morseovce"
+                                android:textColor="@color/lightGray"
+                                android:textSize="18sp"
+                                android:paddingStart="10dp"
+                                android:gravity="center_vertical"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/MyUnderline"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.6"
+                                android:text="Každý 3. znak trojice:"
+                                android:textColor="@color/description"
+                                android:textSize="20sp"
+                                android:gravity="center_vertical"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="Znaky"
+                                android:textColor="@color/white"
+                                android:textSize="20sp"
+                                android:gravity="center_vertical|right"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:text="Znak v morseovce na pozici písmena ve slově"
+                                android:textColor="@color/lightGray"
+                                android:textSize="18sp"
+                                android:paddingStart="10dp"
+                                android:gravity="center_vertical"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/tvEmptyPattern"
+                    android:text="Nebyl vytvořen žádný vzor."
+                    android:textSize="22dp"
+                    android:textColor="@color/lightGray"
+                    android:gravity="center_horizontal|bottom"
+                    android:visibility="gone"
+                    android:layout_marginBottom="5dp"/>
+
+                <LinearLayout
+                    style="@style/MyUnderline"
+                    android:id="@+id/underlineEmptyPattern"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="35dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:id="@+id/tvEmptyPatternCreate"
+                    android:text="Pro vytvoření klikněte zde."
+                    android:textSize="17dp"
+                    android:textColor="@color/description"
+                    android:gravity="center_horizontal|top"
+                    android:visibility="gone"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/MyUnderline"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.35"
+                android:minHeight="60dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20sp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Ukázka vzoru:"
+                        android:textColor="@color/description"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="Motocykl"
+                        android:textSize="15sp"
+                        android:textColor="@color/lightGray"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/tvPattern"
+                        android:layout_weight="1"
+                        android:textColor="@color/lightGray"
+                        android:text="Vzor nenastaven"
+                        android:textSize="25sp"
+                        android:gravity="center_vertical"/>
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btnNewRandomPattern"
+                        android:layout_gravity="bottom"
+                        android:src="@drawable/avd_refresh"
+                        android:padding="5dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
