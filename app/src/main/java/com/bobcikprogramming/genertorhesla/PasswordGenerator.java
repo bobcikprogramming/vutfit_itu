@@ -12,11 +12,10 @@ public class PasswordGenerator {
     private PatternSetting patternSetting;
     private Context context;
     private JSONArray jsonArray = null;
-    private static final int ALPHABETLENGTH = 26;
     private static final int PATTERNLENGTH = 3;
 
     public PasswordGenerator(String phrase, PatternSetting patternSetting, Context context){
-        this.phrase = phrase;
+        this.phrase = phrase.toLowerCase();
         this.patternSetting = patternSetting;
         this.context = context;
     }
@@ -184,9 +183,9 @@ public class PasswordGenerator {
                     case 2:
                         result = String.valueOf(morseSymbols.charAt(position % morseSymbols.length()));
                         break;
-                    /** Znak v morsovce písmena na pořadí dle výskytu písmena v abecedě */
+                    /** Písmeno v morseovce */
                     case 3:
-                        result = String.valueOf(morseSymbols.charAt(ALPHABETLENGTH % morseSymbols.length()));
+                        result = morseSymbols;
                         break;
                 }
                 break;

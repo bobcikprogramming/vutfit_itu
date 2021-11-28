@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnOwnPattern = findViewById(R.id.tabButtonOwnPattern);
         tvRandomPattern = findViewById(R.id.tabTextViewRandomPattern);
         tvOwnPattern = findViewById(R.id.tabTextViewOwnPattern);
+
 
         btnRandomPattern.setOnClickListener(this);
         btnOwnPattern.setOnClickListener(this);
