@@ -1,4 +1,4 @@
-package com.bobcikprogramming.genertorhesla;
+package com.bobcikprogramming.genertorhesla.controllers;
 
 /**
  * Nastavení parametrů pro generování hesla
@@ -17,13 +17,13 @@ package com.bobcikprogramming.genertorhesla;
  *  Pro čísla
  *  0 = Pořadí písmena v abecedě
  *  1 = Pořadí písmena ve slově
- *  2 = Počet znaků písmena v morseovce
- *  3 = Počet teček písmena v morseovce
+ *  2 = Počet znaků v morseovce
+ *  3 = Počet teček v morseovce
  *
  *  Pro znaky
- *  0 = Pvní znak písmena v morseovce
- *  1 = Poslední znak písmena v morseovce
- *  2 = Znak v morseovce na pozici písmena ve slově
+ *  0 = Pvní znak v morseovce
+ *  1 = Poslední znak v morseovce
+ *  2 = Znak v morseovce dle pořadí ve slově
  *  3 = Písmeno v morseovce
  */
 

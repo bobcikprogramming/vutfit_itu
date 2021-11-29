@@ -1,4 +1,4 @@
-package com.bobcikprogramming.genertorhesla;
+package com.bobcikprogramming.genertorhesla.controllers;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -87,7 +87,7 @@ public class PatternGenerator {
      * @param secondOptionSetting jakou hodnotu bude mít symbol na druhé pozici.
      * @param thirdOption jaký symbol bude na třetí pozici.
      * @param thirdOptionSetting jakou hodnotu bude mít symbol na třetí pozici.
-     * @return vygenerovaný vzor.
+     * @return vytvořený vzor.
      */
     public PatternSetting manualSetting(int firstOption, int firstOptionSetting, int secondOption, int secondOptionSetting, int thirdOption, int thirdOptionSetting){
         PatternSetting pattern = new PatternSetting();

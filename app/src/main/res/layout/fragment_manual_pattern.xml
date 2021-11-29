@@ -189,7 +189,7 @@
                                 android:layout_weight="1"
                                 android:text="Lichá písmena jsou velká"
                                 android:textColor="@color/lightGray"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:paddingStart="10dp"
                                 android:gravity="center_vertical"/>
 
@@ -244,7 +244,7 @@
                                 android:layout_weight="1"
                                 android:text="Počet znaků písmena v morseovce"
                                 android:textColor="@color/lightGray"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:paddingStart="10dp"
                                 android:gravity="center_vertical"/>
 
@@ -297,9 +297,9 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:text="Znak v morseovce na pozici písmena ve slově"
+                                android:text="Znak v morseovce dle pořadí ve slově"
                                 android:textColor="@color/lightGray"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:paddingStart="10dp"
                                 android:gravity="center_vertical"/>
 
@@ -361,21 +361,11 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Ukázka vzoru:"
+                        android:text="Ukázka vzoru na slově Motocykl"
                         android:textColor="@color/description"
                         android:textSize="15sp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text="Motocykl"
-                        android:textSize="15sp"
-                        android:textColor="@color/lightGray"/>
 
                 </LinearLayout>
 
@@ -398,9 +388,9 @@
                     <ImageView
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
-                        android:id="@+id/btnNewRandomPattern"
+                        android:id="@+id/btnNewManualPattern"
                         android:layout_gravity="bottom"
-                        android:src="@drawable/avd_refresh"
+                        android:src="@drawable/ic_edit"
                         android:padding="5dp"/>
 
                 </LinearLayout>

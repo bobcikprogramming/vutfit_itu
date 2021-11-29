@@ -2,6 +2,19 @@
     <string name="app_name">Generátor hesla</string>
     <string name="tabRandom">Náhodný vzor</string>
     <string name="tabOwn">Vlastní vzor</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="letterFirst">Lichá písmena velká</string>
+    <string name="letterSecond">Sudá písmena velká</string>
+    <string name="letterThird">První písmeno velké</string>
+    <string name="letterFourth">Všechna písmena malá</string>
+
+    <string name="numberFirst">Poředí písmena v abecedě</string>
+    <string name="numberSecond">Pořadí písmena ve slově</string>
+    <string name="numberThird">Počet znaků v morseovce</string>
+    <string name="numberFourth">Počet teček v morseovce</string>
+
+    <string name="symbolFirst">První znak v morseovce</string>
+    <string name="symbolSecond">Poslední znak v morseovce</string>
+    <string name="symbolThird">Znak v morseovce dle pořadí ve slově</string>
+    <string name="symbolFourth">Písmeno v morseovce</string>
 </resources>

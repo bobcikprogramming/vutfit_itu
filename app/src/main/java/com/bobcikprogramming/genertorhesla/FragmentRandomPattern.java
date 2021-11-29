@@ -22,6 +22,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bobcikprogramming.genertorhesla.controllers.PasswordGenerator;
+import com.bobcikprogramming.genertorhesla.controllers.PatternGenerator;
+import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
 public class FragmentRandomPattern extends Fragment implements View.OnClickListener {

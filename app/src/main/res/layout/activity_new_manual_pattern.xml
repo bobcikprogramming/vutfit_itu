@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewManualPattern"
+    android:background="@color/mainBackground"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginBottom="5dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/btnCancel"
+            android:src="@drawable/ic_cancel"
+            android:padding="5dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="Vytvoření vzoru"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingStart="40dp"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/btnSave"
+            android:src="@drawable/ic_save"
+            android:padding="8dp"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/btnFinish"
+            android:src="@drawable/ic_finish"
+            android:padding="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Ukázka vzoru na slově Motocykl"
+                android:textColor="@color/description"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tvPattern"
+                android:layout_weight="1"
+                android:textColor="@color/lightGray"
+                android:text="Vzor nenastaven"
+                android:textSize="25sp"
+                android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MyUnderline"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:text="Každý 1. znak trojice:"
+                    android:textSize="15sp"
+                    android:textColor="@color/description"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:id="@+id/btnLetterFirst"
+                        android:text="PÍSMENA"
+                        android:textColor="@color/white"
+                        android:textSize="17dp"
+                        android:gravity="center"/>
+
+                    <LinearLayout
+                        style="@style/TabbarLine"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:id="@+id/btnNumberFirst"
+                        android:text="ČÍSLICE"
+                        android:textColor="@color/notSelected"
+                        android:textSize="17dp"
+                        android:gravity="center"/>
+
+                    <LinearLayout
+                        style="@style/TabbarLine"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:id="@+id/btnSymbolFirst"
+                        android:text="ZNAKY"
+                        android:textColor="@color/notSelected"
+                        android:textSize="17dp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btnInfoFirstAtFirst"
+                        android:src="@drawable/ic_info"
+                        android:padding="7dp"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/sFirstAtFirst"
+                        android:theme="@style/MySwitch"
+                        android:text="Lichá písmena jsou velká"
+                        android:textSize="17sp"
+                        android:paddingStart="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btnInfoSecondAtFirst"
+                        android:src="@drawable/ic_info"
+                        android:padding="7dp"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/sSecondAtFirst"
+                        android:theme="@style/MySwitch"
+                        android:text="Sudá písmena jsou velká"
+                        android:textSize="17sp"
+                        android:paddingStart="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btnInfoThirdAtFirst"
+                        android:src="@drawable/ic_info"
+                        android:padding="7dp"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/sThirdAtFirst"
+                        android:theme="@style/MySwitch"
+                        android:text="První písmeno je velké"
+                        android:textSize="17sp"
+                        android:paddingStart="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btnInfoFourthAtFirst"
+                        android:src="@drawable/ic_info"
+                        android:padding="7dp"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/sFourthAtFirst"
+                        android:theme="@style/MySwitch"
+                        android:text="Všechna písmena malá"
+                        android:textSize="17sp"
+                        android:paddingStart="10dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/MyUnderline"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:text="Každý 2. znak trojice:"
+                    android:textSize="15sp"
+                    android:textColor="@color/description"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:id="@+id/btnLetterSecond"
+                        android:text="PÍSMENA"
+                        android:textColor="@color/notSelected"
+                        android:textSize="17dp"
+                        android:gravity="center"/>
+
+                    <LinearLayout
+                        style="@style/TabbarLine"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:id="@+id/btnNumberSecond"
+                        android:text="ČÍSLICE"
+                        android:textColor="@color/white"
+                        android:textSize="17dp"
+                        android:gravity="center"/>
+
+                    <LinearLayout
+                        style="@style/TabbarLine"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:id="@+id/btnSymbolSecond"
+                        android:text="ZNAKY"
+                        android:textColor="@color/notSelected"
+                        android:textSize="17dp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btnInfoFirstAtSecond"
+                        android:src="@drawable/ic_info"
+                        android:padding="7dp"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/sFirstAtSecond"
+                        android:theme="@style/MySwitch"
+                        android:text="Pořadí písmena v abecedě"
+                        android:textSize="17sp"
+                        android:paddingStart="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btnInfoSecondAtSecond"
+                        android:src="@drawable/ic_info"
+                        android:padding="7dp"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/sSecondAtSecond"
+                        android:theme="@style/MySwitch"
+                        android:text="Pořadí písmena ve slově"
+                        android:textSize="17sp"
+                        android:paddingStart="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btnInfoThirdAtSecond"
+                        android:src="@drawable/ic_info"
+                        android:padding="7dp"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/sThirdAtSecond"
+                        android:theme="@style/MySwitch"
+                        android:text="Počet znaků v morseovce"
+                        android:textSize="17sp"
+                        android:paddingStart="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btnInfoFourthAtSecond"
+                        android:src="@drawable/ic_info"
+                        android:padding="7dp"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/sFourthAtSecond"
+                        android:theme="@style/MySwitch"
+                        android:text="Počet teček v morseovce"
+                        android:textSize="17sp"
+                        android:paddingStart="10dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/MyUnderline"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:text="Každý 3. znak trojice:"
+                    android:textSize="15sp"
+                    android:textColor="@color/description"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:id="@+id/btnLetterThird"
+                        android:text="PÍSMENA"
+                        android:textColor="@color/notSelected"
+                        android:textSize="17dp"
+                        android:gravity="center"/>
+
+                    <LinearLayout
+                        style="@style/TabbarLine"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="ČÍSLICE"
+                        android:id="@+id/btnNumberThird"
+                        android:textColor="@color/notSelected"
+                        android:textSize="17dp"
+                        android:gravity="center"/>
+
+                    <LinearLayout
+                        style="@style/TabbarLine"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:id="@+id/btnSymbolThird"
+                        android:text="ZNAKY"
+                        android:textColor="@color/white"
+                        android:textSize="17dp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btnInfoFirstAtThird"
+                        android:src="@drawable/ic_info"
+                        android:padding="7dp"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/sFirstAtThird"
+                        android:theme="@style/MySwitch"
+                        android:text="Pvní znak v morseovce"
+                        android:textSize="17sp"
+                        android:paddingStart="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btnInfoSecondAtThird"
+                        android:src="@drawable/ic_info"
+                        android:padding="7dp"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/sSecondAtThird"
+                        android:theme="@style/MySwitch"
+                        android:text="Poslední znak v morseovce"
+                        android:textSize="17sp"
+                        android:paddingStart="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btnInfoThirdAtThird"
+                        android:src="@drawable/ic_info"
+                        android:padding="7dp"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/sThirdAtThird"
+                        android:theme="@style/MySwitch"
+                        android:text="Znak v morseovce dle pořadí ve slově"
+                        android:textSize="17sp"
+                        android:paddingStart="10dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btnInfoFourthAtThird"
+                        android:src="@drawable/ic_info"
+                        android:padding="7dp"/>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/sFourthAtThird"
+                        android:theme="@style/MySwitch"
+                        android:text="Písmeno v morseovce"
+                        android:textSize="17sp"
+                        android:paddingStart="10dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

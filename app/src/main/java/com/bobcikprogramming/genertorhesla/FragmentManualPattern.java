@@ -1,64 +1,105 @@
 package com.bobcikprogramming.genertorhesla;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentManualPattern#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class FragmentManualPattern extends Fragment {
+public class FragmentManualPattern extends Fragment implements View.OnClickListener{
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private TextView tvPassword, tvPattern;
+    private EditText etPhrase;
+    private ImageView btnNewManualPattern, btnCopy, btnDelete;
+    private LinearLayout layoutPattern, layoutEmptyPattern, layoutBackground, layoutPassword, layoutPasswordScroll;
+    private View view;
 
     public FragmentManualPattern() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentManualPattern.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentManualPattern newInstance(String param1, String param2) {
-        FragmentManualPattern fragment = new FragmentManualPattern();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_manual_pattern, container, false);
+        view = inflater.inflate(R.layout.fragment_manual_pattern, container, false);
+
+        setupUI();
+
+        return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.btnNewManualPattern:
+                Intent newManualPattern = new Intent(getContext(), NewManualPattern.class);
+                newManualPattern.putExtra("logged", false);
+                manualPattern.launch(newManualPattern);
+        }
+
+    }
+
+    private void setupUI(){
+        tvPassword = view.findViewById(R.id.tvPassword);
+        tvPattern = view.findViewById(R.id.tvPattern);
+        etPhrase = view.findViewById(R.id.etPhrase);
+        layoutBackground = view.findViewById(R.id.layoutBackground);
+        layoutPassword = view.findViewById(R.id.layoutPassword);
+        layoutPasswordScroll = view.findViewById(R.id.layoutPasswordScroll);
+        btnNewManualPattern = view.findViewById(R.id.btnNewManualPattern);
+        btnCopy = view.findViewById(R.id.btnCopy);
+        btnDelete = view.findViewById(R.id.btnDelete);
+
+        tvPassword.setOnClickListener(this);
+        tvPattern.setOnClickListener(this);
+        layoutBackground.setOnClickListener(this);
+        layoutPassword.setOnClickListener(this);
+        layoutPasswordScroll.setOnClickListener(this);
+        btnNewManualPattern.setOnClickListener(this);
+        btnCopy.setOnClickListener(this);
+        btnDelete.setOnClickListener(this);
+    }
+
+    ActivityResultLauncher<Intent> manualPattern = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    Intent data = result.getData();
+                    /*boolean close = data.getBooleanExtra("close", false);
+                    boolean changed = data.getBooleanExtra("changed", false);
+                    if(close){
+                        Intent intent = new Intent();
+                        intent.putExtra("changed", changed);
+                        setResult(RESULT_OK, intent );
+                        finish();
+                    }*/
+                }
+            });
+
+    private void hideKeyBoard(){
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        if(getActivity().getCurrentFocus() != null) {
+            imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+        }
     }
 }
