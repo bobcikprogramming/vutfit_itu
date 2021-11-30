@@ -1,5 +1,7 @@
 package com.bobcikprogramming.genertorhesla.controllers;
 
+import java.io.Serializable;
+
 /**
  * Nastavení parametrů pro generování hesla
  * Option:
@@ -27,7 +29,7 @@ package com.bobcikprogramming.genertorhesla.controllers;
  *  3 = Písmeno v morseovce
  */
 
-public class PatternSetting {
+public class PatternSetting implements Serializable {
     private int firstOption, secondOption, thirdOption;
     private int firstOptionSetting, secondOptionSetting, thirdOptionSetting;
 

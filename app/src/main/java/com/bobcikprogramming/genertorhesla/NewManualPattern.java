@@ -3,20 +3,29 @@ package com.bobcikprogramming.genertorhesla;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bobcikprogramming.genertorhesla.controllers.PasswordGenerator;
+import com.bobcikprogramming.genertorhesla.controllers.PatternGenerator;
+import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
+import com.bobcikprogramming.genertorhesla.controllers.PatternSettingManualValues;
 import com.google.android.material.switchmaterial.SwitchMaterial;
+
+import java.util.ArrayList;
 
 public class NewManualPattern extends AppCompatActivity implements View.OnClickListener{
 
-    private SwitchMaterial sFirstAtFirst, sSecondAtFirst, sThirdAtFirst, sFourthAtFirst, sFirstAtSecond, sSecondAtSecond, sThirdAtSecond, sFourthAtSecond, sFirstAtThird, sSecondAtThird, sThirdAtThird, sFourthAtThird;
+    private RadioButton rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird;
+    private RadioGroup rGroupFirst, rGroupSecond, rGroupThird;
     private TextView tvPattern;
     private TextView btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnLetterThird, btnNumberThird, btnSymbolThird;
     private ImageView btnCancel, btnSave, btnFinish;
@@ -24,22 +33,29 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
     private int firstOption, secondOption, thirdOption;
     private int firstOptionSetting, secondOptionSetting, thirdOptionSetting;
 
+    private PatternGenerator pattern = new PatternGenerator();
+    private PatternSetting patternSetting;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_manual_pattern);
 
-        setupUI();
-        showSaveBtnIfLogged();
-        switchSelect();
+        firstOptionSetting = -1;
+        secondOptionSetting = -1;
+        thirdOptionSetting = -1;
 
-        setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnLetterFirst, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, sFirstAtFirst, sSecondAtFirst, sThirdAtFirst, sFourthAtFirst);
-        setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnLetterSecond, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, sFirstAtSecond, sSecondAtSecond, sThirdAtSecond, sFourthAtSecond);
-        setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnLetterThird, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, sFirstAtThird, sSecondAtThird, sThirdAtThird, sFourthAtThird);
+        Bundle extras = getIntent().getExtras();
+
+        setupUI();
+
         firstOption = 0;
         secondOption = 0;
         thirdOption = 0;
 
+        showSaveBtnIfLogged(extras);
+        showSettingIfNotNull(extras);
+        radioButtonSelected();
     }
 
     @Override
@@ -50,44 +66,60 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
             case R.id.btnCancel:
                 break;
             case R.id.btnFinish:
+                if(patternSetting != null){
+                    Intent intent = new Intent();
+                    intent.putExtra("pattern", patternSetting);
+                    setResult(RESULT_OK, intent );
+                    finish();
+                }else{
+                    Toast.makeText(this, "není zvolený pattern", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.btnLetterFirst:
-                setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnLetterFirst, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, sFirstAtFirst, sSecondAtFirst, sThirdAtFirst, sFourthAtFirst);
+                setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnLetterFirst, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
                 firstOption = 0;
                 break;
             case R.id.btnNumberFirst:
-                setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnNumberFirst, R.string.numberFirst, R.string.numberSecond, R.string.numberThird, R.string.numberFourth, sFirstAtFirst, sSecondAtFirst, sThirdAtFirst, sFourthAtFirst);
+                setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnNumberFirst, R.string.numberFirst, R.string.numberSecond, R.string.numberThird, R.string.numberFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
                 firstOption = 1;
                 break;
             case R.id.btnSymbolFirst:
-                setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnSymbolFirst, R.string.symbolFirst, R.string.symbolSecond, R.string.symbolThird, R.string.symbolFourth, sFirstAtFirst, sSecondAtFirst, sThirdAtFirst, sFourthAtFirst);
+                setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnSymbolFirst, R.string.symbolFirst, R.string.symbolSecond, R.string.symbolThird, R.string.symbolFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
                 firstOption = 2;
                 break;
             case R.id.btnLetterSecond:
-                setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnLetterSecond, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, sFirstAtSecond, sSecondAtSecond, sThirdAtSecond, sFourthAtSecond);
+                setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnLetterSecond, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
                 secondOption = 0;
                 break;
             case R.id.btnNumberSecond:
-                setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnNumberSecond, R.string.numberFirst, R.string.numberSecond, R.string.numberThird, R.string.numberFourth, sFirstAtSecond, sSecondAtSecond, sThirdAtSecond, sFourthAtSecond);
+                setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnNumberSecond, R.string.numberFirst, R.string.numberSecond, R.string.numberThird, R.string.numberFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
                 secondOption = 1;
                 break;
             case R.id.btnSymbolSecond:
-                setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnSymbolSecond, R.string.symbolFirst, R.string.symbolSecond, R.string.symbolThird, R.string.symbolFourth, sFirstAtSecond, sSecondAtSecond, sThirdAtSecond, sFourthAtSecond);
+                setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnSymbolSecond, R.string.symbolFirst, R.string.symbolSecond, R.string.symbolThird, R.string.symbolFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
                 secondOption = 2;
                 break;
             case R.id.btnLetterThird:
-                setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnLetterThird, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, sFirstAtThird, sSecondAtThird, sThirdAtThird, sFourthAtThird);
+                setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnLetterThird, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird, rGroupThird);
                 thirdOption = 0;
                 break;
             case R.id.btnNumberThird:
-                setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnNumberThird, R.string.numberFirst, R.string.numberSecond, R.string.numberThird, R.string.numberFourth, sFirstAtThird, sSecondAtThird, sThirdAtThird, sFourthAtThird);
+                setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnNumberThird, R.string.numberFirst, R.string.numberSecond, R.string.numberThird, R.string.numberFourth, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird, rGroupThird);
                 thirdOption = 1;
                 break;
             case R.id.btnSymbolThird:
-                setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnSymbolThird, R.string.symbolFirst, R.string.symbolSecond, R.string.symbolThird, R.string.symbolFourth, sFirstAtThird, sSecondAtThird, sThirdAtThird, sFourthAtThird);
+                setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnSymbolThird, R.string.symbolFirst, R.string.symbolSecond, R.string.symbolThird, R.string.symbolFourth, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird, rGroupThird);
                 thirdOption = 2;
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("pattern", patternSetting);
+        setResult(RESULT_OK, intent );
+        finish();
     }
 
     private void setupUI(){
@@ -121,35 +153,29 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
         btnNumberThird.setOnClickListener(this);
         btnSymbolThird.setOnClickListener(this);
 
-        sFirstAtFirst = findViewById(R.id.sFirstAtFirst);
-        sSecondAtFirst = findViewById(R.id.sSecondAtFirst);
-        sThirdAtFirst = findViewById(R.id.sThirdAtFirst);
-        sFourthAtFirst = findViewById(R.id.sFourthAtFirst);
-        sFirstAtSecond = findViewById(R.id.sFirstAtSecond);
-        sSecondAtSecond = findViewById(R.id.sSecondAtSecond);
-        sThirdAtSecond = findViewById(R.id.sThirdAtSecond);
-        sFourthAtSecond = findViewById(R.id.sFourthAtSecond);
-        sFirstAtThird = findViewById(R.id.sFirstAtThird);
-        sSecondAtThird = findViewById(R.id.sSecondAtThird);
-        sThirdAtThird = findViewById(R.id.sThirdAtThird);
-        sFourthAtThird = findViewById(R.id.sFourthAtThird);
+        rBtnFirstAtFirst = findViewById(R.id.rBtnFirstAtFirst);
+        rBtnSecondAtFirst = findViewById(R.id.rBtnSecondAtFirst);
+        rBtnThirdAtFirst = findViewById(R.id.rBtnThirdAtFirst);
+        rBtnFourthAtFirst = findViewById(R.id.rBtnFourthAtFirst);
+        rBtnFirstAtSecond = findViewById(R.id.rBtnFirstAtSecond);
+        rBtnSecondAtSecond = findViewById(R.id.rBtnSecondAtSecond);
+        rBtnThirdAtSecond = findViewById(R.id.rBtnThirdAtSecond);
+        rBtnFourthAtSecond = findViewById(R.id.rBtnFourthAtSecond);
+        rBtnFirstAtThird = findViewById(R.id.rBtnFirstAtThird);
+        rBtnSecondAtThird = findViewById(R.id.rBtnSecondAtThird);
+        rBtnThirdAtThird = findViewById(R.id.rBtnThirdAtThird);
+        rBtnFourthAtThird = findViewById(R.id.rBtnFourthAtThird);
 
-        sFirstAtFirst.setOnClickListener(this);
-        sSecondAtFirst.setOnClickListener(this);
-        sThirdAtFirst.setOnClickListener(this);
-        sFourthAtFirst.setOnClickListener(this);
-        sFirstAtSecond.setOnClickListener(this);
-        sSecondAtSecond.setOnClickListener(this);
-        sThirdAtSecond.setOnClickListener(this);
-        sFourthAtSecond.setOnClickListener(this);
-        sFirstAtThird.setOnClickListener(this);
-        sSecondAtThird.setOnClickListener(this);
-        sThirdAtThird.setOnClickListener(this);
-        sFourthAtThird.setOnClickListener(this);
+        rGroupFirst = findViewById(R.id.rGroupFirst);
+        rGroupSecond = findViewById(R.id.rGroupSecond);
+        rGroupThird = findViewById(R.id.rGroupThird);
+
+        rGroupFirst.setOnClickListener(this);
+        rGroupSecond.setOnClickListener(this);
+        rGroupThird.setOnClickListener(this);
     }
 
-    private void showSaveBtnIfLogged(){
-        Bundle extras = getIntent().getExtras();
+    private void showSaveBtnIfLogged(Bundle extras){
         boolean logged = extras.getBoolean("logged");
         if(logged){
             btnSave.setVisibility(View.VISIBLE);
@@ -158,14 +184,78 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void setupOption(TextView letter, TextView number, TextView symbol, TextView option, int firstOptionSettingText, int secondOptionSettingText, int thirdOptionSettingText, int fourthOptionSettingText, SwitchMaterial sFirst, SwitchMaterial sSecond, SwitchMaterial sThird, SwitchMaterial sFourth){
+    private void showSettingIfNotNull(Bundle extras){
+        patternSetting = (PatternSetting) extras.getSerializable("patternSetting");
+
+        if(patternSetting != null){
+            if(patternSetting.getFirstOption() == 0){
+                firstOption = 0;
+                setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnLetterFirst, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
+                //btnLetterFirst.setTextColor(ContextCompat.getColor(this, R.color.white));
+            }else if(patternSetting.getFirstOption() == 1){
+                firstOption = 1;
+                setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnNumberFirst, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
+                //btnNumberFirst.setTextColor(ContextCompat.getColor(this, R.color.white));
+            } else{
+                firstOption = 2;
+                setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnSymbolFirst, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
+                //btnSymbolFirst.setTextColor(ContextCompat.getColor(this, R.color.white));
+            }
+
+            if(patternSetting.getSecondOption() == 0){
+                secondOption = 0;
+                setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnLetterSecond, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
+                //btnLetterSecond.setTextColor(ContextCompat.getColor(this, R.color.white));
+            }else if(patternSetting.getSecondOption() == 1){
+                secondOption = 1;
+                setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnNumberSecond, R.string.numberFirst, R.string.numberSecond, R.string.numberThird, R.string.numberFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
+                //btnNumberSecond.setTextColor(ContextCompat.getColor(this, R.color.white));
+            } else{
+                secondOption = 2;
+                setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnSymbolSecond, R.string.symbolFirst, R.string.symbolSecond, R.string.symbolThird, R.string.symbolFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
+                //btnSymbolSecond.setTextColor(ContextCompat.getColor(this, R.color.white));
+            }
+
+            if(patternSetting.getThirdOption() == 0){
+                thirdOption = 0;
+                setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnLetterThird, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird, rGroupThird);
+                //btnLetterThird.setTextColor(ContextCompat.getColor(this, R.color.white));
+            }else if(patternSetting.getThirdOption() == 1){
+                thirdOption = 1;
+                setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnNumberThird, R.string.numberFirst, R.string.numberSecond, R.string.numberThird, R.string.numberFourth, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird, rGroupThird);
+                //btnNumberThird.setTextColor(ContextCompat.getColor(this, R.color.white));
+            } else{
+                thirdOption = 2;
+                setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnSymbolThird, R.string.symbolFirst, R.string.symbolSecond, R.string.symbolThird, R.string.symbolFourth, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird, rGroupThird);
+                //btnSymbolThird.setTextColor(ContextCompat.getColor(this, R.color.white));
+            }
+
+            firstOptionSetting = patternSetting.getFirstOptionSetting();
+            secondOptionSetting = patternSetting.getSecondOptionSetting();
+            thirdOptionSetting = patternSetting.getThirdOptionSetting();
+
+            ((RadioButton) rGroupFirst.getChildAt(firstOptionSetting)).setChecked(true);
+            ((RadioButton) rGroupSecond.getChildAt(secondOptionSetting)).setChecked(true);
+            ((RadioButton) rGroupThird.getChildAt(thirdOptionSetting)).setChecked(true);
+
+            showPattern();
+        }else{
+            setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnLetterFirst, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
+            setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnLetterSecond, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
+            setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnLetterThird, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird, rGroupThird);
+        }
+    }
+
+    private void setupOption(TextView letter, TextView number, TextView symbol, TextView option, int firstOptionSettingText, int secondOptionSettingText, int thirdOptionSettingText, int fourthOptionSettingText, RadioButton rBtnFirst, RadioButton rBtnSecond, RadioButton rBtnThird, RadioButton rBtnFourth, RadioGroup rGroup){
         resetColorOfBtns(letter, number, symbol);
         option.setTextColor(ContextCompat.getColor(this, R.color.white));
 
-        sFirst.setText(getResources().getString(firstOptionSettingText));
-        sSecond.setText(getResources().getString(secondOptionSettingText));
-        sThird.setText(getResources().getString(thirdOptionSettingText));
-        sFourth.setText(getResources().getString(fourthOptionSettingText));
+        rBtnFirst.setText(getResources().getString(firstOptionSettingText));
+        rBtnSecond.setText(getResources().getString(secondOptionSettingText));
+        rBtnThird.setText(getResources().getString(thirdOptionSettingText));
+        rBtnFourth.setText(getResources().getString(fourthOptionSettingText));
+
+        rGroup.clearCheck();
     }
 
     private void resetColorOfBtns(TextView letter, TextView number, TextView symbol){
@@ -174,51 +264,62 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
         symbol.setTextColor(ContextCompat.getColor(this, R.color.notSelected));
     }
 
-    private void switchSelect(){
-        sFirstAtFirst.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    private void radioButtonSelected(){
+        rGroupFirst.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean first) {
-                if(first){
-                    resetSwitchs(sSecondAtFirst, sThirdAtFirst, sFourthAtFirst);
-                    firstOptionSetting = 0;
-                }else{
-                    firstOptionSetting = -1;
-                }
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                int rBtnFirstId = rGroupFirst.getCheckedRadioButtonId();
+                View rBtnFirst = findViewById(rBtnFirstId);
+                firstOptionSetting = rGroupFirst.indexOfChild(rBtnFirst);
+
+                showPattern();
             }
         });
 
-        sSecondAtFirst.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        rGroupSecond.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean second) {
-                if(second){
-                    resetSwitchs(sFirstAtFirst, sThirdAtFirst, sFourthAtFirst);
-                    firstOptionSetting = 1;
-                }
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                int rBtnSecondId = rGroupSecond.getCheckedRadioButtonId();
+                View rBtnSecond = findViewById(rBtnSecondId);
+                secondOptionSetting = rGroupSecond.indexOfChild(rBtnSecond);
+
+                showPattern();
             }
         });
 
-        sThirdAtFirst.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        rGroupThird.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean second) {
-                if(second){
-                    resetSwitchs(sFirstAtFirst, sSecondAtFirst, sFourthAtFirst);
-                }
-            }
-        });
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                int rBtnThirdId = rGroupThird.getCheckedRadioButtonId();
+                View rBtnThird = findViewById(rBtnThirdId);
+                thirdOptionSetting = rGroupThird.indexOfChild(rBtnThird);
 
-        sFourthAtFirst.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean second) {
-                if(second){
-                    resetSwitchs(sFirstAtFirst, sSecondAtFirst, sThirdAtFirst);
-                }
+                showPattern();
             }
         });
     }
 
-    private void resetSwitchs(SwitchMaterial sOne, SwitchMaterial sTwo, SwitchMaterial sThree){
-        sOne.setChecked(false);
-        sTwo.setChecked(false);
-        sThree.setChecked(false);
+    private void showPattern(){
+        if(firstOptionSetting != -1 && secondOptionSetting != -1 && thirdOptionSetting != -1 ){
+            patternSetting = getPatternSetting();
+            if(patternSetting == null){
+                tvPattern.setText("Vzor nenastaven");
+            }else {
+                PasswordGenerator generatorPattern = new PasswordGenerator("Motocykl", patternSetting, NewManualPattern.this);
+                tvPattern.setText(generatorPattern.genereta());
+            }
+        }else{
+            tvPattern.setText("Vzor nenastaven");
+        }
+    }
+
+    //předělat do kontroleru
+    private PatternSetting getPatternSetting(){
+        if(firstOptionSetting != -1 && secondOptionSetting != -1 && thirdOptionSetting != -1 ){
+            return pattern.manualSetting(firstOption, firstOptionSetting, secondOption, secondOptionSetting, thirdOption, thirdOptionSetting);
+        }else{
+            return null;
+        }
+
     }
 }

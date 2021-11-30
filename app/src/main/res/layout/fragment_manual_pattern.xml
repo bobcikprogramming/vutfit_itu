@@ -170,6 +170,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
+                                android:id="@+id/tvFirstOption"
                                 android:text="Písmena"
                                 android:textColor="@color/white"
                                 android:textSize="20sp"
@@ -187,6 +188,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
+                                android:id="@+id/tvFirstOptionSetting"
                                 android:text="Lichá písmena jsou velká"
                                 android:textColor="@color/lightGray"
                                 android:textSize="16sp"
@@ -225,6 +227,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
+                                android:id="@+id/tvSecondOption"
                                 android:text="Číslice"
                                 android:textColor="@color/white"
                                 android:textSize="20sp"
@@ -242,6 +245,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
+                                android:id="@+id/tvSecondOptionSetting"
                                 android:text="Počet znaků písmena v morseovce"
                                 android:textColor="@color/lightGray"
                                 android:textSize="16sp"
@@ -280,6 +284,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
+                                android:id="@+id/tvThirdOption"
                                 android:text="Znaky"
                                 android:textColor="@color/white"
                                 android:textSize="20sp"
@@ -297,6 +302,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
+                                android:id="@+id/tvThirdOptionSetting"
                                 android:text="Znak v morseovce dle pořadí ve slově"
                                 android:textColor="@color/lightGray"
                                 android:textSize="16sp"
@@ -309,37 +315,41 @@
 
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/tvEmptyPattern"
-                    android:text="Nebyl vytvořen žádný vzor."
-                    android:textSize="22dp"
-                    android:textColor="@color/lightGray"
-                    android:gravity="center_horizontal|bottom"
-                    android:visibility="gone"
-                    android:layout_marginBottom="5dp"/>
-
                 <LinearLayout
-                    style="@style/MyUnderline"
-                    android:id="@+id/underlineEmptyPattern"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginEnd="35dp"
-                    android:orientation="horizontal"
-                    android:visibility="gone"/>
-
-                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/tvEmptyPatternCreate"
-                    android:text="Pro vytvoření klikněte zde."
-                    android:textSize="17dp"
-                    android:textColor="@color/description"
-                    android:gravity="center_horizontal|top"
-                    android:visibility="gone"
-                    android:layout_marginTop="5dp"/>
+                    android:orientation="vertical"
+                    android:id="@+id/layoutEmptyPattern"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Nebyl vytvořen žádný vzor."
+                        android:textSize="22dp"
+                        android:textColor="@color/lightGray"
+                        android:gravity="center_horizontal|bottom"
+                        android:layout_marginBottom="5dp"/>
+
+                    <LinearLayout
+                        style="@style/MyUnderline"
+                        android:id="@+id/underlineEmptyPattern"
+                        android:layout_marginStart="35dp"
+                        android:layout_marginEnd="35dp"
+                        android:orientation="horizontal"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Pro vytvoření klikněte zde."
+                        android:textSize="17dp"
+                        android:textColor="@color/description"
+                        android:gravity="center_horizontal|top"
+                        android:layout_marginTop="5dp"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -363,7 +373,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Ukázka vzoru na slově Motocykl"
+                        android:text="Ukázka vzoru na slově Motocykl:"
                         android:textColor="@color/description"
                         android:textSize="15sp"/>
 

@@ -67,7 +67,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Ukázka vzoru na slově Motocykl"
+                android:text="Ukázka vzoru na slově Motocykl:"
                 android:textColor="@color/description"
                 android:textSize="15sp"/>
 
@@ -131,7 +131,7 @@
                         android:layout_weight="1"
                         android:id="@+id/btnLetterFirst"
                         android:text="PÍSMENA"
-                        android:textColor="@color/white"
+                        android:textColor="@color/notSelected"
                         android:textSize="17dp"
                         android:gravity="center"/>
 
@@ -169,93 +169,96 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="200dp"
                     android:orientation="horizontal">
+
+                    <LinearLayout
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="40dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="50dp"
                         android:id="@+id/btnInfoFirstAtFirst"
                         android:src="@drawable/ic_info"
                         android:padding="7dp"/>
 
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/sFirstAtFirst"
-                        android:theme="@style/MySwitch"
-                        android:text="Lichá písmena jsou velká"
-                        android:textSize="17sp"
-                        android:paddingStart="10dp"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
                     <ImageView
                         android:layout_width="40dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="50dp"
                         android:id="@+id/btnInfoSecondAtFirst"
                         android:src="@drawable/ic_info"
                         android:padding="7dp"/>
 
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/sSecondAtFirst"
-                        android:theme="@style/MySwitch"
-                        android:text="Sudá písmena jsou velká"
-                        android:textSize="17sp"
-                        android:paddingStart="10dp"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
                     <ImageView
                         android:layout_width="40dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="50dp"
                         android:id="@+id/btnInfoThirdAtFirst"
                         android:src="@drawable/ic_info"
                         android:padding="7dp"/>
 
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/sThirdAtFirst"
-                        android:theme="@style/MySwitch"
-                        android:text="První písmeno je velké"
-                        android:textSize="17sp"
-                        android:paddingStart="10dp"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
                     <ImageView
                         android:layout_width="40dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="50dp"
                         android:id="@+id/btnInfoFourthAtFirst"
                         android:src="@drawable/ic_info"
                         android:padding="7dp"/>
 
-                    <com.google.android.material.switchmaterial.SwitchMaterial
+                </LinearLayout>
+
+                    <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/sFourthAtFirst"
-                        android:theme="@style/MySwitch"
-                        android:text="Všechna písmena malá"
-                        android:textSize="17sp"
-                        android:paddingStart="10dp"/>
+                        android:id="@+id/rGroupFirst"
+                        android:paddingStart="10dp">
+
+                        <!-- https://stackoverflow.com/a/38681216 -->
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/rBtnFirstAtFirst"
+                            android:layoutDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:layout_gravity="start"
+                            android:text="@string/letterFirst"
+                            android:textSize="17sp"
+                            android:textColor="@color/white"/>
+
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/rBtnSecondAtFirst"
+                            android:layoutDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:layout_gravity="start"
+                            android:text="@string/letterSecond"
+                            android:textSize="17sp"
+                            android:textColor="@color/white"/>
+
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/rBtnThirdAtFirst"
+                            android:layoutDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:layout_gravity="start"
+                            android:text="@string/letterThird"
+                            android:textSize="17sp"
+                            android:textColor="@color/white"/>
+
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/rBtnFourthAtFirst"
+                            android:layoutDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:layout_gravity="start"
+                            android:text="@string/letterFourth"
+                            android:textSize="17sp"
+                            android:textColor="@color/white"/>
+
+                    </RadioGroup>
 
                 </LinearLayout>
 
@@ -304,7 +307,7 @@
                         android:layout_weight="1"
                         android:id="@+id/btnNumberSecond"
                         android:text="ČÍSLICE"
-                        android:textColor="@color/white"
+                        android:textColor="@color/notSelected"
                         android:textSize="17dp"
                         android:gravity="center"/>
 
@@ -327,93 +330,96 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="200dp"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <LinearLayout
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
-                        android:id="@+id/btnInfoFirstAtSecond"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
+                        android:orientation="vertical">
 
-                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="50dp"
+                            android:id="@+id/btnInfoFirstAtSecond"
+                            android:src="@drawable/ic_info"
+                            android:padding="7dp"/>
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="50dp"
+                            android:id="@+id/btnInfoSecondAtSecond"
+                            android:src="@drawable/ic_info"
+                            android:padding="7dp"/>
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="50dp"
+                            android:id="@+id/btnInfoThirdAtSecond"
+                            android:src="@drawable/ic_info"
+                            android:padding="7dp"/>
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="50dp"
+                            android:id="@+id/btnInfoFourthAtSecond"
+                            android:src="@drawable/ic_info"
+                            android:padding="7dp"/>
+
+                    </LinearLayout>
+
+                    <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/sFirstAtSecond"
-                        android:theme="@style/MySwitch"
-                        android:text="Pořadí písmena v abecedě"
-                        android:textSize="17sp"
-                        android:paddingStart="10dp"/>
+                        android:id="@+id/rGroupSecond"
+                        android:paddingStart="10dp">
 
-                </LinearLayout>
+                        <!-- https://stackoverflow.com/a/38681216 -->
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/rBtnFirstAtSecond"
+                            android:layoutDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:layout_gravity="start"
+                            android:text="@string/numberFirst"
+                            android:textSize="17sp"
+                            android:textColor="@color/white"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/rBtnSecondAtSecond"
+                            android:layoutDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:layout_gravity="start"
+                            android:text="@string/numberSecond"
+                            android:textSize="17sp"
+                            android:textColor="@color/white"/>
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/btnInfoSecondAtSecond"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/rBtnThirdAtSecond"
+                            android:layoutDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:layout_gravity="start"
+                            android:text="@string/numberThird"
+                            android:textSize="17sp"
+                            android:textColor="@color/white"/>
 
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/sSecondAtSecond"
-                        android:theme="@style/MySwitch"
-                        android:text="Pořadí písmena ve slově"
-                        android:textSize="17sp"
-                        android:paddingStart="10dp"/>
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/rBtnFourthAtSecond"
+                            android:layoutDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:layout_gravity="start"
+                            android:text="@string/numberFourth"
+                            android:textSize="17sp"
+                            android:textColor="@color/white"/>
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/btnInfoThirdAtSecond"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
-
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/sThirdAtSecond"
-                        android:theme="@style/MySwitch"
-                        android:text="Počet znaků v morseovce"
-                        android:textSize="17sp"
-                        android:paddingStart="10dp"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/btnInfoFourthAtSecond"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
-
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/sFourthAtSecond"
-                        android:theme="@style/MySwitch"
-                        android:text="Počet teček v morseovce"
-                        android:textSize="17sp"
-                        android:paddingStart="10dp"/>
+                    </RadioGroup>
 
                 </LinearLayout>
 
@@ -477,7 +483,7 @@
                         android:layout_weight="1"
                         android:id="@+id/btnSymbolThird"
                         android:text="ZNAKY"
-                        android:textColor="@color/white"
+                        android:textColor="@color/notSelected"
                         android:textSize="17dp"
                         android:gravity="center"/>
 
@@ -485,93 +491,96 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="200dp"
                     android:orientation="horizontal">
 
-                    <ImageView
+                    <LinearLayout
                         android:layout_width="40dp"
                         android:layout_height="match_parent"
-                        android:id="@+id/btnInfoFirstAtThird"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
+                        android:orientation="vertical">
 
-                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="50dp"
+                            android:id="@+id/btnInfoFirstAtThird"
+                            android:src="@drawable/ic_info"
+                            android:padding="7dp"/>
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="50dp"
+                            android:id="@+id/btnInfoSecondAtThird"
+                            android:src="@drawable/ic_info"
+                            android:padding="7dp"/>
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="50dp"
+                            android:id="@+id/btnInfoThirdAtThird"
+                            android:src="@drawable/ic_info"
+                            android:padding="7dp"/>
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="50dp"
+                            android:id="@+id/btnInfoFourthAtThird"
+                            android:src="@drawable/ic_info"
+                            android:padding="7dp"/>
+
+                    </LinearLayout>
+
+                    <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/sFirstAtThird"
-                        android:theme="@style/MySwitch"
-                        android:text="Pvní znak v morseovce"
-                        android:textSize="17sp"
-                        android:paddingStart="10dp"/>
+                        android:id="@+id/rGroupThird"
+                        android:paddingStart="10dp">
 
-                </LinearLayout>
+                        <!-- https://stackoverflow.com/a/38681216 -->
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/rBtnFirstAtThird"
+                            android:layoutDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:layout_gravity="start"
+                            android:text="@string/numberFirst"
+                            android:textSize="17sp"
+                            android:textColor="@color/white"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/rBtnSecondAtThird"
+                            android:layoutDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:layout_gravity="start"
+                            android:text="@string/numberSecond"
+                            android:textSize="17sp"
+                            android:textColor="@color/white"/>
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/btnInfoSecondAtThird"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/rBtnThirdAtThird"
+                            android:layoutDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:layout_gravity="start"
+                            android:text="@string/numberThird"
+                            android:textSize="17sp"
+                            android:textColor="@color/white"/>
 
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/sSecondAtThird"
-                        android:theme="@style/MySwitch"
-                        android:text="Poslední znak v morseovce"
-                        android:textSize="17sp"
-                        android:paddingStart="10dp"/>
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:id="@+id/rBtnFourthAtThird"
+                            android:layoutDirection="rtl"
+                            android:textAlignment="textStart"
+                            android:layout_gravity="start"
+                            android:text="@string/numberFourth"
+                            android:textSize="17sp"
+                            android:textColor="@color/white"/>
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/btnInfoThirdAtThird"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
-
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/sThirdAtThird"
-                        android:theme="@style/MySwitch"
-                        android:text="Znak v morseovce dle pořadí ve slově"
-                        android:textSize="17sp"
-                        android:paddingStart="10dp"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:id="@+id/btnInfoFourthAtThird"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
-
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/sFourthAtThird"
-                        android:theme="@style/MySwitch"
-                        android:text="Písmeno v morseovce"
-                        android:textSize="17sp"
-                        android:paddingStart="10dp"/>
+                    </RadioGroup>
 
                 </LinearLayout>
 
