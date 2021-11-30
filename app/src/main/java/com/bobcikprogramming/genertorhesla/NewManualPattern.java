@@ -6,9 +6,7 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -17,10 +15,7 @@ import android.widget.Toast;
 import com.bobcikprogramming.genertorhesla.controllers.PasswordGenerator;
 import com.bobcikprogramming.genertorhesla.controllers.PatternGenerator;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
-import com.bobcikprogramming.genertorhesla.controllers.PatternSettingManualValues;
-import com.google.android.material.switchmaterial.SwitchMaterial;
 
-import java.util.ArrayList;
 
 public class NewManualPattern extends AppCompatActivity implements View.OnClickListener{
 
@@ -64,12 +59,16 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
             case R.id.btnSave:
                 break;
             case R.id.btnCancel:
+                Intent intentCancel = new Intent();
+                intentCancel.putExtra("pattern", patternSetting);
+                setResult(RESULT_OK, intentCancel );
+                finish();
                 break;
             case R.id.btnFinish:
                 if(patternSetting != null){
-                    Intent intent = new Intent();
-                    intent.putExtra("pattern", patternSetting);
-                    setResult(RESULT_OK, intent );
+                    Intent intentFinish = new Intent();
+                    intentFinish.putExtra("pattern", patternSetting);
+                    setResult(RESULT_OK, intentFinish );
                     finish();
                 }else{
                     Toast.makeText(this, "není zvolený pattern", Toast.LENGTH_SHORT).show();

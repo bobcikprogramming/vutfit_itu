@@ -1,7 +1,11 @@
 package com.bobcikprogramming.genertorhesla;
 
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResult;
@@ -70,6 +74,31 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
                 newManualPattern.putExtra("logged", false);
                 newManualPattern.putExtra("patternSetting", patternSetting);
                 manualPattern.launch(newManualPattern);
+                break;
+            case R.id.btnDelete:
+                AnimatedVectorDrawable animatedVectorDrawableDelete =
+                        (AnimatedVectorDrawable) btnDelete.getDrawable();
+                animatedVectorDrawableDelete.start();
+
+                etPhrase.setText("");
+                break;
+            case R.id.btnCopy:
+                AnimatedVectorDrawable animatedVectorDrawableCopy =
+                        (AnimatedVectorDrawable) btnCopy.getDrawable();
+                animatedVectorDrawableCopy.start();
+
+                ClipboardManager clipboard = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText(
+                        "Heslo",
+                        tvPassword.getText().toString());
+                clipboard.setPrimaryClip(clip);
+                Toast.makeText(getContext(), "Heslo bylo zkopírováno", Toast.LENGTH_SHORT).show();
+            case R.id.tvPassword:
+            case R.id.tvPattern:
+            case R.id.layoutPassword:
+            case R.id.layoutPasswordScroll:
+            case R.id.layoutBackground:
+                hideKeyBoard();
                 break;
         }
 

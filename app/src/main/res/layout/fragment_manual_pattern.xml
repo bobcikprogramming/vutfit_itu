@@ -14,7 +14,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:fillViewport="true" >
 
         <LinearLayout
@@ -90,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.35"
-                android:minHeight="70dp"
+                android:minHeight="80dp"
                 android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
@@ -149,6 +148,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:minHeight="80dp"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -206,6 +206,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:minHeight="80dp"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -263,6 +264,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:minHeight="80dp"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -318,6 +320,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:minHeight="160dp"
                     android:orientation="vertical"
                     android:id="@+id/layoutEmptyPattern"
                     android:visibility="gone">
@@ -360,7 +363,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.35"
-                android:minHeight="60dp"
+                android:minHeight="80dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:orientation="vertical">
@@ -382,8 +385,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="10dp">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="match_parent"
