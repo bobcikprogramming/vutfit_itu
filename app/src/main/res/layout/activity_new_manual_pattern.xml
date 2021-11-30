@@ -115,6 +115,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
+                    android:id="@+id/tvFirstOptionHeadline"
                     android:text="Každý 1. znak trojice:"
                     android:textSize="15sp"
                     android:textColor="@color/description"/>
@@ -276,6 +277,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
+                    android:id="@+id/tvSecondOptionHeadline"
                     android:text="Každý 2. znak trojice:"
                     android:textSize="15sp"
                     android:textColor="@color/description"/>
@@ -437,6 +439,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
+                    android:id="@+id/tvThirdOptionHeadline"
                     android:text="Každý 3. znak trojice:"
                     android:textSize="15sp"
                     android:textColor="@color/description"/>

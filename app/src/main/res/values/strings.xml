@@ -17,4 +17,11 @@
     <string name="symbolSecond">Poslední znak v morseovce</string>
     <string name="symbolThird">Znak v morseovce dle pořadí ve slově</string>
     <string name="symbolFourth">Písmeno v morseovce</string>
+
+    <string name="emptyPattern">Vzor nenastaven</string>
+    <string name="examplePattern">Motocykl</string>
+    <string name="letter">Písmena</string>
+    <string name="number">Číslice</string>
+    <string name="symbol">Znaky</string>
+    <string name="passCopied">Heslo bylo zkopírováno</string>
 </resources>

@@ -14,6 +14,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 
+import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -26,6 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bobcikprogramming.genertorhesla.controllers.GeneratePassword;
 import com.bobcikprogramming.genertorhesla.controllers.PasswordGenerator;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSettingManualValues;
@@ -38,7 +40,7 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
     private LinearLayout layoutPattern, layoutEmptyPattern, layoutBackground, layoutPassword, layoutPasswordScroll;
     private View view;
 
-    private PatternSetting patternSetting = null;
+    private GeneratePassword generate;
 
     public FragmentManualPattern() {
         // Required empty public constructor
@@ -54,9 +56,10 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_manual_pattern, container, false);
+        generate = new GeneratePassword(getContext());
 
         setupUI();
-        if(patternSetting == null) {
+        if(generate.getPatternSetting() == null) {
             showHidePatternEmpty(View.VISIBLE, View.GONE);
         }
 
@@ -72,7 +75,7 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
             case R.id.layoutEmptyPattern:
                 Intent newManualPattern = new Intent(getContext(), NewManualPattern.class);
                 newManualPattern.putExtra("logged", false);
-                newManualPattern.putExtra("patternSetting", patternSetting);
+                newManualPattern.putExtra("pattern", generate.getPatternSetting());
                 manualPattern.launch(newManualPattern);
                 break;
             case R.id.btnDelete:
@@ -92,7 +95,7 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
                         "Heslo",
                         tvPassword.getText().toString());
                 clipboard.setPrimaryClip(clip);
-                Toast.makeText(getContext(), "Heslo bylo zkopírováno", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.passCopied), Toast.LENGTH_SHORT).show();
             case R.id.tvPassword:
             case R.id.tvPattern:
             case R.id.layoutPassword:
@@ -140,16 +143,16 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     Intent data = result.getData();
-                    patternSetting = (PatternSetting) data.getSerializableExtra("pattern");
+                    generate.setPatternSetting((PatternSetting) data.getSerializableExtra("pattern"));
 
-                    if(patternSetting == null){
+                    if(generate.getPatternSetting() == null){
                         showHidePatternEmpty(View.VISIBLE, View.GONE);
-                        tvPattern.setText("Vzor nenastaven");
+                        tvPattern.setText(getString(R.string.emptyPattern));
                         tvPassword.setText("");
                     }else {
                         showHidePatternEmpty(View.GONE, View.VISIBLE);
 
-                        PatternSettingManualValues manualValues = getManualSettingValues();
+                        PatternSettingManualValues manualValues = generate.getManualSettingValues();
                         tvFirstOption.setText(manualValues.getFirstOption());
                         tvSecondOption.setText(manualValues.getSecondOption());
                         tvThirdOption.setText(manualValues.getThirdOption());
@@ -158,16 +161,8 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
                         tvSecondOptionSetting.setText(manualValues.getSecondOptionSetting());
                         tvThirdOptionSetting.setText(manualValues.getThirdOptionSetting());
 
-                        PasswordGenerator generatorPattern = new PasswordGenerator("Motocykl", patternSetting, getContext());
-                        tvPattern.setText(generatorPattern.genereta());
-
-                        PasswordGenerator generatorPassword = new PasswordGenerator(etPhrase.getText().toString(), patternSetting, getContext());
-                        if (!generatorPassword.editPhrase()) {
-                            tvPassword.setText("");
-                        } else {
-
-                            tvPassword.setText(generatorPassword.genereta());
-                        }
+                        tvPattern.setText(generate.getPatternExample());
+                        tvPassword.setText(generate.getPassword(etPhrase.getText().toString()));
                     }
                 }
             });
@@ -175,78 +170,6 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
     private void showHidePatternEmpty(int emptyPatternVisibility, int patternVisibility){
         layoutEmptyPattern.setVisibility(emptyPatternVisibility);
         layoutPattern.setVisibility(patternVisibility);
-    }
-
-    private PatternSettingManualValues getManualSettingValues(){
-        PatternSettingManualValues manualSettingValues = new PatternSettingManualValues();
-        if(patternSetting.getFirstOption() == 0){
-            manualSettingValues.setFirstOption("Písmena");
-            manualSettingValues.setFirstOptionSetting(getManualOptionSetting(patternSetting.getFirstOption(), patternSetting.getFirstOptionSetting()));
-        }else if(patternSetting.getFirstOption() == 1){
-            manualSettingValues.setFirstOption("Číslice");
-            manualSettingValues.setFirstOptionSetting(getManualOptionSetting(patternSetting.getFirstOption(), patternSetting.getFirstOptionSetting()));
-        }else{
-            manualSettingValues.setFirstOption("Znaky");
-            manualSettingValues.setFirstOptionSetting(getManualOptionSetting(patternSetting.getFirstOption(), patternSetting.getFirstOptionSetting()));
-        }
-
-        if(patternSetting.getSecondOption() == 0){
-            manualSettingValues.setSecondOption("Písmena");
-            manualSettingValues.setSecondOptionSetting(getManualOptionSetting(patternSetting.getSecondOption(), patternSetting.getSecondOptionSetting()));
-        }else if(patternSetting.getSecondOption() == 1){
-            manualSettingValues.setSecondOption("Číslice");
-            manualSettingValues.setSecondOptionSetting(getManualOptionSetting(patternSetting.getSecondOption(), patternSetting.getSecondOptionSetting()));
-        }else{
-            manualSettingValues.setSecondOption("Znaky");
-            manualSettingValues.setSecondOptionSetting(getManualOptionSetting(patternSetting.getSecondOption(), patternSetting.getSecondOptionSetting()));
-        }
-
-        if(patternSetting.getThirdOption() == 0){
-            manualSettingValues.setThirdOption("Písmena");
-            manualSettingValues.setThirdOptionSetting(getManualOptionSetting(patternSetting.getThirdOption(), patternSetting.getThirdOptionSetting()));
-        }else if(patternSetting.getThirdOption() == 1){
-            manualSettingValues.setThirdOption("Číslice");
-            manualSettingValues.setThirdOptionSetting(getManualOptionSetting(patternSetting.getThirdOption(), patternSetting.getThirdOptionSetting()));
-        }else{
-            manualSettingValues.setThirdOption("Znaky");
-            manualSettingValues.setThirdOptionSetting(getManualOptionSetting(patternSetting.getThirdOption(), patternSetting.getThirdOptionSetting()));
-        }
-
-        return manualSettingValues;
-    }
-
-    private String getManualOptionSetting(int option, int setting){
-        if(option == 0){
-            if(setting == 0){
-                return getString(R.string.letterFirst);
-            }else if(setting == 1){
-                return getString(R.string.letterSecond);
-            }else if(setting == 2){
-                return getString(R.string.letterThird);
-            }else{
-                return getString(R.string.letterFourth);
-            }
-        }else if(option == 1){
-            if(setting == 0){
-                return getString(R.string.numberFirst);
-            }else if(setting == 1){
-                return getString(R.string.numberSecond);
-            }else if(setting == 2){
-                return getString(R.string.numberThird);
-            }else{
-                return getString(R.string.numberFourth);
-            }
-        }else{
-            if(setting == 0){
-                return getString(R.string.symbolFirst);
-            }else if(setting == 1){
-                return getString(R.string.symbolSecond);
-            }else if(setting == 2){
-                return getString(R.string.symbolThird);
-            }else{
-                return getString(R.string.symbolFourth);
-            }
-        }
     }
 
     private void onEditTextChange(){
@@ -258,16 +181,7 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(patternSetting == null){
-                    tvPassword.setText("");
-                }else {
-                    PasswordGenerator generator = new PasswordGenerator(etPhrase.getText().toString(), patternSetting, getContext());
-                    if (!generator.editPhrase()) {
-                        tvPassword.setText("");
-                    } else {
-                        tvPassword.setText(generator.genereta());
-                    }
-                }
+                tvPassword.setText(generate.getPassword(etPhrase.getText().toString()));
             }
 
             @Override

@@ -6,12 +6,15 @@ import androidx.core.content.ContextCompat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bobcikprogramming.genertorhesla.controllers.GeneratePassword;
 import com.bobcikprogramming.genertorhesla.controllers.PasswordGenerator;
 import com.bobcikprogramming.genertorhesla.controllers.PatternGenerator;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
@@ -22,34 +25,35 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
     private RadioButton rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird;
     private RadioGroup rGroupFirst, rGroupSecond, rGroupThird;
     private TextView tvPattern;
-    private TextView btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnLetterThird, btnNumberThird, btnSymbolThird;
+    private TextView btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnLetterThird, btnNumberThird, btnSymbolThird, tvFirstOptionHeadline, tvSecondOptionHeadline, tvThirdOptionHeadline;
     private ImageView btnCancel, btnSave, btnFinish;
 
     private int firstOption, secondOption, thirdOption;
     private int firstOptionSetting, secondOptionSetting, thirdOptionSetting;
 
-    private PatternGenerator pattern = new PatternGenerator();
-    private PatternSetting patternSetting;
+    private GeneratePassword generate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_manual_pattern);
+        generate = new GeneratePassword(this);
 
-        firstOptionSetting = -1;
-        secondOptionSetting = -1;
-        thirdOptionSetting = -1;
+        this.firstOption = 0;
+        this.secondOption = 0;
+        this.thirdOption = 0;
+
+        this.firstOptionSetting = -1;
+        this.secondOptionSetting = -1;
+        this.thirdOptionSetting = -1;
 
         Bundle extras = getIntent().getExtras();
+        generate.setPatternSetting((PatternSetting) extras.getSerializable("pattern"));
 
         setupUI();
 
-        firstOption = 0;
-        secondOption = 0;
-        thirdOption = 0;
-
         showSaveBtnIfLogged(extras);
-        showSettingIfNotNull(extras);
+        showSettingIfNotNull();
         radioButtonSelected();
     }
 
@@ -60,18 +64,18 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.btnCancel:
                 Intent intentCancel = new Intent();
-                intentCancel.putExtra("pattern", patternSetting);
+                intentCancel.putExtra("pattern", generate.getPatternSetting());
                 setResult(RESULT_OK, intentCancel );
                 finish();
                 break;
             case R.id.btnFinish:
-                if(patternSetting != null){
+                if(generate.getPatternSetting() != null){
                     Intent intentFinish = new Intent();
-                    intentFinish.putExtra("pattern", patternSetting);
+                    intentFinish.putExtra("pattern", generate.getPatternSetting());
                     setResult(RESULT_OK, intentFinish );
                     finish();
                 }else{
-                    Toast.makeText(this, "není zvolený pattern", Toast.LENGTH_SHORT).show();
+                    shakeEmpty();
                 }
                 break;
             case R.id.btnLetterFirst:
@@ -116,13 +120,16 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
     @Override
     public void onBackPressed() {
         Intent intent = new Intent();
-        intent.putExtra("pattern", patternSetting);
+        intent.putExtra("pattern", generate.getPatternSetting());
         setResult(RESULT_OK, intent );
         finish();
     }
 
     private void setupUI(){
         tvPattern = findViewById(R.id.tvPattern);
+        tvFirstOptionHeadline = findViewById(R.id.tvFirstOptionHeadline);
+        tvSecondOptionHeadline = findViewById(R.id.tvSecondOptionHeadline);
+        tvThirdOptionHeadline = findViewById(R.id.tvThirdOptionHeadline);
 
         btnCancel = findViewById(R.id.btnCancel);
         btnSave = findViewById(R.id.btnSave);
@@ -183,8 +190,8 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void showSettingIfNotNull(Bundle extras){
-        patternSetting = (PatternSetting) extras.getSerializable("patternSetting");
+    private void showSettingIfNotNull(){
+        PatternSetting patternSetting = generate.getPatternSetting();
 
         if(patternSetting != null){
             if(patternSetting.getFirstOption() == 0){
@@ -237,7 +244,7 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
             ((RadioButton) rGroupSecond.getChildAt(secondOptionSetting)).setChecked(true);
             ((RadioButton) rGroupThird.getChildAt(thirdOptionSetting)).setChecked(true);
 
-            showPattern();
+            tvPattern.setText(generate.showPattern(firstOption, secondOption, thirdOption, firstOptionSetting, secondOptionSetting, thirdOptionSetting));
         }else{
             setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnLetterFirst, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
             setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnLetterSecond, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
@@ -271,7 +278,7 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
                 View rBtnFirst = findViewById(rBtnFirstId);
                 firstOptionSetting = rGroupFirst.indexOfChild(rBtnFirst);
 
-                showPattern();
+                tvPattern.setText(generate.showPattern(firstOption, secondOption, thirdOption, firstOptionSetting, secondOptionSetting, thirdOptionSetting));
             }
         });
 
@@ -282,7 +289,7 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
                 View rBtnSecond = findViewById(rBtnSecondId);
                 secondOptionSetting = rGroupSecond.indexOfChild(rBtnSecond);
 
-                showPattern();
+                tvPattern.setText(generate.showPattern(firstOption, secondOption, thirdOption, firstOptionSetting, secondOptionSetting, thirdOptionSetting));
             }
         });
 
@@ -293,32 +300,31 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
                 View rBtnThird = findViewById(rBtnThirdId);
                 thirdOptionSetting = rGroupThird.indexOfChild(rBtnThird);
 
-                showPattern();
+                tvPattern.setText(generate.showPattern(firstOption, secondOption, thirdOption, firstOptionSetting, secondOptionSetting, thirdOptionSetting));
             }
         });
     }
 
-    private void showPattern(){
-        if(firstOptionSetting != -1 && secondOptionSetting != -1 && thirdOptionSetting != -1 ){
-            patternSetting = getPatternSetting();
-            if(patternSetting == null){
-                tvPattern.setText("Vzor nenastaven");
-            }else {
-                PasswordGenerator generatorPattern = new PasswordGenerator("Motocykl", patternSetting, NewManualPattern.this);
-                tvPattern.setText(generatorPattern.genereta());
-            }
-        }else{
-            tvPattern.setText("Vzor nenastaven");
-        }
-    }
+    private void shakeEmpty(){
+        Animation animShake = AnimationUtils.loadAnimation(this, R.anim.shake);
 
-    //předělat do kontroleru
-    private PatternSetting getPatternSetting(){
-        if(firstOptionSetting != -1 && secondOptionSetting != -1 && thirdOptionSetting != -1 ){
-            return pattern.manualSetting(firstOption, firstOptionSetting, secondOption, secondOptionSetting, thirdOption, thirdOptionSetting);
-        }else{
-            return null;
+        tvFirstOptionHeadline.setTextColor(ContextCompat.getColor(this, R.color.description));
+        tvSecondOptionHeadline.setTextColor(ContextCompat.getColor(this, R.color.description));
+        tvThirdOptionHeadline.setTextColor(ContextCompat.getColor(this, R.color.description));
+
+        if(firstOptionSetting == -1){
+            tvFirstOptionHeadline.startAnimation(animShake);
+            tvFirstOptionHeadline.setTextColor(ContextCompat.getColor(this, R.color.red));
         }
 
+        if(secondOptionSetting == -1){
+            tvSecondOptionHeadline.startAnimation(animShake);
+            tvSecondOptionHeadline.setTextColor(ContextCompat.getColor(this, R.color.red));
+        }
+
+        if(thirdOptionSetting == -1){
+            tvThirdOptionHeadline.startAnimation(animShake);
+            tvThirdOptionHeadline.setTextColor(ContextCompat.getColor(this, R.color.red));
+        }
     }
 }

@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bobcikprogramming.genertorhesla.controllers.GeneratePassword;
 import com.bobcikprogramming.genertorhesla.controllers.PasswordGenerator;
 import com.bobcikprogramming.genertorhesla.controllers.PatternGenerator;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
@@ -36,8 +37,7 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
     private LinearLayout layoutBackground, layoutPassword, layoutPasswordScroll;
     private View view;
 
-    private PatternGenerator pattern = new PatternGenerator();
-    private PatternSetting patternSetting = null;
+    private GeneratePassword generate;
 
     public FragmentRandomPattern() {
         // Required empty public constructor
@@ -54,6 +54,7 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_random_pattern, container, false);
+        generate = new GeneratePassword(getContext());
 
         setupUI();
         switchSelect();
@@ -74,22 +75,8 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
                 boolean capLetter = sCapLetter.isChecked();
                 boolean number = sNumber.isChecked();
                 boolean symbol = sSymbol.isChecked();
-                patternSetting = pattern.generatePattern(letter, capLetter, number, symbol);
-                if(patternSetting == null){
-                    tvPattern.setText("Vzor nenastaven");
-                    tvPassword.setText("");
-                }else {
-                    PasswordGenerator generatorPattern = new PasswordGenerator("Motocykl", patternSetting, getContext());
-                    tvPattern.setText(generatorPattern.genereta());
 
-                    PasswordGenerator generatorPassword = new PasswordGenerator(etPhrase.getText().toString(), patternSetting, getContext());
-                    if (!generatorPassword.editPhrase()) {
-                        tvPassword.setText("");
-                    } else {
-
-                        tvPassword.setText(generatorPassword.genereta());
-                    }
-                }
+                getRandomPatternExampleAndPassword(letter, capLetter, number, symbol);
                 break;
             case R.id.btnDelete:
                 AnimatedVectorDrawable animatedVectorDrawableDelete =
@@ -108,7 +95,7 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
                         "Heslo",
                         tvPassword.getText().toString());
                 clipboard.setPrimaryClip(clip);
-                Toast.makeText(getContext(), "Heslo bylo zkopírováno", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.passCopied), Toast.LENGTH_SHORT).show();
             case R.id.tvPassword:
             case R.id.tvPattern:
             case R.id.layoutPassword:
@@ -153,44 +140,15 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
                 boolean number = sNumber.isChecked();
                 boolean symbol = sSymbol.isChecked();
                 if(letter){
-                    patternSetting = pattern.generatePattern(letter, capLetter, number, symbol);
-                    if(patternSetting == null){
-                        tvPattern.setText("Vzor nenastaven");
-                        tvPassword.setText("");
-                    }else {
-                        PasswordGenerator generatorPattern = new PasswordGenerator("Motocykl", patternSetting, getContext());
-                        tvPattern.setText(generatorPattern.genereta());
-
-                        PasswordGenerator generatorPassword = new PasswordGenerator(etPhrase.getText().toString(), patternSetting, getContext());
-                        if (!generatorPassword.editPhrase()) {
-                            tvPassword.setText("");
-                        } else {
-
-                            tvPassword.setText(generatorPassword.genereta());
-                        }
-                    }
+                    getRandomPatternExampleAndPassword(letter, capLetter, number, symbol);
                 }else{
                     sCapLetter.setChecked(false);
-                    patternSetting = pattern.generatePattern(letter, capLetter, number, symbol);
+
                     if(!capLetter && !number && !symbol){
-                        tvPattern.setText("Vzor nenastaven");
+                        tvPattern.setText(getString(R.string.emptyPattern));
                         tvPassword.setText("");
                     }else{
-                        if(patternSetting == null){
-                            tvPattern.setText("Vzor nenastaven");
-                            tvPassword.setText("");
-                        }else {
-                            PasswordGenerator generatorPattern = new PasswordGenerator("Motocykl", patternSetting, getContext());
-                            tvPattern.setText(generatorPattern.genereta());
-
-                            PasswordGenerator generatorPassword = new PasswordGenerator(etPhrase.getText().toString(), patternSetting, getContext());
-                            if (!generatorPassword.editPhrase()) {
-                                tvPassword.setText("");
-                            } else {
-
-                                tvPassword.setText(generatorPassword.genereta());
-                            }
-                        }
+                        getRandomPatternExampleAndPassword(letter, capLetter, number, symbol);
                     }
                 }
             }
@@ -205,43 +163,13 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
                 if(capLetter){
                     sLetter.setChecked(true);
                     letter = sLetter.isChecked();
-                    patternSetting = pattern.generatePattern(letter, capLetter, number, symbol);
-                    if(patternSetting == null){
-                        tvPattern.setText("Vzor nenastaven");
-                        tvPassword.setText("");
-                    }else {
-                        PasswordGenerator generatorPattern = new PasswordGenerator("Motocykl", patternSetting, getContext());
-                        tvPattern.setText(generatorPattern.genereta());
-
-                        PasswordGenerator generatorPassword = new PasswordGenerator(etPhrase.getText().toString(), patternSetting, getContext());
-                        if (!generatorPassword.editPhrase()) {
-                            tvPassword.setText("");
-                        } else {
-
-                            tvPassword.setText(generatorPassword.genereta());
-                        }
-                    }
+                    getRandomPatternExampleAndPassword(letter, capLetter, number, symbol);
                 }else{
-                    patternSetting = pattern.generatePattern(letter, capLetter, number, symbol);
                     if(!letter && !number && !symbol){
-                        tvPattern.setText("Vzor nenastaven");
+                        tvPattern.setText(getString(R.string.emptyPattern));
                         tvPassword.setText("");
                     }else{
-                        if(patternSetting == null){
-                            tvPattern.setText("Vzor nenastaven");
-                            tvPassword.setText("");
-                        }else {
-                            PasswordGenerator generatorPattern = new PasswordGenerator("Motocykl", patternSetting, getContext());
-                            tvPattern.setText(generatorPattern.genereta());
-
-                            PasswordGenerator generatorPassword = new PasswordGenerator(etPhrase.getText().toString(), patternSetting, getContext());
-                            if (!generatorPassword.editPhrase()) {
-                                tvPassword.setText("");
-                            } else {
-
-                                tvPassword.setText(generatorPassword.genereta());
-                            }
-                        }
+                        getRandomPatternExampleAndPassword(letter, capLetter, number, symbol);
                     }
                 }
             }
@@ -254,43 +182,13 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
                 boolean capLetter = sCapLetter.isChecked();
                 boolean symbol = sSymbol.isChecked();
                 if(number){
-                    patternSetting = pattern.generatePattern(letter, capLetter, number, symbol);
-                    if(patternSetting == null){
-                        tvPattern.setText("Vzor nenastaven");
-                        tvPassword.setText("");
-                    }else {
-                        PasswordGenerator generatorPattern = new PasswordGenerator("Motocykl", patternSetting, getContext());
-                        tvPattern.setText(generatorPattern.genereta());
-
-                        PasswordGenerator generatorPassword = new PasswordGenerator(etPhrase.getText().toString(), patternSetting, getContext());
-                        if (!generatorPassword.editPhrase()) {
-                            tvPassword.setText("");
-                        } else {
-
-                            tvPassword.setText(generatorPassword.genereta());
-                        }
-                    }
+                    getRandomPatternExampleAndPassword(letter, capLetter, number, symbol);
                 }else{
-                    patternSetting = pattern.generatePattern(letter, capLetter, number, symbol);
                     if(!letter && !number && !symbol){
-                        tvPattern.setText("Vzor nenastaven");
+                        tvPattern.setText(getString(R.string.emptyPattern));
                         tvPassword.setText("");
                     }else{
-                        if(patternSetting == null){
-                            tvPattern.setText("Vzor nenastaven");
-                            tvPassword.setText("");
-                        }else {
-                            PasswordGenerator generatorPattern = new PasswordGenerator("Motocykl", patternSetting, getContext());
-                            tvPattern.setText(generatorPattern.genereta());
-
-                            PasswordGenerator generatorPassword = new PasswordGenerator(etPhrase.getText().toString(), patternSetting, getContext());
-                            if (!generatorPassword.editPhrase()) {
-                                tvPassword.setText("");
-                            } else {
-
-                                tvPassword.setText(generatorPassword.genereta());
-                            }
-                        }
+                        getRandomPatternExampleAndPassword(letter, capLetter, number, symbol);
                     }
                 }
             }
@@ -303,43 +201,13 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
                 boolean capLetter = sCapLetter.isChecked();
                 boolean number = sNumber.isChecked();
                 if(symbol){
-                    patternSetting = pattern.generatePattern(letter, capLetter, number, symbol);
-                    if(patternSetting == null){
-                        tvPattern.setText("Vzor nenastaven");
-                        tvPassword.setText("");
-                    }else {
-                        PasswordGenerator generatorPattern = new PasswordGenerator("Motocykl", patternSetting, getContext());
-                        tvPattern.setText(generatorPattern.genereta());
-
-                        PasswordGenerator generatorPassword = new PasswordGenerator(etPhrase.getText().toString(), patternSetting, getContext());
-                        if (!generatorPassword.editPhrase()) {
-                            tvPassword.setText("");
-                        } else {
-
-                            tvPassword.setText(generatorPassword.genereta());
-                        }
-                    }
+                    getRandomPatternExampleAndPassword(letter, capLetter, number, symbol);
                 }else{
-                    patternSetting = pattern.generatePattern(letter, capLetter, number, symbol);
                     if(!letter && !number && !symbol){
-                        tvPattern.setText("Vzor nenastaven");
+                        tvPattern.setText(getString(R.string.emptyPattern));
                         tvPassword.setText("");
                     }else{
-                        if(patternSetting == null){
-                            tvPattern.setText("Vzor nenastaven");
-                            tvPassword.setText("");
-                        }else {
-                            PasswordGenerator generatorPattern = new PasswordGenerator("Motocykl", patternSetting, getContext());
-                            tvPattern.setText(generatorPattern.genereta());
-
-                            PasswordGenerator generatorPassword = new PasswordGenerator(etPhrase.getText().toString(), patternSetting, getContext());
-                            if (!generatorPassword.editPhrase()) {
-                                tvPassword.setText("");
-                            } else {
-
-                                tvPassword.setText(generatorPassword.genereta());
-                            }
-                        }
+                        getRandomPatternExampleAndPassword(letter, capLetter, number, symbol);
                     }
                 }
             }
@@ -355,18 +223,7 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(patternSetting == null){
-                    tvPassword.setText("");
-                }else {
-                    PasswordGenerator generator = new PasswordGenerator(etPhrase.getText().toString(), patternSetting, getContext());
-
-                    if (!generator.editPhrase()) {
-                        tvPassword.setText("");
-                    } else {
-
-                        tvPassword.setText(generator.genereta());
-                    }
-                }
+                tvPassword.setText(generate.getPassword(etPhrase.getText().toString()));
             }
 
             @Override
@@ -374,6 +231,13 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
 
             }
         });
+    }
+
+    private void getRandomPatternExampleAndPassword(boolean letter, boolean capLetter, boolean number, boolean symbol){
+        generate.setterForRandomPatternValues(letter, capLetter, number, symbol);
+        generate.createRandomPatternSetting();
+        tvPattern.setText(generate.getPatternExample());
+        tvPassword.setText(generate.getPassword(etPhrase.getText().toString()));
     }
 
     private void hideKeyBoard(){
