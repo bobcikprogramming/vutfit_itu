@@ -3,19 +3,20 @@ package com.bobcikprogramming.genertorhesla;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.bobcikprogramming.genertorhesla.view.FragmentManualPattern;
+import com.bobcikprogramming.genertorhesla.view.FragmentRandomPattern;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private LinearLayout btnRandomPattern, btnOwnPattern;
+    private ImageView btnLogin;
     private TextView tvRandomPattern, tvOwnPattern;
 
     /*private TextView tvPassword;
@@ -63,12 +64,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void setupUI(){
         btnRandomPattern = findViewById(R.id.tabButtonRandomPattern);
         btnOwnPattern = findViewById(R.id.tabButtonOwnPattern);
+        btnLogin = findViewById(R.id.btnLogin);
         tvRandomPattern = findViewById(R.id.tabTextViewRandomPattern);
         tvOwnPattern = findViewById(R.id.tabTextViewOwnPattern);
 
 
         btnRandomPattern.setOnClickListener(this);
         btnOwnPattern.setOnClickListener(this);
+        btnLogin.setOnClickListener(this);
     }
 
     @Override
@@ -84,6 +87,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 resetColor();
                 tvOwnPattern.setTextColor(ContextCompat.getColor(this, R.color.navBarSelect));
                 break;
+            case R.id.btnLogin:
+                Intent intent = new Intent(MainActivity.this, Login.class);
+                startActivity(intent);
         }
     }
 

@@ -6,17 +6,40 @@
         <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/avd_copy.xml" value="0.29074074074074074" />
         <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/avd_delete.xml" value="0.29074074074074074" />
         <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/avd_refresh.xml" value="0.29074074074074074" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/ic_acc_setting.xml" value="0.21354166666666666" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/ic_cancel.xml" value="0.21354166666666666" />
         <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/ic_copy.xml" value="0.21354166666666666" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/ic_generator.xml" value="0.21354166666666666" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/ic_invisible.xml" value="0.2851851851851852" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/ic_lock.xml" value="0.2851851851851852" />
         <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/ic_login.xml" value="0.21354166666666666" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/ic_logout.xml" value="0.21354166666666666" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/ic_my_pattern.xml" value="0.21354166666666666" />
         <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/ic_refresh.xml" value="0.2935185185185185" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/ic_visible.xml" value="0.2851851851851852" />
         <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/rounded_button.xml" value="0.21354166666666666" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/rounded_edit_text.xml" value="0.2851851851851852" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/rounded_edit_text_error.xml" value="0.22552083333333334" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/rounded_text_view.xml" value="0.2851851851851852" />
         <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/rounded_top_bar.xml" value="0.2953703703703704" />
-        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/drawable/tab_color.xml" value="0.21354166666666666" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/activity_bottom_tab_bar.xml" value="0.18333333333333332" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/activity_generator_logged.xml" value="0.18333333333333332" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/activity_new_manual_pattern.xml" value="0.3546875" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/bottom_tab_bar.xml" value="0.19739583333333333" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/bottom_tabbar.xml" value="0.19739583333333333" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/fragment_generate_tab_random_pattern.xml" value="0.19739583333333333" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/fragment_generator_logged.xml" value="0.18333333333333332" />
         <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/fragment_manual_pattern.xml" value="0.17249240121580547" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/fragment_manual_pattern_logged.xml" value="0.18333333333333332" />
         <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/fragment_random_pattern.xml" value="0.25" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/fragment_random_pattern_logged.xml" value="0.19739583333333333" />
         <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/main_activity_test.xml" value="0.25" />
-        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/tab_bar_pattern.xml" value="0.3546875" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/layout/tab_bar_pattern.xml" value="0.25" />
+        <entry key="..\:/Android Studio/Projekty/Genertorhesla/app/src/main/res/menu/bottom_nav_menu.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/drawable/ic_cancel.xml" value="0.21203703703703702" />
         <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.21203703703703702" />
         <entry key="app/src/main/res/drawable/ic_finish.xml" value="0.21203703703703702" />
@@ -36,7 +59,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

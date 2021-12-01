@@ -11,6 +11,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="colorButtonNormal">@color/button</item>
+        <item name="android:actionMenuTextColor">@color/white</item>
     </style>
 
     <style name="TabbarLayout">
@@ -23,10 +24,10 @@
 
     <style name="TabbarTextView">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:textColor">@color/tabbarTextView</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
         <item name="android:textSize">15sp</item>
     </style>
 
@@ -34,6 +35,8 @@
         <item name="android:layout_width">0.5dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/tabbarLine</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
     </style>
 
     <style name="MyUnderline">

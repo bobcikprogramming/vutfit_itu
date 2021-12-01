@@ -1,4 +1,4 @@
-package com.bobcikprogramming.genertorhesla;
+package com.bobcikprogramming.genertorhesla.view;
 
 import android.app.Activity;
 import android.content.ClipData;
@@ -14,7 +14,6 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 
-import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -27,8 +26,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bobcikprogramming.genertorhesla.R;
 import com.bobcikprogramming.genertorhesla.controllers.GeneratePassword;
-import com.bobcikprogramming.genertorhesla.controllers.PasswordGenerator;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSettingManualValues;
 

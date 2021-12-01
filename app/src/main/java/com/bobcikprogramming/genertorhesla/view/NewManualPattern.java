@@ -1,4 +1,4 @@
-package com.bobcikprogramming.genertorhesla;
+package com.bobcikprogramming.genertorhesla.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -14,6 +14,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bobcikprogramming.genertorhesla.R;
 import com.bobcikprogramming.genertorhesla.controllers.GeneratePassword;
 import com.bobcikprogramming.genertorhesla.controllers.PasswordGenerator;
 import com.bobcikprogramming.genertorhesla.controllers.PatternGenerator;

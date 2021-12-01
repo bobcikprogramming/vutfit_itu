@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity"
+    tools:context=".GeneratorLogged"
     android:background="@color/mainBackground">
 
     <LinearLayout
@@ -31,13 +31,22 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:layout_marginStart="45dp"
             android:gravity="center"/>
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:id="@+id/btnLogin"
-            android:src="@drawable/ic_login"
+            android:id="@+id/btnAccSetting"
+            android:src="@drawable/ic_acc_setting"
+            android:padding="5dp"
+            android:layout_marginStart="5dp"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/btnLogout"
+            android:src="@drawable/ic_logout"
             android:padding="5dp"/>
 
     </LinearLayout>
