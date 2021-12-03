@@ -26,12 +26,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bobcikprogramming.genertorhesla.BottomTabBarManualPatternLogged;
 import com.bobcikprogramming.genertorhesla.R;
 import com.bobcikprogramming.genertorhesla.controllers.GeneratePassword;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSettingManualValues;
-import com.bobcikprogramming.genertorhesla.model.PatternEntity;
 
 public class FragmentManualPattern extends Fragment implements View.OnClickListener{
 

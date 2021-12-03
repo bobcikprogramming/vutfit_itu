@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -32,22 +31,16 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        style="@style/ImageButtons"
                         android:id="@+id/btnCancel"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
-                        android:padding="5dp"
                         android:src="@drawable/ic_cancel"/>
 
                     <TextView
+                        style="@style/PasswordHeadline"
                         android:id="@+id/textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Správa účtu"
-                        android:textColor="@color/white"
-                        android:textSize="35sp"
-                        android:gravity="bottom|center_horizontal"
+                        android:text="@string/accSettingHeadline"
                         android:layout_marginEnd="60dp"/>
 
                 </LinearLayout>
@@ -75,146 +68,65 @@
                 android:gravity="center_horizontal">
 
                 <LinearLayout
-                    android:id="@+id/layoutOldPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/rounded_edit_text"
-                    android:orientation="horizontal"
-                    android:visibility="visible">
+                    style="@style/LayoutPassword"
+                    android:id="@+id/layoutOldPassword">
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:padding="7dp"
-                        android:src="@drawable/ic_lock" />
+                        style="@style/ImageLock"/>
 
                     <EditText
+                        style="@style/EditTextPassword"
                         android:id="@+id/etPasswordOld"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:hint="@string/passOld"
-                        android:inputType="text|textPassword"
-                        android:singleLine="true"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/lightGray"
-                        android:textSize="20sp"
-                        android:visibility="visible" />
+                        android:hint="@string/passOld"/>
 
                     <ImageView
-                        android:id="@+id/btnShowHidePasswordOld"
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:padding="7dp"
-                        android:src="@drawable/ic_invisible" />
+                        style="@style/ShowHidePassword"
+                        android:id="@+id/btnShowHidePasswordOld" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    style="@style/LayoutPassword"
                     android:id="@+id/layoutNewFirstPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:layout_marginTop="18dp"
-                    android:background="@drawable/rounded_edit_text"
-                    android:orientation="horizontal"
-                    android:visibility="visible">
+                    android:layout_marginTop="18dp">
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:padding="7dp"
-                        android:src="@drawable/ic_lock" />
+                        style="@style/ImageLock"/>
 
                     <EditText
+                        style="@style/EditTextPassword"
                         android:id="@+id/etPasswordNewFirst"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:hint="@string/passNew"
-                        android:inputType="text|textPassword"
-                        android:singleLine="true"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/lightGray"
-                        android:textSize="20sp"
-                        android:visibility="visible" />
+                        android:hint="@string/passNew"/>
 
                     <ImageView
-                        android:id="@+id/btnShowHidePasswordNewFirst"
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:padding="7dp"
-                        android:src="@drawable/ic_invisible" />
+                        style="@style/ShowHidePassword"
+                        android:id="@+id/btnShowHidePasswordNewFirst"/>
 
                 </LinearLayout>
 
                 <LinearLayout
+                    style="@style/LayoutPassword"
                     android:id="@+id/layoutNewSecondPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/rounded_edit_text"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="18dp">
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:padding="7dp"
-                        android:src="@drawable/ic_lock" />
+                        style="@style/ImageLock"/>
 
                     <EditText
+                        style="@style/EditTextPassword"
                         android:id="@+id/etPasswordNewSecond"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:hint="@string/passConf"
-                        android:inputType="textPassword"
-                        android:singleLine="true"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/lightGray"
-                        android:textSize="20sp"
-                        android:visibility="visible"
-                        tools:visibility="visible" />
+                        android:hint="@string/passConf"/>
 
                     <ImageView
-                        android:id="@+id/btnShowHidePasswordNewSecond"
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:padding="7dp"
-                        android:src="@drawable/ic_invisible" />
+                        style="@style/ShowHidePassword"
+                        android:id="@+id/btnShowHidePasswordNewSecond"/>
 
                 </LinearLayout>
 
                 <Button
+                    style="@style/ButtonAccountAction"
                     android:id="@+id/btnChange"
-                    android:layout_width="175dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="36dp"
-                    android:background="@drawable/rounded_button"
-                    android:text="Změnit"
-                    android:textColor="@color/mainBackground"
-                    android:textSize="15dp"
-                    android:textStyle="bold"/>
+                    android:text="@string/change"/>
 
             </LinearLayout>
 

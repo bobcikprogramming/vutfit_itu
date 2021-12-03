@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import com.bobcikprogramming.genertorhesla.R;
 import com.bobcikprogramming.genertorhesla.controllers.GeneratePassword;
+import com.bobcikprogramming.genertorhesla.controllers.PatternListController;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
 import com.bobcikprogramming.genertorhesla.model.PatternEntity;
 import com.google.android.material.snackbar.Snackbar;
@@ -43,15 +44,13 @@ public class PatternList extends Fragment implements View.OnClickListener{
     private ImageView btnLogout, btnDelete, btnHelp, btnAccSetting, btnCancel;
     private EditText etSearch;
 
-    private List<PatternEntity> dataFromDatabase;
-    private List<PatternEntity> patternListToShow;
     private RecyclerViewPattern adapter;
 
     private Paint paint = new Paint();
     private Bundle bundle;
 
     private GeneratePassword generate;
-    private boolean inNewManual;
+    private PatternListController patternList;
 
     public PatternList() {
         // Required empty public constructor
@@ -68,16 +67,16 @@ public class PatternList extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_pattern_list, container, false);
 
-        patternListToShow = new ArrayList<>();
         generate = new GeneratePassword(getContext());
+        patternList = new PatternListController();
 
         bundle = this.getArguments();
-        inNewManual = bundle != null && bundle.getBoolean("newManual");
+        patternList.setNewManual(bundle != null && bundle.getBoolean("newManual"));
 
         setupUIViews();
         setupAdapter();
         onEditTextChange();
-        if(!inNewManual) {
+        if(!patternList.isNewManual()) {
             setUIIfNotNewManual();
             swipeToDelete();
         }else{
@@ -135,11 +134,11 @@ public class PatternList extends Fragment implements View.OnClickListener{
     }
 
     private void setupAdapter(){
-        adapter = new RecyclerViewPattern((getActivity()), myClickListener);
+        adapter = new RecyclerViewPattern(myClickListener);
         recyclerView.setAdapter(adapter);
-        dataFromDatabase = generate.loadPatternListFromDatabase();
-        patternListToShow.addAll(dataFromDatabase);
-        adapter.setPatternData(patternListToShow);
+        patternList.setDataFromDatabase(generate.loadPatternListFromDatabase());
+        patternList.copyDataFromDbListToPattrnList();
+        adapter.setPatternData(patternList.getPatternListToShow());
     }
 
     private void onEditTextChange(){
@@ -153,11 +152,11 @@ public class PatternList extends Fragment implements View.OnClickListener{
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String searching = etSearch.getText().toString();
                 if(searching.isEmpty()){
-                    patternListToShow.addAll(dataFromDatabase);
+                    patternList.copyDataFromDbListToPattrnList();
                 }else {
-                    patternListToShow = generate.searchForPatternByName(searching, dataFromDatabase);
+                    patternList.setPatternListToShow(generate.searchForPatternByName(searching, patternList.getDataFromDatabase()));
                 }
-                adapter.dataListChange(patternListToShow);
+                adapter.dataListChange(patternList.getPatternListToShow());
             }
 
             @Override
@@ -174,12 +173,12 @@ public class PatternList extends Fragment implements View.OnClickListener{
         public void onClick(View view)
         {
             int position = (int) view.getTag();
-            String id = String.valueOf(dataFromDatabase.get(position).uidPattern);
+            String id = String.valueOf(patternList.getDataFromDatabase().get(position).uidPattern);
             PatternSetting patternSetting = generate.getPatternSettingFromDatabaseById(id);
             if(patternSetting != null) {
                 Intent intent = new Intent(getContext(), BottomTabBar.class);
                 intent.putExtra("pattern", patternSetting);
-                if(!inNewManual) {
+                if(!patternList.isNewManual()) {
                     startActivity(intent);
                 }else{
                     getActivity().setResult(RESULT_OK, intent);
@@ -199,13 +198,10 @@ public class PatternList extends Fragment implements View.OnClickListener{
             @Override
             public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
-                PatternEntity restoreDataOfPattern = patternListToShow.remove(position);
-                int positionInDataFromDb = dataFromDatabase.indexOf(restoreDataOfPattern);
-                dataFromDatabase.remove(positionInDataFromDb);
-                adapter.dataListChange(patternListToShow);
-                generate.removePatternById(restoreDataOfPattern.uidPattern);
+                patternList.removeOnSwipe(position, generate);
+                adapter.dataListChange(patternList.getPatternListToShow());
 
-                snackBarForRestoreData(position, positionInDataFromDb, restoreDataOfPattern);
+                snackBarForRestoreData();
             }
 
             @Override
@@ -238,15 +234,13 @@ public class PatternList extends Fragment implements View.OnClickListener{
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
-    private void snackBarForRestoreData(int position, int positionInDataFromDb, PatternEntity data){
-        final Snackbar snackbar = Snackbar.make(view, "Vzor '" + data.name + "' smazán ze seznamu!", 5000);
+    private void snackBarForRestoreData(){
+        final Snackbar snackbar = Snackbar.make(view, "Vzor '" + patternList.getRestoreDataOfPattern().name + "' smazán ze seznamu!", 5000);
         snackbar.setAction("Vrátit zpět", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                patternListToShow.add(position, data);
-                dataFromDatabase.add(positionInDataFromDb, data);
-                adapter.dataListChange(patternListToShow);
-                generate.restorePatternInDatabase(data);
+                patternList.restoreData(generate);
+                adapter.dataListChange(patternList.getPatternListToShow());
             }
         });
         snackbar.setActionTextColor(Color.YELLOW);

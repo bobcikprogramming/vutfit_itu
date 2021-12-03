@@ -29,8 +29,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
     private ImageView btnShowHidePasswordFirst, btnShowHidePasswordSecond;
     private TextView btnLogin;
 
-    private boolean visibleFirst, visibleSecond;
-
     private AccountManagement accountManagement;
 
     @Override
@@ -39,8 +37,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         setContentView(R.layout.activity_register);
 
         accountManagement = new AccountManagement();
-        visibleFirst = false;
-        visibleSecond = false;
 
         setupUI();
 
@@ -81,25 +77,25 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                 hideKeyBoard();
                 break;
             case R.id.btnShowHidePasswordFirst:
-                if(!visibleFirst){
+                if(!accountManagement.isVisibleFirst()){
                     btnShowHidePasswordFirst.setImageResource(R.drawable.ic_visible);
                     etPasswordFirst.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                    visibleFirst = true;
+                    accountManagement.setVisibleFirst(true);
                 }else{
                     btnShowHidePasswordFirst.setImageResource(R.drawable.ic_invisible);
                     etPasswordFirst.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    visibleFirst = false;
+                    accountManagement.setVisibleFirst(false);
                 }
                 break;
             case R.id.btnShowHidePasswordSecond:
-                if(!visibleSecond){
+                if(!accountManagement.isVisibleSecond()){
                     btnShowHidePasswordSecond.setImageResource(R.drawable.ic_visible);
                     etPasswordSecond.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                    visibleSecond = true;
+                    accountManagement.setVisibleSecond(true);
                 }else{
                     btnShowHidePasswordSecond.setImageResource(R.drawable.ic_invisible);
                     etPasswordSecond.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    visibleSecond = false;
+                    accountManagement.setVisibleSecond(false);
                 }
                 break;
             case R.id.btnLogin:

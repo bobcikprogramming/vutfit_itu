@@ -1,0 +1,66 @@
+package com.bobcikprogramming.genertorhesla.view;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.bobcikprogramming.genertorhesla.R;
+import com.bobcikprogramming.genertorhesla.controllers.HelperController;
+import com.bobcikprogramming.genertorhesla.controllers.HelperHolder;
+import com.bobcikprogramming.genertorhesla.controllers.ViewPagerAdapter;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class HelperViewer extends AppCompatActivity implements View.OnClickListener{
+
+    private ViewPager viewPagerHelp;
+    private ImageView btnCancel;
+
+    private ViewPagerAdapter viewPagerAdapter;
+
+    private HelperController help;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_helper_viewer);
+
+        help = new HelperController(this);
+
+        Bundle bundle = getIntent().getExtras();
+        help.setLogged(bundle.getBoolean("logged"));
+
+        setupUI();
+        setViewPagerAdapter();
+    }
+
+    private void setupUI(){
+        viewPagerHelp = findViewById(R.id.viewPagerHelp);
+
+        btnCancel = findViewById(R.id.btnCancel);
+        btnCancel.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btnCancel:
+                finish();
+        }
+    }
+
+    private void setViewPagerAdapter(){
+        if(help.isLogged()){
+            viewPagerAdapter = new ViewPagerAdapter(HelperViewer.this, help.getLoggedHelp());
+            viewPagerHelp.setAdapter(viewPagerAdapter);
+        }else {
+            viewPagerAdapter = new ViewPagerAdapter(HelperViewer.this, help.getUnloggedHelp());
+            viewPagerHelp.setAdapter(viewPagerAdapter);
+        }
+    }
+}

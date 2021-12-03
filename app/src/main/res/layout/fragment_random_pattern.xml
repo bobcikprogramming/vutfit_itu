@@ -18,7 +18,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -37,7 +37,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:text="Vaše heslo:"
+                    android:text="@string/finalPassword"
                     android:textSize="15sp"
                     android:textColor="@color/description"/>
 
@@ -48,7 +48,7 @@
                     android:id="@+id/layoutPassword">
 
                     <ScrollView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:paddingTop="5dp"
@@ -56,7 +56,7 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="0dp"
                             android:id="@+id/layoutPasswordScroll">
 
                             <TextView
@@ -72,11 +72,9 @@
                     </ScrollView>
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
+                        style="@style/ImageButtons"
                         android:id="@+id/btnCopy"
-                        android:src="@drawable/avd_copy"
-                        android:padding="5dp"/>
+                        android:src="@drawable/avd_copy"/>
 
                 </LinearLayout>
 
@@ -96,7 +94,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:text="Vaše slovo / fráze:"
+                    android:text="@string/phrase"
                     android:textSize="15sp"
                     android:textColor="@color/description"/>
 
@@ -106,21 +104,20 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:id="@+id/etPhrase"
-                        android:hint="Vložte prosím slovo / frázi"
+                        android:hint="@string/phraseHint"
                         android:textColorHint="@color/lightGray"
                         android:textColor="@color/white"
                         android:background="@null"/>
 
                     <ImageView
-                        android:layout_width="40dp"
+                        style="@style/ImageButtons"
                         android:layout_height="match_parent"
                         android:id="@+id/btnDelete"
-                        android:src="@drawable/avd_delete"
-                        android:padding="5dp"/>
+                        android:src="@drawable/avd_delete"/>
 
                 </LinearLayout>
 
@@ -138,53 +135,37 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
+                    style="@style/MySwitchStyle"
                     android:id="@+id/sLetter"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:minHeight="40dp"
                     android:theme="@style/MySwitch"
-                    android:text="Písmena"
-                    android:textSize="20sp"/>
+                    android:text="@string/letter"/>
 
                 <LinearLayout
                     style="@style/MyUnderline"/>
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
+                    style="@style/MySwitchStyle"
                     android:id="@+id/sCapLetter"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:minHeight="40dp"
                     android:theme="@style/MySwitch"
-                    android:text="Velká písmena"
-                    android:textSize="20sp"/>
+                    android:text="@string/capLetter"/>
 
                 <LinearLayout
                     style="@style/MyUnderline"/>
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
+                    style="@style/MySwitchStyle"
                     android:id="@+id/sNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:minHeight="40dp"
                     android:theme="@style/MySwitch"
-                    android:text="Čísla"
-                    android:textSize="20sp"/>
+                    android:text="@string/number"/>
 
                 <LinearLayout
                     style="@style/MyUnderline"/>
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
+                    style="@style/MySwitchStyle"
                     android:id="@+id/sSymbol"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:minHeight="40dp"
                     android:theme="@style/MySwitch"
-                    android:text="Znaky"
-                    android:textSize="20sp"/>
+                    android:text="@string/symbol"/>
 
             </LinearLayout>
 
@@ -208,7 +189,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Ukázka vzoru na slově Motocykl:"
+                        android:text="@string/patternExample"
                         android:textColor="@color/description"
                         android:textSize="15sp"/>
 
@@ -220,12 +201,12 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:id="@+id/tvPattern"
                         android:layout_weight="1"
                         android:textColor="@color/lightGray"
-                        android:text="Vzor nenastaven"
+                        android:text="@string/emptyPattern"
                         android:textSize="25sp"
                         android:gravity="center_vertical"/>
 
@@ -239,12 +220,11 @@
                         android:visibility="invisible"/>
 
                     <ImageView
-                        android:layout_width="40dp"
+                        style="@style/ImageButtons"
                         android:layout_height="match_parent"
                         android:id="@+id/btnNewRandomPattern"
                         android:layout_gravity="bottom"
-                        android:src="@drawable/avd_refresh"
-                        android:padding="5dp"/>
+                        android:src="@drawable/avd_refresh"/>
 
                 </LinearLayout>
 

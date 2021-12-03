@@ -4,11 +4,11 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".NewManualPatternLogged"
+tools:context=".view.NewManualPatternLogged"
 android:background="@color/mainBackground"
 android:orientation="vertical">
 
-<LinearLayout
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="40dp"
     android:orientation="horizontal"
@@ -16,580 +16,368 @@ android:orientation="vertical">
     android:paddingEnd="20dp"
     android:layout_marginBottom="5dp">
 
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/btnCancel"
-        android:src="@drawable/ic_cancel"
-        android:padding="5dp"/>
+        <ImageView
+            style="@style/ImageButtons"
+            android:id="@+id/btnCancel"
+            android:src="@drawable/ic_cancel"/>
 
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_weight="1"
+        style="@style/NavbarHeadline"
         android:text="Vytvoření vzoru"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:gravity="center"
         android:paddingStart="40dp"/>
 
     <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        style="@style/ImageButtons"
         android:id="@+id/btnSave"
         android:src="@drawable/avd_save"
         android:padding="8dp"/>
 
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/btnFinish"
-        android:src="@drawable/avd_finish"
-        android:padding="5dp"/>
+        <ImageView
+            style="@style/ImageButtons"
+            android:id="@+id/btnFinish"
+            android:src="@drawable/avd_finish"/>
 
 </LinearLayout>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="65dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginStart="20dp"
-    android:layout_marginEnd="20dp"
-    android:orientation="vertical">
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="20sp"
-        android:orientation="horizontal">
+        android:layout_height="65dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Ukázka vzoru na slově Motocykl:"
-            android:textColor="@color/description"
-            android:textSize="15sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20sp"
+            android:orientation="horizontal">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/patternExample"
+                android:textColor="@color/description"
+                android:textSize="15sp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        </LinearLayout>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/tvPattern"
-            android:layout_weight="1"
-            android:textColor="@color/lightGray"
-            android:text="Vzor nenastaven"
-            android:textSize="25sp"
-            android:gravity="center_vertical"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/tvPattern"
+                android:layout_weight="1"
+                android:textColor="@color/lightGray"
+                android:text="@string/emptyPattern"
+                android:textSize="25sp"
+                android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MyUnderline"/>
 
     </LinearLayout>
 
-    <LinearLayout
-        style="@style/MyUnderline"/>
-
-</LinearLayout>
-
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="20dp"
-    android:layout_marginEnd="20dp"
-    android:layout_marginTop="5dp">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:id="@+id/tvFirstOptionHeadline"
-                android:text="Každý 1. znak trojice:"
-                android:textSize="15sp"
-                android:textColor="@color/description"/>
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/btnLetterFirst"
-                    android:text="PÍSMENA"
-                    android:textColor="@color/notSelected"
-                    android:textSize="17dp"
-                    android:gravity="center"/>
+                    style="@style/TextViewOptionHeadline"
+                    android:id="@+id/tvFirstOptionHeadline"
+                    android:text="@string/everyFirst"/>
 
                 <LinearLayout
-                    style="@style/TabbarLine"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
+                    style="@style/LayoutOptionButtons">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/btnNumberFirst"
-                    android:text="ČÍSLICE"
-                    android:textColor="@color/notSelected"
-                    android:textSize="17dp"
-                    android:gravity="center"/>
+                    <TextView
+                        style="@style/OptionButtons"
+                        android:id="@+id/btnLetterFirst"
+                        android:text="@string/letter"/>
+
+                    <LinearLayout
+                        style="@style/TabBarLineOptions"/>
+
+                    <TextView
+                        style="@style/OptionButtons"
+                        android:id="@+id/btnNumberFirst"
+                        android:text="@string/number"/>
+
+                    <LinearLayout
+                        style="@style/TabBarLineOptions"/>
+
+                    <TextView
+                        style="@style/OptionButtons"
+                        android:id="@+id/btnSymbolFirst"
+                        android:text="@string/symbol"/>
+
+                </LinearLayout>
 
                 <LinearLayout
-                    style="@style/TabbarLine"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
+                    style="@style/LayoutOptionSetting">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/btnSymbolFirst"
-                    android:text="ZNAKY"
-                    android:textColor="@color/notSelected"
-                    android:textSize="17dp"
-                    android:gravity="center"/>
+                    <LinearLayout
+                        style="@style/LayoutOptionSettingInfo">
+
+                        <ImageView
+                            style="@style/infoButton"
+                            android:id="@+id/btnInfoFirstAtFirst"/>
+
+                        <ImageView
+                            style="@style/infoButton"
+                            android:id="@+id/btnInfoSecondAtFirst"/>
+
+                        <ImageView
+                            style="@style/infoButton"
+                            android:id="@+id/btnInfoThirdAtFirst"/>
+
+                        <ImageView
+                            style="@style/infoButton"
+                            android:id="@+id/btnInfoFourthAtFirst"/>
+
+                    </LinearLayout>
+
+                    <RadioGroup
+                        style="@style/RadioGroupOptionSetting"
+                        android:id="@+id/rGroupFirst">
+
+                        <!-- https://stackoverflow.com/a/38681216 -->
+                        <RadioButton
+                            style="@style/RadioButtonOptionSetting"
+                            android:id="@+id/rBtnFirstAtFirst"
+                            android:text="@string/letterFirst"/>
+
+                        <RadioButton
+                            style="@style/RadioButtonOptionSetting"
+                            android:id="@+id/rBtnSecondAtFirst"
+                            android:text="@string/letterSecond"/>
+
+                        <RadioButton
+                            style="@style/RadioButtonOptionSetting"
+                            android:id="@+id/rBtnThirdAtFirst"
+                            android:text="@string/letterThird"/>
+
+                        <RadioButton
+                            style="@style/RadioButtonOptionSetting"
+                            android:id="@+id/rBtnFourthAtFirst"
+                            android:text="@string/letterFourth"/>
+
+                    </RadioGroup>
+
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
+                style="@style/MyUnderline"/>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/TextViewOptionHeadline"
+                    android:id="@+id/tvSecondOptionHeadline"
+                    android:text="@string/everySecond"/>
 
                 <LinearLayout
-                    android:layout_width="40dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    style="@style/LayoutOptionButtons">
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/btnInfoFirstAtFirst"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
+                    <TextView
+                        style="@style/OptionButtons"
+                        android:id="@+id/btnLetterSecond"
+                        android:text="@string/letter"/>
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/btnInfoSecondAtFirst"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
+                    <LinearLayout
+                        style="@style/TabBarLineOptions"/>
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/btnInfoThirdAtFirst"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
+                    <TextView
+                        style="@style/OptionButtons"
+                        android:id="@+id/btnNumberSecond"
+                        android:text="@string/number"/>
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/btnInfoFourthAtFirst"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
+                    <LinearLayout
+                        style="@style/TabBarLineOptions"/>
+
+                    <TextView
+                        style="@style/OptionButtons"
+                        android:id="@+id/btnSymbolSecond"
+                        android:text="@string/symbol"/>
 
                 </LinearLayout>
 
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/rGroupFirst"
-                    android:paddingStart="10dp">
+                <LinearLayout
+                    style="@style/LayoutOptionSetting">
 
-                    <!-- https://stackoverflow.com/a/38681216 -->
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/rBtnFirstAtFirst"
-                        android:layoutDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:layout_gravity="start"
-                        android:text="@string/letterFirst"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"/>
+                    <LinearLayout
+                        style="@style/LayoutOptionSettingInfo">
 
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/rBtnSecondAtFirst"
-                        android:layoutDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:layout_gravity="start"
-                        android:text="@string/letterSecond"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"/>
+                        <ImageView
+                            style="@style/infoButton"
+                            android:id="@+id/btnInfoFirstAtSecond"/>
 
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/rBtnThirdAtFirst"
-                        android:layoutDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:layout_gravity="start"
-                        android:text="@string/letterThird"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"/>
+                        <ImageView
+                            style="@style/infoButton"
+                            android:id="@+id/btnInfoSecondAtSecond"/>
 
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/rBtnFourthAtFirst"
-                        android:layoutDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:layout_gravity="start"
-                        android:text="@string/letterFourth"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"/>
+                        <ImageView
+                            style="@style/infoButton"
+                            android:id="@+id/btnInfoThirdAtSecond"/>
 
-                </RadioGroup>
+                        <ImageView
+                            style="@style/infoButton"
+                            android:id="@+id/btnInfoFourthAtSecond"/>
+
+                    </LinearLayout>
+
+                    <RadioGroup
+                        style="@style/RadioGroupOptionSetting"
+                        android:id="@+id/rGroupSecond">
+
+                        <!-- https://stackoverflow.com/a/38681216 -->
+                        <RadioButton
+                            style="@style/RadioButtonOptionSetting"
+                            android:id="@+id/rBtnFirstAtSecond"
+                            android:text="@string/numberFirst"/>
+
+                        <RadioButton
+                            style="@style/RadioButtonOptionSetting"
+                            android:id="@+id/rBtnSecondAtSecond"
+                            android:text="@string/numberSecond"/>
+
+                        <RadioButton
+                            style="@style/RadioButtonOptionSetting"
+                            android:id="@+id/rBtnThirdAtSecond"
+                            android:text="@string/numberThird"/>
+
+                        <RadioButton
+                            style="@style/RadioButtonOptionSetting"
+                            android:id="@+id/rBtnFourthAtSecond"
+                            android:text="@string/numberFourth"/>
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/MyUnderline"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    style="@style/TextViewOptionHeadline"
+                    android:id="@+id/tvThirdOptionHeadline"
+                    android:text="@string/everyThird"/>
+
+                <LinearLayout
+                    style="@style/LayoutOptionButtons">
+
+                    <TextView
+                        style="@style/OptionButtons"
+                        android:id="@+id/btnLetterThird"
+                        android:text="@string/letter"/>
+
+                    <LinearLayout
+                        style="@style/TabBarLineOptions"/>
+
+                    <TextView
+                        style="@style/OptionButtons"
+                        android:text="@string/number"
+                        android:id="@+id/btnNumberThird"/>
+
+                    <LinearLayout
+                        style="@style/TabBarLineOptions"/>
+
+                    <TextView
+                        style="@style/OptionButtons"
+                        android:id="@+id/btnSymbolThird"
+                        android:text="@string/symbol"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/LayoutOptionSetting">
+
+                    <LinearLayout
+                        style="@style/LayoutOptionSettingInfo">
+
+                        <ImageView
+                            style="@style/infoButton"
+                            android:id="@+id/btnInfoFirstAtThird"/>
+
+                        <ImageView
+                            style="@style/infoButton"
+                            android:id="@+id/btnInfoSecondAtThird"/>
+
+                        <ImageView
+                            style="@style/infoButton"
+                            android:id="@+id/btnInfoThirdAtThird"/>
+
+                        <ImageView
+                            style="@style/infoButton"
+                            android:id="@+id/btnInfoFourthAtThird"/>
+
+                    </LinearLayout>
+
+                    <RadioGroup
+                        style="@style/RadioGroupOptionSetting"
+                        android:id="@+id/rGroupThird">
+
+                        <!-- https://stackoverflow.com/a/38681216 -->
+                        <RadioButton
+                            style="@style/RadioButtonOptionSetting"
+                            android:id="@+id/rBtnFirstAtThird"
+                            android:text="@string/numberFirst"/>
+
+                        <RadioButton
+                            style="@style/RadioButtonOptionSetting"
+                            android:id="@+id/rBtnSecondAtThird"
+                            android:text="@string/numberSecond"/>
+
+                        <RadioButton
+                            style="@style/RadioButtonOptionSetting"
+                            android:id="@+id/rBtnThirdAtThird"
+                            android:text="@string/numberThird"/>
+
+                        <RadioButton
+                            style="@style/RadioButtonOptionSetting"
+                            android:id="@+id/rBtnFourthAtThird"
+                            android:text="@string/numberFourth"/>
+
+                    </RadioGroup>
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            style="@style/MyUnderline"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:id="@+id/tvSecondOptionHeadline"
-                android:text="Každý 2. znak trojice:"
-                android:textSize="15sp"
-                android:textColor="@color/description"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/btnLetterSecond"
-                    android:text="PÍSMENA"
-                    android:textColor="@color/notSelected"
-                    android:textSize="17dp"
-                    android:gravity="center"/>
-
-                <LinearLayout
-                    style="@style/TabbarLine"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/btnNumberSecond"
-                    android:text="ČÍSLICE"
-                    android:textColor="@color/notSelected"
-                    android:textSize="17dp"
-                    android:gravity="center"/>
-
-                <LinearLayout
-                    style="@style/TabbarLine"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/btnSymbolSecond"
-                    android:text="ZNAKY"
-                    android:textColor="@color/notSelected"
-                    android:textSize="17dp"
-                    android:gravity="center"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="40dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/btnInfoFirstAtSecond"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/btnInfoSecondAtSecond"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/btnInfoThirdAtSecond"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/btnInfoFourthAtSecond"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
-
-                </LinearLayout>
-
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/rGroupSecond"
-                    android:paddingStart="10dp">
-
-                    <!-- https://stackoverflow.com/a/38681216 -->
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/rBtnFirstAtSecond"
-                        android:layoutDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:layout_gravity="start"
-                        android:text="@string/numberFirst"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"/>
-
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/rBtnSecondAtSecond"
-                        android:layoutDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:layout_gravity="start"
-                        android:text="@string/numberSecond"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"/>
-
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/rBtnThirdAtSecond"
-                        android:layoutDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:layout_gravity="start"
-                        android:text="@string/numberThird"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"/>
-
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/rBtnFourthAtSecond"
-                        android:layoutDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:layout_gravity="start"
-                        android:text="@string/numberFourth"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"/>
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/MyUnderline"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:id="@+id/tvThirdOptionHeadline"
-                android:text="Každý 3. znak trojice:"
-                android:textSize="15sp"
-                android:textColor="@color/description"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/btnLetterThird"
-                    android:text="PÍSMENA"
-                    android:textColor="@color/notSelected"
-                    android:textSize="17dp"
-                    android:gravity="center"/>
-
-                <LinearLayout
-                    style="@style/TabbarLine"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="ČÍSLICE"
-                    android:id="@+id/btnNumberThird"
-                    android:textColor="@color/notSelected"
-                    android:textSize="17dp"
-                    android:gravity="center"/>
-
-                <LinearLayout
-                    style="@style/TabbarLine"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/btnSymbolThird"
-                    android:text="ZNAKY"
-                    android:textColor="@color/notSelected"
-                    android:textSize="17dp"
-                    android:gravity="center"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="40dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/btnInfoFirstAtThird"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/btnInfoSecondAtThird"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/btnInfoThirdAtThird"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="50dp"
-                        android:id="@+id/btnInfoFourthAtThird"
-                        android:src="@drawable/ic_info"
-                        android:padding="7dp"/>
-
-                </LinearLayout>
-
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/rGroupThird"
-                    android:paddingStart="10dp">
-
-                    <!-- https://stackoverflow.com/a/38681216 -->
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/rBtnFirstAtThird"
-                        android:layoutDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:layout_gravity="start"
-                        android:text="@string/numberFirst"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"/>
-
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/rBtnSecondAtThird"
-                        android:layoutDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:layout_gravity="start"
-                        android:text="@string/numberSecond"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"/>
-
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/rBtnThirdAtThird"
-                        android:layoutDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:layout_gravity="start"
-                        android:text="@string/numberThird"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"/>
-
-                    <RadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:id="@+id/rBtnFourthAtThird"
-                        android:layoutDirection="rtl"
-                        android:textAlignment="textStart"
-                        android:layout_gravity="start"
-                        android:text="@string/numberFourth"
-                        android:textSize="17sp"
-                        android:textColor="@color/white"/>
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-</ScrollView>
+    </ScrollView>
 
 </LinearLayout>

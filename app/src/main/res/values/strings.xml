@@ -21,6 +21,7 @@
     <string name="emptyPattern">Vzor nenastaven</string>
     <string name="examplePattern">Motocykl</string>
     <string name="letter">Písmena</string>
+    <string name="capLetter">Velká písmena</string>
     <string name="number">Číslice</string>
     <string name="symbol">Znaky</string>
     <string name="passCopied">Heslo bylo zkopírováno</string>
@@ -29,6 +30,145 @@
     <string name="passOld"><font size="17">Původní heslo</font></string>
     <string name="passNew"><font size="17">Nové heslo</font></string>
     <string name="passConf"><font size="17">Potvrzení hesla</font></string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="change">Změnit</string>
+    <string name="login">Přihlásit se</string>
+    <string name="register">Registrovat se</string>
+    <string name="accSettingHeadline">Správa účtu</string>
+    <string name="loginHeadline">Přihlášení</string>
+    <string name="registerHeadline">Registrace</string>
+    <string name="toRegister">Nemáte účet? Registrujte se zde.</string>
+    <string name="toLogin">Máte již účet? Přihlaste se zde.</string>
+    <string name="createPatternHeadline">Vytvoření vzoru</string>
+    <string name="patternExample">Ukázka vzoru na slově Motocykl:</string>
+    <string name="everyFirst">Každý 1. znak trojice:</string>
+    <string name="everySecond">Každý 2. znak trojice:</string>
+    <string name="everyThird">Každý 3. znak trojice:</string>
+    <string name="finalPassword">Vaše heslo:</string>
+    <string name="phrase">Vaše slovo / fráze:</string>
+    <string name="phraseHint">Vložte prosím slovo / frázi</string>
+    <string name="patternDoesntExist">Nebyl vytvořen žádný vzor.</string>
+    <string name="clickHereForNewPattern">Pro vytvoření klikněte zde.</string>
+    <string name="patternListHeadline">Seznam vzorů</string>
+
+    <string-array name="mainHelpHeadline">
+        <item>Použití aplikace</item>
+        <item>Náhodný vzor</item>
+        <item>Vlastní vzor</item>
+        <item>Přihlášení</item>
+    </string-array>
+
+    <string-array name="mainHelpText">
+        <item>
+            Pro vygenerování hesla si vytvoříte vzor, jenž může být náhodný nebo vlastní (viz. dále).
+            Jste-li přihlášeni, tak si lze vytvořený vzor uložit.
+            Poté zadáte slovo, frázi nebo větu, kterou je třeba si zapamatovat, a obdržíte heslo.\n\n
+            Pro zpětné získání hesla pouze vyberete stejný vzor.
+            V případě uložení jej stačí pouze načíst, v opačném případě je třeba jej znovu vytvořit.
+            Poté zadáte zapamatované slovo, frázi nebo větu, jenž jste použili a obržíte heslo.
+        </item>
+        <item>
+            Náhodný vzor slouží k rychlému generování hesla.
+            Nemusíte si nastavovat celý vzor, stačí zadat pouze základní vlastnosti hesla.
+            Poté již zadáte slovo, frázi nebo větu a obdržíte heslo.\n\n
+            Doporučujeme použít po přihlášení do aplikace a následném uložení vzoru.
+            Zpětné sestavení bez uložení není možné. Vzor je vygenerován náhodně.
+        </item>
+        <item>
+            Vlastní vzor slouží k podrobnějšímu nastavení vzoru.
+            Vzor se opakuje pro každou trojici písmen slova, fráze nebo věty.
+            Je vyžadováno nastavení vzoru pro všechny tři písmena trojice.
+            Tedy si vybrat, co má dané písmeno reprezentovat (písmeno/číslici/znak).
+            Dále je třeba si vybrat podrobnější nastavení zvolené možnosti.
+            Po zadání slova, fráze nebo věty obdržíte heslo.\n\n
+            Výhodou je větší kontrola nad vzorem (možnost vytvoření vzoru sobě na míru).
+            A dále možnost opětovného sestavení vzoru, nedošlo-li k jeho uložení.
+        </item>
+        <item>
+            V případě, že si chcete své vzory uložit, je zde možnost přihlášení.
+            Stačí se pouze registrovat v aplikaci a poté se již můžete přihlásit a spravovat své vzory.
+        </item>
+    </string-array>
+
+    <string-array name="loggedHelpHeadline">
+        <item>Použití aplikace</item>
+        <item>Náhodný vzor</item>
+        <item>Vlastní vzor</item>
+        <item>Uložený vzor</item>
+    </string-array>
+
+    <string-array name="loggedHelpText">
+        <item>
+            Pro vygenerování hesla si vytvoříte vzor, jenž může být náhodný nebo vlastní (viz. dále).
+            Jste-li přihlášeni, tak si lze vytvořený vzor uložit.
+            Poté zadáte slovo, frázi nebo větu, kterou je třeba si zapamatovat, a obdržíte heslo.\n\n
+            Pro zpětné získání hesla pouze vyberete stejný vzor.
+            V případě uložení jej stačí pouze načíst, v opačném případě je třeba jej znovu vytvořit.
+            Poté zadáte zapamatované slovo, frázi nebo větu, jenž jste použili a obržíte heslo.
+        </item>
+        <item>
+            Náhodný vzor slouží k rychlému generování hesla.
+            Nemusíte si nastavovat celý vzor, stačí zadat pouze základní vlastnosti hesla.
+            Poté již zadáte slovo, frázi nebo větu a obdržíte heslo.\n\n
+            Doporučujeme použít po přihlášení do aplikace a následném uložení vzoru.
+            Zpětné sestavení bez uložení není možné. Vzor je vygenerován náhodně.
+        </item>
+        <item>
+            Vlastní vzor slouží k podrobnějšímu nastavení vzoru.
+            Vzor se opakuje pro každou trojici písmen slova, fráze nebo věty.
+            Je vyžadováno nastavení vzoru pro všechny tři písmena trojice.
+            Tedy si vybrat, co má dané písmeno reprezentovat (písmeno/číslici/znak).
+            Dále je třeba si vybrat podrobnější nastavení zvolené možnosti.
+            Po zadání slova, fráze nebo věty obdržíte heslo.\n\n
+            Výhodou je větší kontrola nad vzorem (možnost vytvoření vzoru sobě na míru).
+            A dále možnost opětovného sestavení vzoru, nedošlo-li k jeho uložení.
+        </item>
+        <item>
+            Díky přihlášení do aplikace máte možnost uložit si své vzory.
+            Ty si můžete zobrazit a vybrat je pro zpětné vygenerování hesla.
+        </item>
+    </string-array>
+
+    <string-array name="letterHelpHeadline">
+        <item>@string/letterFirst</item>
+        <item>@string/letterSecond</item>
+        <item>@string/letterThird</item>
+        <item>@string/letterFourth</item>
+    </string-array>
+
+    <string-array name="letterHelpText">
+        <item>Slovo je rozděleno do trojic. V případě uvedeného nastavení bude písmeno v každé liché trojici velké.</item>
+        <item>Slovo je rozděleno do trojic. V případě uvedeného nastavení bude písmeno v každé sudé trojici velké.</item>
+        <item>Pouze první písmeno v hesle bude velké.</item>
+        <item>Všechna písmena budou velká.</item>
+    </string-array>
+
+    <string-array name="numberHelpHeadline">
+        <item>@string/numberFirst</item>
+        <item>@string/numberSecond</item>
+        <item>@string/numberThird</item>
+        <item>@string/numberFourth</item>
+    </string-array>
+
+    <string-array name="numberHelpText">
+        <item>Číslice bude odpovídat pozici přetvářeného písmena (odpovídajícího slova, fráze nebo věty) v abecedě.</item>
+        <item>Číslice bude odpovídat pozici přetvářeného písmena (odpovídajícího slova, fráze nebo věty) dle výskytu ve slově.</item>
+        <item>Číslice bude odpovídat počtu znaků v morseovce přetvářeného písmena (odpovídajícího slova, fráze nebo věty).</item>
+        <item>Číslice bude odpovídat počtu teček v morseovce přetvářeného písmena (odpovídajícího slova, fráze nebo věty).</item>
+    </string-array>
+
+    <string-array name="symbolHelpHeadline">
+        <item>@string/symbolFirst</item>
+        <item>@string/symbolSecond</item>
+        <item>@string/symbolThird</item>
+        <item>@string/symbolFourth</item>
+    </string-array>
+
+    <string-array name="symbolHelpText">
+        <item>Symbol bude odpovídat prvnímu znaku v morseovce přetvářeného písmena (odpovídajícího slova, fráze nebo věty).</item>
+        <item>Symbol bude odpovídat poslednímu znaku v morseovce přetvářeného písmena (odpovídajícího slova, fráze nebo věty).</item>
+        <item>Symbol bude odpovídat znaku v morseovce přetvářeného písmena (odpovídajícího slova, fráze nebo věty) dle výskytu ve slově.</item>
+        <item>Symbol bude odpovídat písmenu v morseovce (odpovídajícího slova, fráze nebo věty).</item>
+    </string-array>
+
 </resources>

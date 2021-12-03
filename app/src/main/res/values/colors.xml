@@ -9,10 +9,8 @@
 
     <color name="colorAccent">#F9B720</color>
     <color name="description">#E7B647</color>
-    <color name="cursor">#E7B647</color>
 
     <color name="navBarSelect">#F9B720</color>
-    <color name="navBarIconVariant">#E7B647</color>
 
     <color name="mainBackground">#212121</color>
     <color name="navBarBackground">#131313</color>

@@ -3,6 +3,8 @@ package com.bobcikprogramming.genertorhesla.view;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
@@ -17,6 +19,9 @@ import android.widget.Toast;
 
 import com.bobcikprogramming.genertorhesla.R;
 import com.bobcikprogramming.genertorhesla.controllers.GeneratePassword;
+import com.bobcikprogramming.genertorhesla.controllers.HelperController;
+import com.bobcikprogramming.genertorhesla.controllers.HelperHolder;
+import com.bobcikprogramming.genertorhesla.controllers.ManualPattern;
 import com.bobcikprogramming.genertorhesla.controllers.PasswordGenerator;
 import com.bobcikprogramming.genertorhesla.controllers.PatternGenerator;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
@@ -29,25 +34,19 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
     private TextView tvPattern;
     private TextView btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnLetterThird, btnNumberThird, btnSymbolThird, tvFirstOptionHeadline, tvSecondOptionHeadline, tvThirdOptionHeadline;
     private ImageView btnCancel, btnFinish;
-
-    private int firstOption, secondOption, thirdOption;
-    private int firstOptionSetting, secondOptionSetting, thirdOptionSetting;
+    private ImageView btnInfoFirstAtFirst, btnInfoSecondAtFirst, btnInfoThirdAtFirst, btnInfoFourthAtFirst, btnInfoFirstAtSecond, btnInfoSecondAtSecond, btnInfoThirdAtSecond, btnInfoFourthAtSecond, btnInfoFirstAtThird, btnInfoSecondAtThird, btnInfoThirdAtThird, btnInfoFourthAtThird;
 
     private GeneratePassword generate;
+    private ManualPattern manual;
+    private HelperController helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_manual_pattern);
         generate = new GeneratePassword(this);
-
-        this.firstOption = 0;
-        this.secondOption = 0;
-        this.thirdOption = 0;
-
-        this.firstOptionSetting = -1;
-        this.secondOptionSetting = -1;
-        this.thirdOptionSetting = -1;
+        manual = new ManualPattern();
+        helper = new HelperController(this);
 
         Bundle extras = getIntent().getExtras();
         generate.setPatternSetting((PatternSetting) extras.getSerializable("pattern"));
@@ -83,39 +82,75 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.btnLetterFirst:
                 setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnLetterFirst, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
-                firstOption = 0;
+                manual.setFirstOption(0);
                 break;
             case R.id.btnNumberFirst:
                 setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnNumberFirst, R.string.numberFirst, R.string.numberSecond, R.string.numberThird, R.string.numberFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
-                firstOption = 1;
+                manual.setFirstOption(1);
                 break;
             case R.id.btnSymbolFirst:
                 setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnSymbolFirst, R.string.symbolFirst, R.string.symbolSecond, R.string.symbolThird, R.string.symbolFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
-                firstOption = 2;
+                manual.setFirstOption(2);
                 break;
             case R.id.btnLetterSecond:
                 setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnLetterSecond, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
-                secondOption = 0;
+                manual.setSecondOption(0);
                 break;
             case R.id.btnNumberSecond:
                 setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnNumberSecond, R.string.numberFirst, R.string.numberSecond, R.string.numberThird, R.string.numberFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
-                secondOption = 1;
+                manual.setSecondOption(1);
                 break;
             case R.id.btnSymbolSecond:
                 setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnSymbolSecond, R.string.symbolFirst, R.string.symbolSecond, R.string.symbolThird, R.string.symbolFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
-                secondOption = 2;
+                manual.setSecondOption(2);
                 break;
             case R.id.btnLetterThird:
                 setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnLetterThird, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird, rGroupThird);
-                thirdOption = 0;
+                manual.setThirdOption(0);
                 break;
             case R.id.btnNumberThird:
                 setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnNumberThird, R.string.numberFirst, R.string.numberSecond, R.string.numberThird, R.string.numberFourth, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird, rGroupThird);
-                thirdOption = 1;
+                manual.setThirdOption(1);
                 break;
             case R.id.btnSymbolThird:
                 setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnSymbolThird, R.string.symbolFirst, R.string.symbolSecond, R.string.symbolThird, R.string.symbolFourth, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird, rGroupThird);
-                thirdOption = 2;
+                manual.setThirdOption(2);
+                break;
+            case R.id.btnInfoFirstAtFirst:
+                openDialogWindow(helper.getInformation(manual.getFirstOption(),0));
+                break;
+            case R.id.btnInfoSecondAtFirst:
+                openDialogWindow(helper.getInformation(manual.getFirstOption(),1));
+                break;
+            case R.id.btnInfoThirdAtFirst:
+                openDialogWindow(helper.getInformation(manual.getFirstOption(),2));
+                break;
+            case R.id.btnInfoFourthAtFirst:
+                openDialogWindow(helper.getInformation(manual.getFirstOption(),3));
+                break;
+        case R.id.btnInfoFirstAtSecond:
+                openDialogWindow(helper.getInformation(manual.getSecondOption(),0));
+                break;
+            case R.id.btnInfoSecondAtSecond:
+                openDialogWindow(helper.getInformation(manual.getSecondOption(),1));
+                break;
+            case R.id.btnInfoThirdAtSecond:
+                openDialogWindow(helper.getInformation(manual.getSecondOption(),2));
+                break;
+            case R.id.btnInfoFourthAtSecond:
+                openDialogWindow(helper.getInformation(manual.getSecondOption(),3));
+                break;
+            case R.id.btnInfoFirstAtThird:
+                openDialogWindow(helper.getInformation(manual.getThirdOption(),0));
+                break;
+            case R.id.btnInfoSecondAtThird:
+                openDialogWindow(helper.getInformation(manual.getThirdOption(),1));
+                break;
+            case R.id.btnInfoThirdAtThird:
+                openDialogWindow(helper.getInformation(manual.getThirdOption(),2));
+                break;
+            case R.id.btnInfoFourthAtThird:
+                openDialogWindow(helper.getInformation(manual.getThirdOption(),3));
                 break;
         }
     }
@@ -180,6 +215,32 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
         rGroupFirst.setOnClickListener(this);
         rGroupSecond.setOnClickListener(this);
         rGroupThird.setOnClickListener(this);
+
+        btnInfoFirstAtFirst = findViewById(R.id.btnInfoFirstAtFirst);
+        btnInfoSecondAtFirst = findViewById(R.id.btnInfoSecondAtFirst);
+        btnInfoThirdAtFirst = findViewById(R.id.btnInfoThirdAtFirst);
+        btnInfoFourthAtFirst = findViewById(R.id.btnInfoFourthAtFirst);
+        btnInfoFirstAtSecond = findViewById(R.id.btnInfoFirstAtSecond);
+        btnInfoSecondAtSecond = findViewById(R.id.btnInfoSecondAtSecond);
+        btnInfoThirdAtSecond = findViewById(R.id.btnInfoThirdAtSecond);
+        btnInfoFourthAtSecond = findViewById(R.id.btnInfoFourthAtSecond);
+        btnInfoFirstAtThird = findViewById(R.id.btnInfoFirstAtThird);
+        btnInfoSecondAtThird = findViewById(R.id.btnInfoSecondAtThird);
+        btnInfoThirdAtThird = findViewById(R.id.btnInfoThirdAtThird);
+        btnInfoFourthAtThird = findViewById(R.id.btnInfoFourthAtThird);
+
+        btnInfoFirstAtFirst.setOnClickListener(this);
+        btnInfoSecondAtFirst.setOnClickListener(this);
+        btnInfoThirdAtFirst.setOnClickListener(this);
+        btnInfoFourthAtFirst.setOnClickListener(this);
+        btnInfoFirstAtSecond.setOnClickListener(this);
+        btnInfoSecondAtSecond.setOnClickListener(this);
+        btnInfoThirdAtSecond.setOnClickListener(this);
+        btnInfoFourthAtSecond.setOnClickListener(this);
+        btnInfoFirstAtThird.setOnClickListener(this);
+        btnInfoSecondAtThird.setOnClickListener(this);
+        btnInfoThirdAtThird.setOnClickListener(this);
+        btnInfoFourthAtThird.setOnClickListener(this);
     }
 
     private void showSettingIfNotNull(){
@@ -187,56 +248,47 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
 
         if(patternSetting != null){
             if(patternSetting.getFirstOption() == 0){
-                firstOption = 0;
+                manual.setFirstOption(0);
                 setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnLetterFirst, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
-                //btnLetterFirst.setTextColor(ContextCompat.getColor(this, R.color.white));
             }else if(patternSetting.getFirstOption() == 1){
-                firstOption = 1;
+                manual.setFirstOption(1);
                 setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnNumberFirst, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
-                //btnNumberFirst.setTextColor(ContextCompat.getColor(this, R.color.white));
             } else{
-                firstOption = 2;
+                manual.setFirstOption(2);
                 setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnSymbolFirst, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
-                //btnSymbolFirst.setTextColor(ContextCompat.getColor(this, R.color.white));
             }
 
             if(patternSetting.getSecondOption() == 0){
-                secondOption = 0;
+                manual.setSecondOption(0);
                 setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnLetterSecond, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
-                //btnLetterSecond.setTextColor(ContextCompat.getColor(this, R.color.white));
             }else if(patternSetting.getSecondOption() == 1){
-                secondOption = 1;
+                manual.setSecondOption(1);
                 setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnNumberSecond, R.string.numberFirst, R.string.numberSecond, R.string.numberThird, R.string.numberFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
-                //btnNumberSecond.setTextColor(ContextCompat.getColor(this, R.color.white));
             } else{
-                secondOption = 2;
+                manual.setSecondOption(2);
                 setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnSymbolSecond, R.string.symbolFirst, R.string.symbolSecond, R.string.symbolThird, R.string.symbolFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
-                //btnSymbolSecond.setTextColor(ContextCompat.getColor(this, R.color.white));
             }
 
             if(patternSetting.getThirdOption() == 0){
-                thirdOption = 0;
+                manual.setThirdOption(0);
                 setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnLetterThird, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird, rGroupThird);
-                //btnLetterThird.setTextColor(ContextCompat.getColor(this, R.color.white));
             }else if(patternSetting.getThirdOption() == 1){
-                thirdOption = 1;
+                manual.setThirdOption(1);
                 setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnNumberThird, R.string.numberFirst, R.string.numberSecond, R.string.numberThird, R.string.numberFourth, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird, rGroupThird);
-                //btnNumberThird.setTextColor(ContextCompat.getColor(this, R.color.white));
             } else{
-                thirdOption = 2;
+                manual.setThirdOption(2);
                 setupOption(btnLetterThird, btnNumberThird, btnSymbolThird, btnSymbolThird, R.string.symbolFirst, R.string.symbolSecond, R.string.symbolThird, R.string.symbolFourth, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird, rGroupThird);
-                //btnSymbolThird.setTextColor(ContextCompat.getColor(this, R.color.white));
             }
 
-            firstOptionSetting = patternSetting.getFirstOptionSetting();
-            secondOptionSetting = patternSetting.getSecondOptionSetting();
-            thirdOptionSetting = patternSetting.getThirdOptionSetting();
+            manual.setFirstOptionSetting(patternSetting.getFirstOptionSetting());
+            manual.setSecondOptionSetting(patternSetting.getSecondOptionSetting());
+            manual.setThirdOptionSetting(patternSetting.getThirdOptionSetting());
 
-            ((RadioButton) rGroupFirst.getChildAt(firstOptionSetting)).setChecked(true);
-            ((RadioButton) rGroupSecond.getChildAt(secondOptionSetting)).setChecked(true);
-            ((RadioButton) rGroupThird.getChildAt(thirdOptionSetting)).setChecked(true);
+            ((RadioButton) rGroupFirst.getChildAt(manual.getFirstOptionSetting())).setChecked(true);
+            ((RadioButton) rGroupSecond.getChildAt(manual.getSecondOptionSetting())).setChecked(true);
+            ((RadioButton) rGroupThird.getChildAt(manual.getThirdOptionSetting())).setChecked(true);
 
-            tvPattern.setText(generate.showPattern(firstOption, secondOption, thirdOption, firstOptionSetting, secondOptionSetting, thirdOptionSetting));
+            tvPattern.setText(generate.showPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
         }else{
             setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnLetterFirst, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
             setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnLetterSecond, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
@@ -268,9 +320,9 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 int rBtnFirstId = rGroupFirst.getCheckedRadioButtonId();
                 View rBtnFirst = findViewById(rBtnFirstId);
-                firstOptionSetting = rGroupFirst.indexOfChild(rBtnFirst);
+                manual.setFirstOptionSetting(rGroupFirst.indexOfChild(rBtnFirst));
 
-                tvPattern.setText(generate.showPattern(firstOption, secondOption, thirdOption, firstOptionSetting, secondOptionSetting, thirdOptionSetting));
+                tvPattern.setText(generate.showPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
             }
         });
 
@@ -279,9 +331,9 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 int rBtnSecondId = rGroupSecond.getCheckedRadioButtonId();
                 View rBtnSecond = findViewById(rBtnSecondId);
-                secondOptionSetting = rGroupSecond.indexOfChild(rBtnSecond);
+                manual.setSecondOptionSetting(rGroupSecond.indexOfChild(rBtnSecond));
 
-                tvPattern.setText(generate.showPattern(firstOption, secondOption, thirdOption, firstOptionSetting, secondOptionSetting, thirdOptionSetting));
+                tvPattern.setText(generate.showPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
             }
         });
 
@@ -290,9 +342,9 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 int rBtnThirdId = rGroupThird.getCheckedRadioButtonId();
                 View rBtnThird = findViewById(rBtnThirdId);
-                thirdOptionSetting = rGroupThird.indexOfChild(rBtnThird);
+                manual.setThirdOptionSetting(rGroupThird.indexOfChild(rBtnThird));
 
-                tvPattern.setText(generate.showPattern(firstOption, secondOption, thirdOption, firstOptionSetting, secondOptionSetting, thirdOptionSetting));
+                tvPattern.setText(generate.showPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
             }
         });
     }
@@ -304,19 +356,26 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
         tvSecondOptionHeadline.setTextColor(ContextCompat.getColor(this, R.color.description));
         tvThirdOptionHeadline.setTextColor(ContextCompat.getColor(this, R.color.description));
 
-        if(firstOptionSetting == -1){
+        if(manual.getFirstOptionSetting() == -1){
             tvFirstOptionHeadline.startAnimation(animShake);
             tvFirstOptionHeadline.setTextColor(ContextCompat.getColor(this, R.color.red));
         }
 
-        if(secondOptionSetting == -1){
+        if(manual.getSecondOptionSetting() == -1){
             tvSecondOptionHeadline.startAnimation(animShake);
             tvSecondOptionHeadline.setTextColor(ContextCompat.getColor(this, R.color.red));
         }
 
-        if(thirdOptionSetting == -1){
+        if(manual.getThirdOptionSetting() == -1){
             tvThirdOptionHeadline.startAnimation(animShake);
             tvThirdOptionHeadline.setTextColor(ContextCompat.getColor(this, R.color.red));
         }
+    }
+
+    private void openDialogWindow(HelperHolder info){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this, R.style.MyDialog);
+        alert.setTitle(info.getHeadline());
+        alert.setMessage(info.getText());
+        alert.show();
     }
 }

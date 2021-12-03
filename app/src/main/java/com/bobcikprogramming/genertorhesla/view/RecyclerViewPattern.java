@@ -18,11 +18,9 @@ import java.util.List;
 public class RecyclerViewPattern extends RecyclerView.Adapter<RecyclerViewPattern.ViewHolder>{
 
     private List<PatternEntity> dataList;
-    private Context context;
     private View.OnClickListener myClickListener;
 
-    public RecyclerViewPattern(Context context, View.OnClickListener myClickListener){
-        this.context = context;
+    public RecyclerViewPattern(View.OnClickListener myClickListener){
         this.myClickListener = myClickListener;
     }
 

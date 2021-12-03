@@ -32,22 +32,16 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        style="@style/ImageButtons"
                         android:id="@+id/btnCancel"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
-                        android:padding="5dp"
                         android:src="@drawable/ic_cancel"/>
 
                     <TextView
+                        style="@style/PasswordHeadline"
                         android:id="@+id/textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Přihlášení"
-                        android:textColor="@color/white"
-                        android:textSize="35sp"
-                        android:gravity="bottom|center_horizontal"
+                        android:text="@string/loginHeadline"
                         android:layout_marginEnd="60dp"/>
 
                 </LinearLayout>
@@ -75,57 +69,27 @@
                 android:gravity="center_horizontal">
 
                 <LinearLayout
-                    android:id="@+id/layoutPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/rounded_edit_text"
-                    android:orientation="horizontal">
+                    style="@style/LayoutPassword"
+                    android:id="@+id/layoutPassword">
 
                     <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="10dp"
-                        android:padding="7dp"
-                        android:src="@drawable/ic_lock" />
+                        style="@style/ImageLock"/>
 
                     <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/EditTextPassword"
                         android:id="@+id/etPassword"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:layout_weight="1"
-                        android:hint="@string/passStars"
-                        android:inputType="textPassword"
-                        android:singleLine="true"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/lightGray"
-                        android:textSize="20sp"
-                        android:visibility="visible"
-                        android:background="@null"/>
+                        android:hint="@string/passStars"/>
 
                     <ImageView
-                        android:id="@+id/btnShowHidePassword"
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:padding="7dp"
-                        android:src="@drawable/ic_invisible" />
+                        style="@style/ShowHidePassword"
+                        android:id="@+id/btnShowHidePassword"/>
 
                 </LinearLayout>
 
                 <Button
-                    android:layout_width="175dp"
-                    android:layout_height="50dp"
+                    style="@style/ButtonAccountAction"
                     android:id="@+id/btnLogin"
-                    android:layout_marginTop="36dp"
-                    android:background="@drawable/rounded_button"
-                    android:text="Přihlásit se"
-                    android:textColor="@color/mainBackground"
-                    android:textSize="15dp"
-                    android:textStyle="bold"/>
+                    android:text="@string/login"/>
 
             </LinearLayout>
 
@@ -149,13 +113,9 @@
             </LinearLayout>
 
             <TextView
+                style="@style/GoTo"
                 android:id="@+id/btnCreateAccount"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="Nemáte účet? Registrujte se zde."
-                android:textColor="@color/description"
-                android:textSize="17sp"
-                android:gravity="center"/>
+                android:text="@string/toRegister"/>
 
         </LinearLayout>
 

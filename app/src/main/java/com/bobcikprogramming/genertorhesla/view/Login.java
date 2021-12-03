@@ -31,15 +31,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
     private AccountManagement accountManagement;
 
-    private boolean visible;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         accountManagement = new AccountManagement();
-        visible = false;
 
         setupUI();
 
@@ -68,14 +65,14 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 hideKeyBoard();
                 break;
             case R.id.btnShowHidePassword:
-                if(!visible){
+                if(!accountManagement.isVisibleFirst()){
                     btnShowHidePassword.setImageResource(R.drawable.ic_visible);
                     etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                    visible = true;
+                    accountManagement.setVisibleFirst(true);
                 }else{
                     btnShowHidePassword.setImageResource(R.drawable.ic_invisible);
                     etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                    visible = false;
+                    accountManagement.setVisibleFirst(false);
                 }
                 break;
             case R.id.btnCancel:

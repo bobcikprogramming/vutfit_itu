@@ -1,4 +1,4 @@
-package com.bobcikprogramming.genertorhesla;
+package com.bobcikprogramming.genertorhesla.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.bobcikprogramming.genertorhesla.view.GeneratorLogged;
+import com.bobcikprogramming.genertorhesla.R;
+import com.bobcikprogramming.genertorhesla.view.NewManualPatternLogged;
 import com.bobcikprogramming.genertorhesla.view.PatternList;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;

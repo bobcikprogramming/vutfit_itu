@@ -25,7 +25,7 @@ import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
 public class GeneratorLogged extends Fragment implements View.OnClickListener{
 
     private LinearLayout btnRandomPattern, btnOwnPattern;
-    private ImageView btnLogout, btnAccSetting;
+    private ImageView btnLogout, btnAccSetting, btnHelp;
     private TextView tvRandomPattern, tvOwnPattern;
     private View view;
 
@@ -61,6 +61,7 @@ public class GeneratorLogged extends Fragment implements View.OnClickListener{
         btnOwnPattern = view.findViewById(R.id.tabButtonOwnPattern);
         btnLogout = view.findViewById(R.id.btnLogout);
         btnAccSetting = view.findViewById(R.id.btnAccSetting);
+        btnHelp = view.findViewById(R.id.btnHelp);
         tvRandomPattern = view.findViewById(R.id.tabTextViewRandomPattern);
         tvOwnPattern = view.findViewById(R.id.tabTextViewOwnPattern);
 
@@ -69,6 +70,7 @@ public class GeneratorLogged extends Fragment implements View.OnClickListener{
         btnOwnPattern.setOnClickListener(this);
         btnLogout.setOnClickListener(this);
         btnAccSetting.setOnClickListener(this);
+        btnHelp.setOnClickListener(this);
     }
 
     @Override
@@ -84,8 +86,13 @@ public class GeneratorLogged extends Fragment implements View.OnClickListener{
                 getActivity().finish();
                 break;
             case R.id.btnAccSetting:
-                Intent intent = new Intent(getContext(), AccountSetting.class);
-                startActivity(intent);
+                Intent intentAcc = new Intent(getContext(), AccountSetting.class);
+                startActivity(intentAcc);
+                break;
+            case R.id.btnHelp:
+                Intent intentHelp = new Intent(getContext(), HelperViewer.class);
+                intentHelp.putExtra("logged", true);
+                startActivity(intentHelp);
                 break;
         }
     }

@@ -8,57 +8,42 @@
     android:orientation="vertical"
     android:background="@color/mainBackground"
     android:paddingStart="20dp"
-    android:paddingEnd="20dp"
-    android:paddingTop="10dp">
+    android:paddingEnd="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
-        android:layout_marginBottom="5dp">
+        android:layout_marginBottom="10dp">
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            style="@style/ImageButtons"
             android:id="@+id/btnHelp"
             android:src="@drawable/ic_help"
-            android:padding="5dp"
             android:visibility="visible"/>
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            style="@style/ImageButtons"
             android:id="@+id/btnCancel"
             android:src="@drawable/ic_cancel"
-            android:padding="5dp"
             android:visibility="gone"/>
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:text="Seznam vzorů"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginStart="45dp"
-            android:gravity="center"/>
+            style="@style/NavbarHeadline"
+            android:text="@string/patternListHeadline"
+            android:paddingStart="45dp"/>
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            style="@style/ImageButtons"
             android:id="@+id/btnAccSetting"
             android:src="@drawable/ic_acc_setting"
-            android:padding="5dp"
             android:layout_marginStart="5dp"
             android:visibility="visible"/>
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            style="@style/ImageButtons"
             android:id="@+id/btnLogout"
             android:src="@drawable/ic_logout"
-            android:padding="5dp"
             android:visibility="visible"/>
 
     </LinearLayout>
