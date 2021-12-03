@@ -29,7 +29,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:minHeight="120dp"
+                android:minHeight="80dp"
                 android:layout_weight="2.5"
                 android:orientation="vertical"
                 android:layout_marginBottom="5dp">
@@ -89,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.35"
-                android:minHeight="80dp"
+                android:minHeight="75dp"
                 android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
@@ -195,7 +195,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.35"
-                android:minHeight="80dp"
+                android:minHeight="75dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:orientation="vertical">
@@ -228,6 +228,15 @@
                         android:text="Vzor nenastaven"
                         android:textSize="25sp"
                         android:gravity="center_vertical"/>
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/btnSavePattern"
+                        android:layout_gravity="bottom"
+                        android:src="@drawable/avd_save"
+                        android:padding="7dp"
+                        android:visibility="invisible"/>
 
                     <ImageView
                         android:layout_width="40dp"

@@ -1,12 +1,15 @@
 package com.bobcikprogramming.genertorhesla.view;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -23,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bobcikprogramming.genertorhesla.R;
+import com.bobcikprogramming.genertorhesla.controllers.Convertor;
 import com.bobcikprogramming.genertorhesla.controllers.GeneratePassword;
 import com.bobcikprogramming.genertorhesla.controllers.PasswordGenerator;
 import com.bobcikprogramming.genertorhesla.controllers.PatternGenerator;
@@ -33,12 +37,13 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
 
     private TextView tvPassword, tvPattern;
     private EditText etPhrase;
-    private ImageView btnNewRandomPattern, btnCopy, btnDelete;
+    private ImageView btnNewRandomPattern, btnCopy, btnDelete, btnSavePattern;
     private SwitchMaterial sLetter, sCapLetter, sNumber, sSymbol;
     private LinearLayout layoutBackground, layoutPassword, layoutPasswordScroll;
     private View view;
 
     private GeneratePassword generate;
+    private Convertor convertor;
 
     public FragmentRandomPattern() {
         // Required empty public constructor
@@ -56,8 +61,10 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_random_pattern, container, false);
         generate = new GeneratePassword(getContext());
+        convertor = new Convertor();
 
         setupUI();
+        setGuiIfLogged();
         switchSelect();
         onEditTextChange();
 
@@ -86,6 +93,19 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
 
                 etPhrase.setText("");
                 break;
+            case R.id.btnSavePattern:
+                AnimatedVectorDrawable animatedVectorDrawableSave =
+                        (AnimatedVectorDrawable) btnSavePattern.getDrawable();
+                animatedVectorDrawableSave.start();
+
+                if(generate.getPatternSetting() != null){
+                    openDialogWindow();
+                }else{
+                    Toast.makeText(getContext(), "Nebyl vytvořen žádný vzor.", Toast.LENGTH_SHORT).show();
+                }
+
+                hideKeyBoard();
+                break;
             case R.id.btnCopy:
                 AnimatedVectorDrawable animatedVectorDrawableCopy =
                         (AnimatedVectorDrawable) btnCopy.getDrawable();
@@ -105,7 +125,12 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
                 hideKeyBoard();
                 break;
         }
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        etPhrase.setText("");
     }
 
     private void setupUI(){
@@ -122,6 +147,7 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
         btnNewRandomPattern = view.findViewById(R.id.btnNewRandomPattern);
         btnCopy = view.findViewById(R.id.btnCopy);
         btnDelete = view.findViewById(R.id.btnDelete);
+        btnSavePattern = view.findViewById(R.id.btnSavePattern);
 
         tvPassword.setOnClickListener(this);
         tvPattern.setOnClickListener(this);
@@ -131,6 +157,21 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
         btnNewRandomPattern.setOnClickListener(this);
         btnCopy.setOnClickListener(this);
         btnDelete.setOnClickListener(this);
+        btnSavePattern.setOnClickListener(this);
+    }
+
+    private void setGuiIfLogged(){
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            boolean logged = bundle.getBoolean("logged", false);
+            if(logged) {
+                btnSavePattern.setVisibility(View.VISIBLE);
+            }else{
+                btnSavePattern.setVisibility(View.INVISIBLE);
+            }
+        }else{
+            btnSavePattern.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void switchSelect(){
@@ -239,6 +280,42 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
         generate.createRandomPatternSetting();
         tvPattern.setText(generate.getPatternExample());
         tvPassword.setText(generate.getPassword(etPhrase.getText().toString()));
+    }
+
+    private void openDialogWindow(){
+        // https://stackoverflow.com/a/20761703
+        final EditText edittext = new EditText(getContext());
+        // https://www.codegrepper.com/code-examples/java/set+layout+margin+programmatically+android
+        final LinearLayout layout = new LinearLayout(getContext());
+        layout.setOrientation(LinearLayout.VERTICAL);
+
+        edittext.setHint("Název vzoru");
+        edittext.setHintTextColor(ContextCompat.getColor(getContext(), R.color.lightGray));
+        LinearLayout.LayoutParams margin = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        margin.setMargins(convertor.getDp(100, getContext()), 0, convertor.getDp(100, getContext()), 0);
+        edittext.setLayoutParams(margin);
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(getContext(), R.style.MyDialog);
+        alert.setMessage("Vložte prosím název vzoru");
+        alert.setTitle("Uložit vzor");
+
+        layout.addView(edittext, margin);
+        alert.setView(layout);
+
+        alert.setPositiveButton("Uložit", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String name = edittext.getText().toString();
+                generate.savePatternToDatabase(name);
+                Toast.makeText(getContext(), "Vzor uložen.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        alert.setNegativeButton("Zrušit", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            }
+        });
+
+        alert.show();
     }
 
     private void hideKeyBoard(){

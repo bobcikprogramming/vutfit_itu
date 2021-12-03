@@ -26,10 +26,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bobcikprogramming.genertorhesla.BottomTabBarManualPatternLogged;
 import com.bobcikprogramming.genertorhesla.R;
 import com.bobcikprogramming.genertorhesla.controllers.GeneratePassword;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSettingManualValues;
+import com.bobcikprogramming.genertorhesla.model.PatternEntity;
 
 public class FragmentManualPattern extends Fragment implements View.OnClickListener{
 
@@ -40,6 +42,7 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
     private View view;
 
     private GeneratePassword generate;
+    private boolean logged;
 
     public FragmentManualPattern() {
         // Required empty public constructor
@@ -57,7 +60,12 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
         view = inflater.inflate(R.layout.fragment_manual_pattern, container, false);
         generate = new GeneratePassword(getContext());
 
+        Bundle bundle = this.getArguments();
+        logged = bundle != null && bundle.getBoolean("logged", false);
+
         setupUI();
+        setPatternFromList(bundle);
+
         if(generate.getPatternSetting() == null) {
             showHidePatternEmpty(View.VISIBLE, View.GONE);
         }
@@ -72,10 +80,16 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
         switch(view.getId()){
             case R.id.btnNewManualPattern:
             case R.id.layoutEmptyPattern:
-                Intent newManualPattern = new Intent(getContext(), NewManualPattern.class);
-                newManualPattern.putExtra("logged", false);
-                newManualPattern.putExtra("pattern", generate.getPatternSetting());
-                manualPattern.launch(newManualPattern);
+                if(!logged) {
+                    Intent newManualPattern = new Intent(getContext(), NewManualPattern.class);
+                    newManualPattern.putExtra("logged", false);
+                    newManualPattern.putExtra("pattern", generate.getPatternSetting());
+                    manualPattern.launch(newManualPattern);
+                }else{
+                    Intent newManualPatternLogged = new Intent(getContext(), BottomTabBarManualPatternLogged.class);
+                    newManualPatternLogged.putExtra("pattern", generate.getPatternSetting());
+                    manualPattern.launch(newManualPatternLogged);
+                }
                 break;
             case R.id.btnDelete:
                 AnimatedVectorDrawable animatedVectorDrawableDelete =
@@ -152,16 +166,7 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
                         showHidePatternEmpty(View.GONE, View.VISIBLE);
 
                         PatternSettingManualValues manualValues = generate.getManualSettingValues();
-                        tvFirstOption.setText(manualValues.getFirstOption());
-                        tvSecondOption.setText(manualValues.getSecondOption());
-                        tvThirdOption.setText(manualValues.getThirdOption());
-
-                        tvFirstOptionSetting.setText(manualValues.getFirstOptionSetting());
-                        tvSecondOptionSetting.setText(manualValues.getSecondOptionSetting());
-                        tvThirdOptionSetting.setText(manualValues.getThirdOptionSetting());
-
-                        tvPattern.setText(generate.getPatternExample());
-                        tvPassword.setText(generate.getPassword(etPhrase.getText().toString()));
+                        setupUIForPattern(manualValues);
                     }
                 }
             });
@@ -194,6 +199,29 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
         if(getActivity().getCurrentFocus() != null) {
             imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+        }
+    }
+
+    private void setupUIForPattern(PatternSettingManualValues manualValues){
+        tvFirstOption.setText(manualValues.getFirstOption());
+        tvSecondOption.setText(manualValues.getSecondOption());
+        tvThirdOption.setText(manualValues.getThirdOption());
+
+        tvFirstOptionSetting.setText(manualValues.getFirstOptionSetting());
+        tvSecondOptionSetting.setText(manualValues.getSecondOptionSetting());
+        tvThirdOptionSetting.setText(manualValues.getThirdOptionSetting());
+
+        tvPattern.setText(generate.getPatternExample());
+        tvPassword.setText(generate.getPassword(etPhrase.getText().toString()));
+    }
+
+    private void setPatternFromList(Bundle bundle){
+        PatternSetting patternSetting = (bundle != null) ? (PatternSetting) bundle.getSerializable("pattern") : null;
+        generate.setPatternSetting(patternSetting);
+
+        if(patternSetting != null){
+            PatternSettingManualValues manualValues = generate.getManualSettingValues();
+            setupUIForPattern(manualValues);
         }
     }
 }

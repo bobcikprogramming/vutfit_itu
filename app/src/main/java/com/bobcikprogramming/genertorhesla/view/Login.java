@@ -1,4 +1,4 @@
-package com.bobcikprogramming.genertorhesla;
+package com.bobcikprogramming.genertorhesla.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -18,8 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bobcikprogramming.genertorhesla.R;
 import com.bobcikprogramming.genertorhesla.controllers.AccountManagement;
-import com.bobcikprogramming.genertorhesla.view.Register;
 
 public class Login extends AppCompatActivity implements View.OnClickListener{
 
@@ -82,6 +82,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 finish();
                 break;
             case R.id.btnCreateAccount:
+                etPassword.setText("");
+                layoutPassword.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_edit_text));
                 Intent intent = new Intent(Login.this, Register.class);
                 startActivity(intent);
                 break;

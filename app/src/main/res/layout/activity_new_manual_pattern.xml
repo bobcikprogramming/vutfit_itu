@@ -31,22 +31,13 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:gravity="center"
-            android:paddingStart="40dp"/>
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/btnSave"
-            android:src="@drawable/ic_save"
-            android:padding="8dp"
-            android:visibility="visible"/>
+            android:gravity="center"/>
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/btnFinish"
-            android:src="@drawable/ic_finish"
+            android:src="@drawable/avd_finish"
             android:padding="5dp"/>
 
     </LinearLayout>

@@ -3,6 +3,12 @@ package com.bobcikprogramming.genertorhesla.controllers;
 import android.content.Context;
 
 import com.bobcikprogramming.genertorhesla.R;
+import com.bobcikprogramming.genertorhesla.model.AccountEntity;
+import com.bobcikprogramming.genertorhesla.model.AppDatabase;
+import com.bobcikprogramming.genertorhesla.model.PatternEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GeneratePassword{
 
@@ -10,11 +16,13 @@ public class GeneratePassword{
     private PatternSetting patternSetting;
     private PatternGenerator pattern;
     private Context context;
+    private AppDatabase db;
 
     public GeneratePassword(Context context){
-        patternSetting = null;
-        pattern = new PatternGenerator();
+        this.patternSetting = null;
+        this.pattern = new PatternGenerator();
         this.context = context;
+        this.db = AppDatabase.getDbInstance(context);
     }
 
     public void setterForRandomPatternValues(boolean letter, boolean capLetter, boolean number, boolean symbol){
@@ -159,5 +167,59 @@ public class GeneratePassword{
 
     public void setPatternSetting(PatternSetting patternSetting) {
         this.patternSetting = patternSetting;
+    }
+
+    public void savePatternToDatabase(String name){
+        if(name.isEmpty()){
+            name = "Nepojmenováno";
+        }
+
+        //AppDatabase db = AppDatabase.getDbInstance(context);
+        PatternEntity pattern = new PatternEntity();
+
+        pattern.name = name;
+        pattern.example = getPassword("Motocykl");
+        pattern.firstOption = patternSetting.getFirstOption();
+        pattern.firstOptionSetting = patternSetting.getFirstOptionSetting();
+        pattern.secondOption = patternSetting.getSecondOption();
+        pattern.secondOptionSetting = patternSetting.getSecondOptionSetting();
+        pattern.thirdOption = patternSetting.getThirdOption();
+        pattern.thirdOptionSetting = patternSetting.getThirdOptionSetting();
+        db.databaseDao().insertPattern(pattern);
+    }
+
+    public List<PatternEntity> loadPatternListFromDatabase(){
+        //AppDatabase db = AppDatabase.getDbInstance(context);
+        return db.databaseDao().getPattern();
+    }
+
+    public PatternSetting getPatternSettingFromDatabaseById(String id){
+        //AppDatabase db = AppDatabase.getDbInstance(context);
+        PatternEntity patternEntity = db.databaseDao().getPatternById(id);
+        if(patternEntity == null){
+            return null;
+        }else{
+            return getPatternSetting(patternEntity.firstOption, patternEntity.secondOption, patternEntity.thirdOption, patternEntity.firstOptionSetting, patternEntity.secondOptionSetting, patternEntity.thirdOptionSetting);
+        }
+    }
+
+    public List <PatternEntity> searchForPatternByName(String name, List<PatternEntity> array){
+        List<PatternEntity> result = new ArrayList<>();
+        for (PatternEntity toShow : array) {
+            if (toShow.name.toLowerCase().contains(name.toLowerCase())) {
+                result.add(toShow);
+            }
+        }
+        return result;
+    }
+
+    public void removePatternById(long id){
+        //AppDatabase db = AppDatabase.getDbInstance(context);
+        db.databaseDao().deletePatternById(String.valueOf(id));
+    }
+
+    public void restorePatternInDatabase(PatternEntity pattern){
+        //AppDatabase db = AppDatabase.getDbInstance(context);
+        db.databaseDao().insertPattern(pattern);
     }
 }

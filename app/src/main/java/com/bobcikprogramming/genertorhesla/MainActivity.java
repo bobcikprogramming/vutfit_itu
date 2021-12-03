@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bobcikprogramming.genertorhesla.view.FragmentManualPattern;
 import com.bobcikprogramming.genertorhesla.view.FragmentRandomPattern;
+import com.bobcikprogramming.genertorhesla.view.Login;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

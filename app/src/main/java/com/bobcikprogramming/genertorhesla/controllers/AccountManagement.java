@@ -11,7 +11,37 @@ import java.security.NoSuchAlgorithmException;
 
 public class AccountManagement {
 
-    public AccountManagement(){}
+    private boolean visibleFirst, visibleSecond, visibleOld;
+
+    public AccountManagement(){
+        this.visibleOld = false;
+        this.visibleFirst = false;
+        this.visibleSecond = false;
+    }
+
+    public boolean isVisibleFirst() {
+        return visibleFirst;
+    }
+
+    public void setVisibleFirst(boolean visibleFirst) {
+        this.visibleFirst = visibleFirst;
+    }
+
+    public boolean isVisibleSecond() {
+        return visibleSecond;
+    }
+
+    public void setVisibleSecond(boolean visibleSecond) {
+        this.visibleSecond = visibleSecond;
+    }
+
+    public boolean isVisibleOld() {
+        return visibleOld;
+    }
+
+    public void setVisibleOld(boolean visibleOld) {
+        this.visibleOld = visibleOld;
+    }
 
     public boolean comparePassword(String first, String second){
         return first.equals(second);
@@ -73,15 +103,11 @@ public class AccountManagement {
 
     public boolean login(String password, Context context){
         AppDatabase db = AppDatabase.getDbInstance(context);
-        String hashPassword = getPasswordHash(password);
-
         AccountEntity account = db.databaseDao().getPassword();
 
+        String hashPassword = getPasswordHash(password);
+
         if(hashPassword != null && account != null && !account.password.isEmpty()){
-            System.out.println(">>>>>>>>>>>>>>>>>>>>sutu");
-            System.out.println("zadal: "+ hashPassword);
-            System.out.println("z db: "+ account.password);
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>");
             if(comparePassword(hashPassword, account.password)){
                 return true;
             }else{
@@ -89,6 +115,36 @@ public class AccountManagement {
             }
         }else {
             return false;
+        }
+    }
+
+    public int changePassword(String old, String first, String second, Context context){
+        if(!old.isEmpty() && !first.isEmpty() && !second.isEmpty()) {
+            if(!login(old, context)){
+                return -4; // Staré heslo není správné
+            }else {
+                if (comparePassword(first, second)) {
+                    String hashPassword = getPasswordHash(first);
+                    if (hashPassword != null) {
+                        AppDatabase db = AppDatabase.getDbInstance(context);
+                        AccountEntity account = db.databaseDao().getPassword();
+
+                        AccountEntity newPassword = new AccountEntity();
+                        newPassword.uidUser = account.uidUser;
+                        newPassword.password = hashPassword;
+
+                        db.databaseDao().updateTransaction(newPassword);
+                        // update
+                        return 0;
+                    } else {
+                        return -3; // chyba při hashování
+                    }
+                } else {
+                    return -2; // Hesla se neshodují
+                }
+            }
+        }else{
+            return -1; // Hesla nejsou vyplněna
         }
     }
 }

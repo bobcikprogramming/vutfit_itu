@@ -24,6 +24,11 @@
     <string name="number">Číslice</string>
     <string name="symbol">Znaky</string>
     <string name="passCopied">Heslo bylo zkopírováno</string>
+
+    <string name="passStars"><font size="17">*****</font></string>
+    <string name="passOld"><font size="17">Původní heslo</font></string>
+    <string name="passNew"><font size="17">Nové heslo</font></string>
+    <string name="passConf"><font size="17">Potvrzení hesla</font></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

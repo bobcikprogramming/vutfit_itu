@@ -57,8 +57,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                 String passwordSecond = etPasswordSecond.getText().toString();
                 Animation animShake = AnimationUtils.loadAnimation(this, R.anim.shake);
 
-                shakeIfEmpty(passwordFirst, passwordSecond, animShake);
-
                 int returnValue = accountManagement.register(passwordFirst, passwordSecond, this);
                 if(returnValue == 0) {
                     Toast.makeText(this, "Účet úspěšně vytvořen", Toast.LENGTH_LONG).show();
