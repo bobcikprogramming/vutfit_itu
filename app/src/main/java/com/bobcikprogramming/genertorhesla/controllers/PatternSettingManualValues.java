@@ -9,7 +9,11 @@ package com.bobcikprogramming.genertorhesla.controllers;
 
 import java.io.Serializable;
 
+/**
+ * Pomocná třída obsahující popis vlastního vzoru.
+ */
 public class PatternSettingManualValues implements Serializable {
+
     private String firstOption, secondOption, thirdOption;
     private String firstOptionSetting, secondOptionSetting, thirdOptionSetting;
 

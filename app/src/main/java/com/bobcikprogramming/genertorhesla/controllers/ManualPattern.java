@@ -7,6 +7,10 @@ package com.bobcikprogramming.genertorhesla.controllers;
  * Organizace:  Vysoké učení technické v Brně
  */
 
+/**
+ * Pomocná třída pro vlastní vzor. Nese informace o nastavení vzoru.
+ */
+
 public class ManualPattern {
 
     private int firstOption, secondOption, thirdOption;

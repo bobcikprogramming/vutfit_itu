@@ -7,7 +7,11 @@ package com.bobcikprogramming.genertorhesla.controllers;
  * Organizace:  Vysoké učení technické v Brně
  */
 
+/**
+ * Pomocná třída pro nápovědu. Nese informaci o nadpisu a obsahu nápovědy.
+ */
 public class HelperHolder {
+
     private String headline, text;
 
     public HelperHolder(){}

@@ -11,6 +11,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ * Tablku vzor dazabáze SQLite spravované pomocí nadstavby ROOM.
+ */
+
 @Entity
 public class PatternEntity {
     @PrimaryKey(autoGenerate = true)

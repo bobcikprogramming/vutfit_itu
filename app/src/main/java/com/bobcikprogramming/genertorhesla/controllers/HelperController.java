@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Pomocná třída pro práci s View pro nápovědu.
+ */
+
 public class HelperController {
 
     private ArrayList<HelperHolder> help;
@@ -34,6 +38,10 @@ public class HelperController {
         this.logged = logged;
     }
 
+    /**
+     * Načtení textového pole s nápovědou pro nepřihlášeného uživatele.
+     * @return pole pomocné třídy HelperHolder obsahující nápovědu
+     */
     public ArrayList<HelperHolder> getUnloggedHelp(){
         List<String> helpHeadlineList = Arrays.asList(context.getResources().getStringArray(R.array.mainHelpHeadline));
         List<String> helpTextList = Arrays.asList(context.getResources().getStringArray(R.array.mainHelpText));
@@ -50,6 +58,10 @@ public class HelperController {
         return help;
     }
 
+    /**
+     * Načtení textového pole s nápovědou pro přihlášeného uživatele.
+     * @return pole pomocné třídy HelperHolder obsahující nápovědu
+     */
     public ArrayList<HelperHolder> getLoggedHelp(){
         List<String> helpHeadlineList = Arrays.asList(context.getResources().getStringArray(R.array.loggedHelpHeadline));
         List<String> helpTextList = Arrays.asList(context.getResources().getStringArray(R.array.loggedHelpText));
@@ -66,6 +78,12 @@ public class HelperController {
         return help;
     }
 
+    /**
+     * Pomocná metoda pro získání nápovědy (informací) pro jednotlívé možnosti u vlastního vzoru.
+     * @param option číslo možnosti
+     * @param position číslo nastavení možnosti
+     * @return pomocná třída HelperHolder nesoucí hodnotu nápovědy (informace)
+     */
     public HelperHolder getInformation(int option, int position){
         HelperHolder information = new HelperHolder();
 

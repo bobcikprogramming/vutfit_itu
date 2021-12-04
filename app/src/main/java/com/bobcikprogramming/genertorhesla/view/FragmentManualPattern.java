@@ -38,6 +38,9 @@ import com.bobcikprogramming.genertorhesla.controllers.GeneratePassword;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSettingManualValues;
 
+/**
+ * Třída reprezuntující View fragmentu okna pro vlastní vzor.
+ */
 public class FragmentManualPattern extends Fragment implements View.OnClickListener{
 
     private TextView tvPassword, tvPattern, tvFirstOption, tvSecondOption, tvThirdOption, tvFirstOptionSetting, tvSecondOptionSetting, tvThirdOptionSetting;
@@ -125,6 +128,9 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
 
     }
 
+    /**
+     * Metoda pro načtení GUI podle id.
+     */
     private void setupUI(){
         tvPassword = view.findViewById(R.id.tvPassword);
         tvPattern = view.findViewById(R.id.tvPattern);
@@ -155,6 +161,9 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
         btnDelete.setOnClickListener(this);
     }
 
+    /**
+     * Spuštění nového okna a obdržení výsledku po jeho uzavření.
+     */
     ActivityResultLauncher<Intent> manualPattern = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -176,6 +185,11 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
                 }
             });
 
+    /**
+     * Zobrazení GUI prvku pro vytvoření vzoru, není-li žádný vytvořen.
+     * @param emptyPatternVisibility GONE/VISIBLE hodnota
+     * @param patternVisibility GONE/VISIBLE hodnota
+     */
     private void showHidePatternEmpty(int emptyPatternVisibility, int patternVisibility){
         layoutEmptyPattern.setVisibility(emptyPatternVisibility);
         layoutPattern.setVisibility(patternVisibility);
@@ -200,6 +214,9 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
         });
     }
 
+    /**
+     * Metoda pro schování klávesnice.
+     */
     private void hideKeyBoard(){
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
         if(getActivity().getCurrentFocus() != null) {
@@ -207,6 +224,10 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
         }
     }
 
+    /**
+     * Metoda pro nastavení popisu vzoru.
+     * @param manualValues pomocná třída obsahující popis vzoru.
+     */
     private void setupUIForPattern(PatternSettingManualValues manualValues){
         tvFirstOption.setText(manualValues.getFirstOption());
         tvSecondOption.setText(manualValues.getSecondOption());
@@ -220,6 +241,10 @@ public class FragmentManualPattern extends Fragment implements View.OnClickListe
         tvPassword.setText(generate.getPassword(etPhrase.getText().toString()));
     }
 
+    /**
+     * Metoda pro nastavení vzoru v případě, že byl vybrán ze seznamu uložených vzorů.
+     * @param bundle hodnoty nastavené při vytváření View
+     */
     private void setPatternFromList(Bundle bundle){
         PatternSetting patternSetting = (bundle != null) ? (PatternSetting) bundle.getSerializable("pattern") : null;
         generate.setPatternSetting(patternSetting);

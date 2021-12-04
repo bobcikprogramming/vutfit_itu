@@ -11,6 +11,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+/**
+ * Tablku účet dazabáze SQLite spravované pomocí nadstavby ROOM.
+ */
+
 @Entity
 public class AccountEntity {
 

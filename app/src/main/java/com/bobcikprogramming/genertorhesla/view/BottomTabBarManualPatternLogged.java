@@ -18,6 +18,9 @@ import com.bobcikprogramming.genertorhesla.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+/**
+ * Pomocná třída vykreslující spodní lištu u View.
+ */
 public class BottomTabBarManualPatternLogged extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
@@ -33,6 +36,9 @@ public class BottomTabBarManualPatternLogged extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.container, startCreate()).commit();
     }
 
+    /**
+     * Načtení GUI komponent dle jejich id.
+     */
     private void setupUI(){
         bottomNavigationView = findViewById(R.id.bottomNavBar);
     }
@@ -64,6 +70,10 @@ public class BottomTabBarManualPatternLogged extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Pomocná metoda pro nastavení okna fragmentu, jenž se má otevřít.
+     * @return nastavený fragment
+     */
     private NewManualPatternLogged startCreate(){
         Bundle extras = getIntent().getExtras();
         Bundle bundleManual = new Bundle();
@@ -76,6 +86,10 @@ public class BottomTabBarManualPatternLogged extends AppCompatActivity {
         return manualPatternLogged;
     }
 
+    /**
+     * Pomocná metoda pro nastavení okna fragmentu, jenž se má otevřít.
+     * @return nastavený fragment
+     */
     private PatternList startLoad(){
         Bundle extras = getIntent().getExtras();
         Bundle bundleManual = new Bundle();

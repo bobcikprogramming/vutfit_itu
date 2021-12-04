@@ -22,6 +22,9 @@ import com.bobcikprogramming.genertorhesla.R;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Adaptér ViewPageru pro zobrazování nápovědy.
+ */
 public class ViewPagerAdapter extends PagerAdapter {
 
     private ArrayList<HelperHolder> help;
@@ -42,6 +45,10 @@ public class ViewPagerAdapter extends PagerAdapter {
         return view == (object);
     }
 
+    /**
+     * Nastavení okna pro vykreslení.
+     * @return okno pro vykreslení
+     */
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, final int position) {

@@ -26,6 +26,9 @@ import android.widget.Toast;
 import com.bobcikprogramming.genertorhesla.R;
 import com.bobcikprogramming.genertorhesla.controllers.AccountManagement;
 
+/**
+ * Třída sloužící jako View pro okno správy účtu.
+ */
 public class AccountSetting extends AppCompatActivity implements View.OnClickListener{
 
     private EditText etPasswordOld, etPasswordNewFirst, etPasswordNewSecond;
@@ -123,6 +126,9 @@ public class AccountSetting extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    /**
+     * Načtení GUI komponent dle jejich id.
+     */
     private void setupUI(){
         etPasswordOld = findViewById(R.id.etPasswordOld);
         etPasswordNewFirst = findViewById(R.id.etPasswordNewFirst);
@@ -146,6 +152,9 @@ public class AccountSetting extends AppCompatActivity implements View.OnClickLis
         layoutBackground.setOnClickListener(this);
     }
 
+    /**
+     * Metoda pro schování klávesnice.
+     */
     private void hideKeyBoard(){
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Activity.INPUT_METHOD_SERVICE);
         if(this.getCurrentFocus() != null) {
@@ -153,6 +162,13 @@ public class AccountSetting extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    /**
+     * Metoda pro spuštění animace a změnu barvy textu prázdných políček
+     * @param passwordOld textový řetězec starého hesla
+     * @param passwordNewFirst textový řetězec nového hesla
+     * @param passwordNewSecond textový řetězec potvrzení nového hesla
+     * @param animShake animace pro zatřesení
+     */
     private void shakeIfEmpty(String passwordOld, String passwordNewFirst, String passwordNewSecond, Animation animShake){
         if(passwordOld.isEmpty()){
             shake(layoutOldPassword, animShake);
@@ -173,6 +189,11 @@ public class AccountSetting extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    /**
+     * Pomocná metoda pro zatřesení s GUI prvkem uvedeným v parametru metody.
+     * @param toShake GUI prvek k zatřesení
+     * @param animShake animace zatřesení
+     */
     private void shake(LinearLayout toShake, Animation animShake){
         toShake.startAnimation(animShake);
         toShake.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_edit_text_error));

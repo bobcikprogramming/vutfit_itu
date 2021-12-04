@@ -43,6 +43,10 @@ public class GeneratePassword{
         patternSetting = pattern.generatePattern(letter, capLetter, number, symbol);
     }
 
+    /**
+     * Metoda na základě vytvořeného vzoru vrátí ukázku vzoru na slově Motocykl.
+     * @return textový řetězec s ukázkou vzoru, v případě že neexistuje vzor vrací 'Vzor nenastaven'
+     */
     public String getPatternExample(){
         String pattern;
         if(patternSetting == null){
@@ -55,6 +59,11 @@ public class GeneratePassword{
         return pattern;
     }
 
+    /**
+     * Metoda na základě vytvořeného vzoru vrátí heslo vytvořeného z textového řetězce phrase.
+     * @param phrase textový řetězec obsahující slovo, frázi nebo větu pro vygenerování hesla
+     * @return vygenerované heslo, nebo prázdný řětezec, je-li phrase prázdný řetězec nebo neobsahuje-li žádný podporovaný znak
+     */
     public String getPassword(String phrase){
         String password;
         if(patternSetting == null){
@@ -72,22 +81,25 @@ public class GeneratePassword{
         return password;
     }
 
-    public String showPattern(int firstOption, int secondOption, int thirdOption, int firstOptionSetting, int secondOptionSetting, int thirdOptionSetting){
+    /**
+     * Metoda na základě vytvořeného vzoru vrátí ukázku vzoru na slově Motocykl (u vlastního vzoru).
+     * @return textový řetězec s ukázkou vzoru, v případě že neexistuje vzor vrací 'Vzor nenastaven'
+     */
+    public String showManualPattern(int firstOption, int secondOption, int thirdOption, int firstOptionSetting, int secondOptionSetting, int thirdOptionSetting){
         String pattern;
         if(firstOptionSetting != -1 && secondOptionSetting != -1 && thirdOptionSetting != -1 ){
             patternSetting = getPatternSetting(firstOption, secondOption, thirdOption, firstOptionSetting, secondOptionSetting, thirdOptionSetting);
-            if(patternSetting == null){
-                pattern = context.getString(R.string.emptyPattern);
-            }else {
-                PasswordGenerator generatorPattern = new PasswordGenerator(context.getString(R.string.examplePattern), patternSetting, context);
-                pattern = generatorPattern.genereta();
-            }
+            pattern = getPatternExample();
         }else{
             pattern = context.getString(R.string.emptyPattern);
         }
         return pattern;
     }
 
+    /**
+     * Metoda pro získání vzoru dle zadaných hodnot obdržených na vstupu.
+     * @return vytvořený vzor
+     */
     private PatternSetting getPatternSetting(int firstOption, int secondOption, int thirdOption, int firstOptionSetting, int secondOptionSetting, int thirdOptionSetting){
         if(firstOptionSetting != -1 && secondOptionSetting != -1 && thirdOptionSetting != -1 ){
             return pattern.manualSetting(firstOption, firstOptionSetting, secondOption, secondOptionSetting, thirdOption, thirdOptionSetting);
@@ -96,6 +108,10 @@ public class GeneratePassword{
         }
     }
 
+    /**
+     * Metoda pro získání popisu u vlastního vzoru.
+     * @return pomocnou třídu obsahující popis vytvořeného vlastního vzoru
+     */
     public PatternSettingManualValues getManualSettingValues(){
         PatternSettingManualValues manualSettingValues = new PatternSettingManualValues();
         if(patternSetting.getFirstOption() == 0){
@@ -134,6 +150,12 @@ public class GeneratePassword{
         return manualSettingValues;
     }
 
+    /**
+     * Pomocná metoda pro získání popisu vlastního vzoru.
+     * @param option číselná hodnota reprezentující zvolenou možnost
+     * @param setting číselná hodnota reprezentující zvolené nastavení možnosti
+     * @return textový řetězec odpovídajícího popisu dle zvolených číselných hodnot
+     */
     public String getManualOptionSetting(int option, int setting){
         if(option == 0){
             if(setting == 0){
@@ -176,6 +198,10 @@ public class GeneratePassword{
         this.patternSetting = patternSetting;
     }
 
+    /**
+     * Metoda sloužící k uložení vzoru do databáze
+     * @param name název vzoru
+     */
     public void savePatternToDatabase(String name){
         if(name.isEmpty()){
             name = "Nepojmenováno";
@@ -194,10 +220,19 @@ public class GeneratePassword{
         db.databaseDao().insertPattern(pattern);
     }
 
+    /**
+     * Metoda pro získání vzorů z databáze.
+     * @return list vzorů
+     */
     public List<PatternEntity> loadPatternListFromDatabase(){
         return db.databaseDao().getPattern();
     }
 
+    /**
+     * Metoda pro získání vzoru z databáze podle id.
+     * @param id id vzoru
+     * @return získaný vzor nebo NULL, neobsahuje-li databáze záznam s hledaným id
+     */
     public PatternSetting getPatternSettingFromDatabaseById(String id){
         PatternEntity patternEntity = db.databaseDao().getPatternById(id);
         if(patternEntity == null){
@@ -207,6 +242,12 @@ public class GeneratePassword{
         }
     }
 
+    /**
+     * Metoda vrací list obsahující vzory, jejichž jméno obsahuje substring name
+     * @param name hledaný výraz
+     * @param array prohledávaný list
+     * @return list obsahující název s hledanýám výzarem
+     */
     public List <PatternEntity> searchForPatternByName(String name, List<PatternEntity> array){
         List<PatternEntity> result = new ArrayList<>();
         for (PatternEntity toShow : array) {
@@ -217,10 +258,18 @@ public class GeneratePassword{
         return result;
     }
 
+    /**
+     * Metoda pro smazání vzoru z databáze podle id.
+     * @param id id vzoru
+     */
     public void removePatternById(long id){
         db.databaseDao().deletePatternById(String.valueOf(id));
     }
 
+    /**
+     * Metoda pro navrácení vzoru do databáze.
+     * @param pattern vzor
+     */
     public void restorePatternInDatabase(PatternEntity pattern){
         db.databaseDao().insertPattern(pattern);
     }

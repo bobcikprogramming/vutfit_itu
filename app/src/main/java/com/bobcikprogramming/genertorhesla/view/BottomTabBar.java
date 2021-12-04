@@ -19,6 +19,9 @@ import com.bobcikprogramming.genertorhesla.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+/**
+ * Pomocná třída vykreslující spodní lištu u View.
+ */
 public class BottomTabBar extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
@@ -47,10 +50,12 @@ public class BottomTabBar extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
         openDialogWindow();
     }
 
+    /**
+     * Načtení GUI komponent dle jejich id.
+     */
     private void setupUI(){
         bottomNavigationView = findViewById(R.id.bottomNavBar);
     }
@@ -73,6 +78,9 @@ public class BottomTabBar extends AppCompatActivity {
         });
     }
 
+    /**
+     * Vytvoření dialogového hesla pro potvrzení odhlášení.
+     */
     private void openDialogWindow(){
         AlertDialog.Builder alert = new AlertDialog.Builder(this, R.style.MyDialog);
         alert.setTitle("Odhlásit se");

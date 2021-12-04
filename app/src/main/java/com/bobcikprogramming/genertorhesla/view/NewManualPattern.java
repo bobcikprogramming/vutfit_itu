@@ -291,7 +291,7 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
             ((RadioButton) rGroupSecond.getChildAt(manual.getSecondOptionSetting())).setChecked(true);
             ((RadioButton) rGroupThird.getChildAt(manual.getThirdOptionSetting())).setChecked(true);
 
-            tvPattern.setText(generate.showPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
+            tvPattern.setText(generate.showManualPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
         }else{
             setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnLetterFirst, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
             setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnLetterSecond, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
@@ -325,7 +325,7 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
                 View rBtnFirst = findViewById(rBtnFirstId);
                 manual.setFirstOptionSetting(rGroupFirst.indexOfChild(rBtnFirst));
 
-                tvPattern.setText(generate.showPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
+                tvPattern.setText(generate.showManualPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
             }
         });
 
@@ -336,7 +336,7 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
                 View rBtnSecond = findViewById(rBtnSecondId);
                 manual.setSecondOptionSetting(rGroupSecond.indexOfChild(rBtnSecond));
 
-                tvPattern.setText(generate.showPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
+                tvPattern.setText(generate.showManualPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
             }
         });
 
@@ -347,7 +347,7 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
                 View rBtnThird = findViewById(rBtnThirdId);
                 manual.setThirdOptionSetting(rGroupThird.indexOfChild(rBtnThird));
 
-                tvPattern.setText(generate.showPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
+                tvPattern.setText(generate.showManualPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
             }
         });
     }

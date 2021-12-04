@@ -12,6 +12,9 @@ import com.bobcikprogramming.genertorhesla.model.PatternEntity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Pomocná třída pro seznam vzorů.
+ */
 public class PatternListController {
 
     private List<PatternEntity> dataFromDatabase;
@@ -49,6 +52,10 @@ public class PatternListController {
         this.newManual = newManual;
     }
 
+    /**
+     * Metoda pro vytvoření kopie listu, obsahujícího vzory z databáze, do listu, který se bude zobrazovat
+     * a nad kterým se bude provádět filtrování.
+     */
     public void copyDataFromDbListToPattrnList(){
         this.patternListToShow.clear();
         this.patternListToShow.addAll(dataFromDatabase);
@@ -58,6 +65,13 @@ public class PatternListController {
         return restoreDataOfPattern;
     }
 
+    /**
+     * Metoda vykonávající akci při swipnutí položky recycler view.
+     * Dojde k smazání dané položky z listu a z databáze.
+     * Smazaná položka je uložena do proměnné restoreDataOfPattern pro případ navrácení změny.
+     * @param position pozice položky v listu
+     * @param generate reference na třídu GeneratePassword
+     */
     public void removeOnSwipe(int position, GeneratePassword generate){
         this.restoreDataOfPattern = patternListToShow.remove(position);
         this.positionInDataFromDb = dataFromDatabase.indexOf(restoreDataOfPattern);
@@ -65,6 +79,11 @@ public class PatternListController {
         generate.removePatternById(restoreDataOfPattern.uidPattern);
     }
 
+    /**
+     * Metoda pro obnovení smazané položky.
+     * Vzor je navrácen do listů i do databáze.
+     * @param generate reference na třídu GeneratePassword
+     */
     public void restoreData(GeneratePassword generate){
         patternListToShow.add(restoreDataOfPattern);
         dataFromDatabase.add(positionInDataFromDb, restoreDataOfPattern);

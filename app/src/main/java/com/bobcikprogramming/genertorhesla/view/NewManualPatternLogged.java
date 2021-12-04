@@ -321,7 +321,7 @@ public class NewManualPatternLogged extends Fragment implements View.OnClickList
             ((RadioButton) rGroupSecond.getChildAt(manual.getSecondOptionSetting())).setChecked(true);
             ((RadioButton) rGroupThird.getChildAt(manual.getThirdOptionSetting())).setChecked(true);
 
-            tvPattern.setText(generate.showPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
+            tvPattern.setText(generate.showManualPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
         }else{
             setupOption(btnLetterFirst, btnNumberFirst, btnSymbolFirst, btnLetterFirst, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rGroupFirst);
             setupOption(btnLetterSecond, btnNumberSecond, btnSymbolSecond, btnLetterSecond, R.string.letterFirst, R.string.letterSecond, R.string.letterThird, R.string.letterFourth, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rGroupSecond);
@@ -355,7 +355,7 @@ public class NewManualPatternLogged extends Fragment implements View.OnClickList
                 View rBtnFirst = view.findViewById(rBtnFirstId);
                 manual.setFirstOptionSetting(rGroupFirst.indexOfChild(rBtnFirst));
 
-                tvPattern.setText(generate.showPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
+                tvPattern.setText(generate.showManualPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
             }
         });
 
@@ -366,7 +366,7 @@ public class NewManualPatternLogged extends Fragment implements View.OnClickList
                 View rBtnSecond = view.findViewById(rBtnSecondId);
                 manual.setSecondOptionSetting(rGroupSecond.indexOfChild(rBtnSecond));
 
-                tvPattern.setText(generate.showPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
+                tvPattern.setText(generate.showManualPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
             }
         });
 
@@ -377,7 +377,7 @@ public class NewManualPatternLogged extends Fragment implements View.OnClickList
                 View rBtnThird = view.findViewById(rBtnThirdId);
                 manual.setThirdOptionSetting(rGroupThird.indexOfChild(rBtnThird));
 
-                tvPattern.setText(generate.showPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
+                tvPattern.setText(generate.showManualPattern(manual.getFirstOption(), manual.getSecondOption(), manual.getThirdOption(), manual.getFirstOptionSetting(), manual.getSecondOptionSetting(), manual.getThirdOptionSetting()));
             }
         });
     }

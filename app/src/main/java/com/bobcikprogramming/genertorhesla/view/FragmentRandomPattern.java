@@ -40,6 +40,9 @@ import com.bobcikprogramming.genertorhesla.controllers.PatternGenerator;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
+/**
+ * Třída reprezuntující View fragmentu okna pro náhodný vzor.
+ */
 public class FragmentRandomPattern extends Fragment implements View.OnClickListener {
 
     private TextView tvPassword, tvPattern;
@@ -140,6 +143,9 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
         etPhrase.setText("");
     }
 
+    /**
+     * Metoda pro načtení GUI
+     */
     private void setupUI(){
         tvPassword = view.findViewById(R.id.tvPassword);
         tvPattern = view.findViewById(R.id.tvPattern);
