@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import com.bobcikprogramming.genertorhesla.R;
 import com.bobcikprogramming.genertorhesla.controllers.HelperController;
 import com.bobcikprogramming.genertorhesla.controllers.ViewPagerAdapter;
+import com.google.android.material.tabs.TabLayout;
 
 public class HelperViewer extends AppCompatActivity implements View.OnClickListener{
 
@@ -38,6 +39,7 @@ public class HelperViewer extends AppCompatActivity implements View.OnClickListe
         help.setLogged(bundle.getBoolean("logged"));
 
         setupUI();
+        setTablayoutDots();
         setViewPagerAdapter();
     }
 
@@ -64,5 +66,11 @@ public class HelperViewer extends AppCompatActivity implements View.OnClickListe
             viewPagerAdapter = new ViewPagerAdapter(HelperViewer.this, help.getUnloggedHelp());
             viewPagerHelp.setAdapter(viewPagerAdapter);
         }
+    }
+
+    // https://stackoverflow.com/a/40047719
+    private void setTablayoutDots(){
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabDots);
+        tabLayout.setupWithViewPager(viewPagerHelp, true);
     }
 }

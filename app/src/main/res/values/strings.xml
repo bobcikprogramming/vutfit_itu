@@ -171,4 +171,11 @@
         <item>Symbol bude odpovídat písmenu v morseovce (odpovídajícího slova, fráze nebo věty).</item>
     </string-array>
 
+    <integer-array name="img_id_arr">
+        <item>@drawable/ic_new</item>
+        <item>@drawable/ic_info</item>
+        <item>@drawable/ic_new</item>
+        <item>@drawable/ic_new</item>
+    </integer-array>
+
 </resources>
