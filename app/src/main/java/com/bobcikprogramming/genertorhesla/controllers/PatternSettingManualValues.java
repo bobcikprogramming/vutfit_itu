@@ -1,5 +1,12 @@
 package com.bobcikprogramming.genertorhesla.controllers;
 
+/**
+ * Soubor:      PatternSettingManualValues
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 import java.io.Serializable;
 
 public class PatternSettingManualValues implements Serializable {

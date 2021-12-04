@@ -1,5 +1,12 @@
 package com.bobcikprogramming.genertorhesla.view;
 
+/**
+ * Soubor:      HelperViewer
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -9,12 +16,7 @@ import android.widget.ImageView;
 
 import com.bobcikprogramming.genertorhesla.R;
 import com.bobcikprogramming.genertorhesla.controllers.HelperController;
-import com.bobcikprogramming.genertorhesla.controllers.HelperHolder;
 import com.bobcikprogramming.genertorhesla.controllers.ViewPagerAdapter;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class HelperViewer extends AppCompatActivity implements View.OnClickListener{
 

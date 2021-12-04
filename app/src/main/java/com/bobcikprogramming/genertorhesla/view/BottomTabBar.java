@@ -1,18 +1,21 @@
 package com.bobcikprogramming.genertorhesla.view;
 
+/**
+ * Soubor:      BottomTabBar
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 
 import com.bobcikprogramming.genertorhesla.R;
-import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
-import com.bobcikprogramming.genertorhesla.view.GeneratorLogged;
-import com.bobcikprogramming.genertorhesla.view.PatternList;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 

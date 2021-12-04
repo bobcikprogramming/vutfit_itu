@@ -1,5 +1,12 @@
 package com.bobcikprogramming.genertorhesla.controllers;
 
+/**
+ * Soubor:      PatternListController
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 import com.bobcikprogramming.genertorhesla.model.PatternEntity;
 
 import java.util.ArrayList;

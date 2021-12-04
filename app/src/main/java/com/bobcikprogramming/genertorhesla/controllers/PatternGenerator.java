@@ -1,5 +1,12 @@
 package com.bobcikprogramming.genertorhesla.controllers;
 
+/**
+ * Soubor:      PatternGenerator
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -79,7 +86,7 @@ public class PatternGenerator {
     }
 
     /***
-     * Metoda slouží pro manuální nastavní vzoru.
+     * Metoda slouží pro manuální nastavení vzoru.
      * Na vstupu příjmá informaci udávající, co se bude vyskytovat na dané pozici v trojici (zdali písmeno, číslo nebo znak) a jakou hodnotu budou mít odpovídající symboly.
      * @param firstOption jaký symbol bude na první pozici (písmeno/číslo/znak).
      * @param firstOptionSetting jakou hodnotu bude mít symbol na první pozici (viz. malá písmena, číslo dle pořadí v abecedě, atd.).

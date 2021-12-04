@@ -1,15 +1,22 @@
 package com.bobcikprogramming.genertorhesla.controllers;
 
+/**
+ * Soubor:      GeneratePassword
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 import android.content.Context;
 
 import com.bobcikprogramming.genertorhesla.R;
-import com.bobcikprogramming.genertorhesla.model.AccountEntity;
 import com.bobcikprogramming.genertorhesla.model.AppDatabase;
 import com.bobcikprogramming.genertorhesla.model.PatternEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/** Třída oblusující generování hesla. Příjmá vstupy obdržené od View, zpracováváje a volá požadované funkce společného backendu.*/
 public class GeneratePassword{
 
     private boolean letter, capLetter, number, symbol;
@@ -174,7 +181,6 @@ public class GeneratePassword{
             name = "Nepojmenováno";
         }
 
-        //AppDatabase db = AppDatabase.getDbInstance(context);
         PatternEntity pattern = new PatternEntity();
 
         pattern.name = name;
@@ -189,12 +195,10 @@ public class GeneratePassword{
     }
 
     public List<PatternEntity> loadPatternListFromDatabase(){
-        //AppDatabase db = AppDatabase.getDbInstance(context);
         return db.databaseDao().getPattern();
     }
 
     public PatternSetting getPatternSettingFromDatabaseById(String id){
-        //AppDatabase db = AppDatabase.getDbInstance(context);
         PatternEntity patternEntity = db.databaseDao().getPatternById(id);
         if(patternEntity == null){
             return null;
@@ -214,12 +218,10 @@ public class GeneratePassword{
     }
 
     public void removePatternById(long id){
-        //AppDatabase db = AppDatabase.getDbInstance(context);
         db.databaseDao().deletePatternById(String.valueOf(id));
     }
 
     public void restorePatternInDatabase(PatternEntity pattern){
-        //AppDatabase db = AppDatabase.getDbInstance(context);
         db.databaseDao().insertPattern(pattern);
     }
 }

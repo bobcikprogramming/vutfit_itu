@@ -1,5 +1,12 @@
 package com.bobcikprogramming.genertorhesla.controllers;
 
+/**
+ * Soubor:      HelperController
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 import android.content.Context;
 
 import com.bobcikprogramming.genertorhesla.R;

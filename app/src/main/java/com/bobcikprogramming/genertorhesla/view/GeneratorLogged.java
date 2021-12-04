@@ -1,26 +1,26 @@
 package com.bobcikprogramming.genertorhesla.view;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
+/**
+ * Soubor:      GeneratorLogged
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bobcikprogramming.genertorhesla.R;
-import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
 
 public class GeneratorLogged extends Fragment implements View.OnClickListener{
 

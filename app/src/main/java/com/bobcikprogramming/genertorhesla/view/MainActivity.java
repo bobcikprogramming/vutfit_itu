@@ -1,5 +1,12 @@
 package com.bobcikprogramming.genertorhesla.view;
 
+/**
+ * Soubor:      MainActivity
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 

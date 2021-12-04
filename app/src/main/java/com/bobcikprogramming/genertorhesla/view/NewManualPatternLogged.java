@@ -1,5 +1,12 @@
 package com.bobcikprogramming.genertorhesla.view;
 
+/**
+ * Soubor:      NewManualPatternLogged
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 import static android.app.Activity.RESULT_OK;
 
 import android.app.AlertDialog;

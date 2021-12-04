@@ -1,5 +1,12 @@
 package com.bobcikprogramming.genertorhesla.view;
 
+/**
+ * Soubor:      PatternList
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 import static android.app.Activity.RESULT_OK;
 
 import android.content.Intent;
@@ -19,23 +26,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bobcikprogramming.genertorhesla.R;
 import com.bobcikprogramming.genertorhesla.controllers.GeneratePassword;
 import com.bobcikprogramming.genertorhesla.controllers.PatternListController;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
-import com.bobcikprogramming.genertorhesla.model.PatternEntity;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class PatternList extends Fragment implements View.OnClickListener{
 

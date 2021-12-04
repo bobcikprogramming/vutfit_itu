@@ -1,5 +1,12 @@
 package com.bobcikprogramming.genertorhesla.controllers;
 
+/**
+ * Soubor:      ManualPattern
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 public class ManualPattern {
 
     private int firstOption, secondOption, thirdOption;

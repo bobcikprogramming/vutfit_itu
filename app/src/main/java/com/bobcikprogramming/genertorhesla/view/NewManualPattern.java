@@ -1,10 +1,16 @@
 package com.bobcikprogramming.genertorhesla.view;
 
+/**
+ * Soubor:      NewManualPattern
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
@@ -15,15 +21,12 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bobcikprogramming.genertorhesla.R;
 import com.bobcikprogramming.genertorhesla.controllers.GeneratePassword;
 import com.bobcikprogramming.genertorhesla.controllers.HelperController;
 import com.bobcikprogramming.genertorhesla.controllers.HelperHolder;
 import com.bobcikprogramming.genertorhesla.controllers.ManualPattern;
-import com.bobcikprogramming.genertorhesla.controllers.PasswordGenerator;
-import com.bobcikprogramming.genertorhesla.controllers.PatternGenerator;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
 
 

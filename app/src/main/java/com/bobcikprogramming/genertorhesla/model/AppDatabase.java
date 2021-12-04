@@ -1,5 +1,12 @@
 package com.bobcikprogramming.genertorhesla.model;
 
+/**
+ * Soubor:      AppDatabase
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 import android.content.Context;
 
 import androidx.room.Database;

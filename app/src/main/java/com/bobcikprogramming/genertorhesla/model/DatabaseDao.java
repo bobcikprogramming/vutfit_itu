@@ -1,5 +1,12 @@
 package com.bobcikprogramming.genertorhesla.model;
 
+/**
+ * Soubor:      DatabaseDao
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;

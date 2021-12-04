@@ -1,7 +1,13 @@
 package com.bobcikprogramming.genertorhesla.controllers;
 
+/**
+ * Soubor:      AccountManagement
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 import android.content.Context;
-import android.widget.Toast;
 
 import com.bobcikprogramming.genertorhesla.model.AccountEntity;
 import com.bobcikprogramming.genertorhesla.model.AppDatabase;
@@ -9,6 +15,9 @@ import com.bobcikprogramming.genertorhesla.model.AppDatabase;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * Pomocná třída pro práci s View pro přihlášení, registraci a správu účtu.
+ */
 public class AccountManagement {
 
     private boolean visibleFirst, visibleSecond, visibleOld;
@@ -47,15 +56,26 @@ public class AccountManagement {
         return first.equals(second);
     }
 
+    /**
+     * Metoda sloužící pro vytvoření hash hesla obdrženého v parametru.
+     * @param password textový řetězec obsahující heslo k hashi
+     * @return textový řětezec hashe nebo NULL v případě chyby
+     *
+     * Metoda byla inspirována z:
+     * Zdroj:   Stack Overflow
+     * Dotaz:   https://stackoverflow.com/q/3934331
+     * Odpověď: https://stackoverflow.com/a/3934409
+     * Autor:   Antonio
+     * Autor:   https://stackoverflow.com/users/316477/antonio
+     * Datum:   14. října 2010
+     */
     public String getPasswordHash(String password){
         String hashPassword;
         try {
-            // Create MD5 Hash
             MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
             digest.update(password.getBytes());
             byte messageDigest[] = digest.digest();
 
-            // Create Hex String
             StringBuffer hexString = new StringBuffer();
             for (int i = 0; i < messageDigest.length; i++)
                 hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
@@ -67,6 +87,12 @@ public class AccountManagement {
         return hashPassword;
     }
 
+    /**
+     * Metoda sloužící k uložení hesla do databáze, není-li již účet vytvořen.
+     * @param password Zahashované heslo
+     * @param context View context
+     * @return pravdivostní hodnotu true v případě vytvoření, false v případě existence účtu
+     */
     public boolean saveToDb(String password, Context context){
         AppDatabase db = AppDatabase.getDbInstance(context);
         if(db.databaseDao().getPassword() == null){
@@ -80,6 +106,13 @@ public class AccountManagement {
         }
     }
 
+    /**
+     * Metoda pro zpracování registrace
+     * @param first textový řetězec hesla
+     * @param second textový řetězec potvrzení hesla
+     * @param context View context
+     * @return číselnou hodnotu 0 v případě úspěchu nebo odpovídající chyby
+     */
     public int register(String first, String second, Context context){
         if(!first.isEmpty() && !second.isEmpty()) {
             if (comparePassword(first, second)) {
@@ -97,10 +130,16 @@ public class AccountManagement {
                 return -2; // Hesla se neshodují
             }
         }else{
-            return -1; // Vyplněna
+            return -1; // nevyplněna pole
         }
     }
 
+    /**
+     * Metoda pro zpracování přihlášení.
+     * @param password textový řetězec hesla
+     * @param context View context
+     * @return pravdivostní hodnotu, zda-li přihlášení proběhlo úspěšně (true), nebo neúspěšně (false)
+     */
     public boolean login(String password, Context context){
         AppDatabase db = AppDatabase.getDbInstance(context);
         AccountEntity account = db.databaseDao().getPassword();
@@ -118,6 +157,14 @@ public class AccountManagement {
         }
     }
 
+    /**
+     * Metoda pro správu účtu.
+     * @param old textový řetězec původního hesla
+     * @param first textový řetězec nového hesla
+     * @param second textový řetězec potvrzení nového hesla
+     * @param context View context
+     * @return číselnou hodnotu 0 v případě úspěchu nebo odpovídající chyby
+     */
     public int changePassword(String old, String first, String second, Context context){
         if(!old.isEmpty() && !first.isEmpty() && !second.isEmpty()) {
             if(!login(old, context)){

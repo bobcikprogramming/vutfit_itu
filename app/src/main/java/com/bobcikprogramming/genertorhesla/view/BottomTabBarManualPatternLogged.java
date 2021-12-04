@@ -1,5 +1,12 @@
 package com.bobcikprogramming.genertorhesla.view;
 
+/**
+ * Soubor:      BottomTabBarManualPatternLogged
+ * Autor:       Pavel Bobčík (xbobci03)
+ * Předmět:     ITU - Tvorba uživatelských rozhraní
+ * Organizace:  Vysoké učení technické v Brně
+ */
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,8 +15,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.bobcikprogramming.genertorhesla.R;
-import com.bobcikprogramming.genertorhesla.view.NewManualPatternLogged;
-import com.bobcikprogramming.genertorhesla.view.PatternList;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
