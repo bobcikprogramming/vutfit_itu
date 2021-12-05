@@ -1,3 +1,10 @@
+<!--
+    * Soubor:      themes.xml
+    * Autor:       Pavel Bobčík (xbobci03)
+    * Předmět:     ITU - Tvorba uživatelských rozhraní
+    * Organizace:  Vysoké učení technické v Brně
+-->
+
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.GenerátorHesla" parent="Theme.MaterialComponents.DayNight.NoActionBar">

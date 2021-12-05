@@ -1,3 +1,10 @@
+<!--
+    * Soubor:      strings.xml
+    * Autor:       Pavel Bobčík (xbobci03)
+    * Předmět:     ITU - Tvorba uživatelských rozhraní
+    * Organizace:  Vysoké učení technické v Brně
+-->
+
 <resources>
     <string name="app_name">Generátor hesla</string>
     <string name="tabRandom">Náhodný vzor</string>

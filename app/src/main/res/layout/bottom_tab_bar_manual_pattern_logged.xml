@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    * Soubor:      activity_tab_bar_manual_pattern_logged.xml
+    * Autor:       Pavel Bobčík (xbobci03)
+    * Předmět:     ITU - Tvorba uživatelských rozhraní
+    * Organizace:  Vysoké učení technické v Brně
+-->
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

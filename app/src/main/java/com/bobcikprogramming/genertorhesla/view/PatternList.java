@@ -114,6 +114,11 @@ public class PatternList extends Fragment implements View.OnClickListener{
                 Intent intentAcc = new Intent(getContext(), AccountSetting.class);
                 startActivity(intentAcc);
                 break;
+            case R.id.btnHelp:
+                Intent intentHelp = new Intent(getContext(), HelperViewer.class);
+                intentHelp.putExtra("logged", true);
+                startActivity(intentHelp);
+                break;
         }
     }
 
