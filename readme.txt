@@ -15,8 +15,7 @@ Zdrojové soubory se nachází ve složkách:
 
 Instalace aplikace:
  - Pomocí balíčku APK
-    - balíček .apk nalezneme ve složce app\build\outputs\apk\debug (app-debug.apk)
-    - otevřeme balíček .apk na mobilním telefonu s operačním systémem Android (6.0 a vyšší)
+    - otevřeme balíček app.apk na mobilním telefonu s operačním systémem Android (6.0 a vyšší)
     - v případě vyžádání povolíme 'instalovat aplikace z neznámých vzorů'
         - tento krok je nutný z důvodu, že vytvořený balíček .apk není podepsán
     - nainstalujeme aplikaci

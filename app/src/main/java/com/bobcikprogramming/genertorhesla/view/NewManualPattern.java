@@ -66,9 +66,10 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.btnCancel:
+                Bundle extras = getIntent().getExtras();
                 Intent intentCancel = new Intent();
-                intentCancel.putExtra("pattern", generate.getPatternSetting());
-                setResult(RESULT_OK, intentCancel );
+                intentCancel.putExtra("pattern", extras.getSerializable("pattern"));
+                setResult(RESULT_OK, intentCancel);
                 finish();
                 break;
             case R.id.btnFinish:
@@ -162,8 +163,9 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onBackPressed() {
+        Bundle extras = getIntent().getExtras();
         Intent intent = new Intent();
-        intent.putExtra("pattern", generate.getPatternSetting());
+        intent.putExtra("pattern", extras.getSerializable("pattern"));
         setResult(RESULT_OK, intent );
         finish();
     }

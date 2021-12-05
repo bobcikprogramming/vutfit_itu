@@ -103,8 +103,9 @@ public class NewManualPatternLogged extends Fragment implements View.OnClickList
                 }
                 break;
             case R.id.btnCancel:
+                Bundle bundle = this.getArguments();
                 Intent intentCancel = new Intent();
-                intentCancel.putExtra("pattern", generate.getPatternSetting());
+                intentCancel.putExtra("pattern", bundle.getSerializable("pattern"));
                 getActivity().setResult(RESULT_OK, intentCancel);
                 getActivity().finish();
                 break;
