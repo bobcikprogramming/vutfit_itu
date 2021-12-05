@@ -22,6 +22,9 @@ import android.widget.TextView;
 
 import com.bobcikprogramming.genertorhesla.R;
 
+/**
+ * Hlavní view přihlášeného uživatele.
+ */
 public class GeneratorLogged extends Fragment implements View.OnClickListener{
 
     private LinearLayout btnRandomPattern, btnOwnPattern;
@@ -56,6 +59,9 @@ public class GeneratorLogged extends Fragment implements View.OnClickListener{
         return view;
     }
 
+    /**
+     * Metoda pro načtení GUI prvký na základe id.
+     */
     private void setupUI(){
         btnRandomPattern = view.findViewById(R.id.tabButtonRandomPattern);
         btnOwnPattern = view.findViewById(R.id.tabButtonOwnPattern);
@@ -97,11 +103,17 @@ public class GeneratorLogged extends Fragment implements View.OnClickListener{
         }
     }
 
+    /**
+     * Metoda pro obnovení barev tlačítek spodní lišty.
+     */
     private void resetColor(){
         tvRandomPattern.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
         tvOwnPattern.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
     }
 
+    /**
+     * Metoda pro otevření fragmentu okna náhodného vzoru.
+     */
     private void openRandom(){
         FragmentRandomPattern randomPatternLogged = new FragmentRandomPattern();
         Bundle bundleRandom = new Bundle();
@@ -113,6 +125,9 @@ public class GeneratorLogged extends Fragment implements View.OnClickListener{
         tvRandomPattern.setTextColor(ContextCompat.getColor(getContext(), R.color.navBarSelect));
     }
 
+    /**
+     * Metoda pro otevření fragmentu okna vlastního vzoru.
+     */
     private void openManual(){
         FragmentManualPattern randomManualLogged = new FragmentManualPattern();
         Bundle bundleManual = new Bundle();
@@ -124,6 +139,10 @@ public class GeneratorLogged extends Fragment implements View.OnClickListener{
         tvOwnPattern.setTextColor(ContextCompat.getColor(getContext(), R.color.navBarSelect));
     }
 
+    /**
+     * Metoda pro otevření fragmentu okna vlastního vzoru inicilizovananého ze seznamu uložených vzorů.
+     * @param bundle data poskytnuté při vytváření view
+     */
     private void openManualFromList(Bundle bundle){
         FragmentManualPattern randomManualLogged = new FragmentManualPattern();
         Bundle bundleManual = new Bundle();

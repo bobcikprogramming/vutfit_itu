@@ -153,17 +153,7 @@ public class AccountSetting extends AppCompatActivity implements View.OnClickLis
     }
 
     /**
-     * Metoda pro schování klávesnice.
-     */
-    private void hideKeyBoard(){
-        InputMethodManager imm = (InputMethodManager) this.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        if(this.getCurrentFocus() != null) {
-            imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
-        }
-    }
-
-    /**
-     * Metoda pro spuštění animace a změnu barvy textu prázdných políček
+     * Metoda pro spuštění animace a změnu barvy prázdných políček.
      * @param passwordOld textový řetězec starého hesla
      * @param passwordNewFirst textový řetězec nového hesla
      * @param passwordNewSecond textový řetězec potvrzení nového hesla
@@ -197,5 +187,15 @@ public class AccountSetting extends AppCompatActivity implements View.OnClickLis
     private void shake(LinearLayout toShake, Animation animShake){
         toShake.startAnimation(animShake);
         toShake.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_edit_text_error));
+    }
+
+    /**
+     * Metoda pro schování klávesnice.
+     */
+    private void hideKeyBoard(){
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        if(this.getCurrentFocus() != null) {
+            imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
+        }
     }
 }

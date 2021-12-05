@@ -27,6 +27,9 @@ import android.widget.Toast;
 import com.bobcikprogramming.genertorhesla.R;
 import com.bobcikprogramming.genertorhesla.controllers.AccountManagement;
 
+/**
+ * Třída sloužící jako View pro registraci.
+ */
 public class Register extends AppCompatActivity implements View.OnClickListener{
 
     private EditText etPasswordFirst, etPasswordSecond;
@@ -113,6 +116,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         }
     }
 
+    /**
+     * Metoda sloužící pro načtení GUI prvků podle id.
+     */
     private void setupUI(){
         etPasswordFirst = findViewById(R.id.etPasswordFirst);
         etPasswordSecond = findViewById(R.id.etPasswordSecond);
@@ -132,13 +138,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         layoutBackground.setOnClickListener(this);
     }
 
-    private void hideKeyBoard(){
-        InputMethodManager imm = (InputMethodManager) this.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        if(this.getCurrentFocus() != null) {
-            imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
-        }
-    }
-
+    /**
+     * Metoda pro spuštění animace a změnu barvy prázdného políčka.
+     * @param passwordFirst textový řetězec hesla
+     * @param passwordSecond textový řetězec potvrzení hesla
+     * @param animShake animace pro zatřesení
+     */
     private void shakeIfEmpty(String passwordFirst, String passwordSecond, Animation animShake){
         if(passwordFirst.isEmpty()){
             shake(layoutFirstPassword, animShake);
@@ -153,8 +158,23 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         }
     }
 
+    /**
+     * Pomocná metoda pro zatřesení s GUI prvkem uvedeným v parametru metody.
+     * @param toShake GUI prvek k zatřesení
+     * @param animShake animace zatřesení
+     */
     private void shake(LinearLayout toShake, Animation animShake){
         toShake.startAnimation(animShake);
         toShake.setBackground(ContextCompat.getDrawable(this, R.drawable.rounded_edit_text_error));
+    }
+
+    /**
+     * Metoda pro schování klávesnice.
+     */
+    private void hideKeyBoard(){
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        if(this.getCurrentFocus() != null) {
+            imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
+        }
     }
 }

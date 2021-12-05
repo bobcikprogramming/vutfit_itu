@@ -144,7 +144,7 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
     }
 
     /**
-     * Metoda pro načtení GUI
+     * Metoda pro načtení GUI podle id.
      */
     private void setupUI(){
         tvPassword = view.findViewById(R.id.tvPassword);
@@ -173,6 +173,9 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
         btnSavePattern.setOnClickListener(this);
     }
 
+    /**
+     * Metoda pro nastavení okna pro přihlášený stav.
+     */
     private void setGuiIfLogged(){
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -288,6 +291,13 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
         });
     }
 
+    /**
+     * Metoda pro získání příkladu vzoru a hesla pro výpis na výstup.
+     * @param letter pravdivostní hodnota, zda-li má heslo obsahovat písmena
+     * @param capLetter pravdivostní hodnota, zda-li má heslo obsahovat velká písmena
+     * @param number pravdivostní hodnota, zda-li má heslo obsahovat číslice
+     * @param symbol pravdivostní hodnota, zda-li má heslo obsahovat znaky
+     */
     private void getRandomPatternExampleAndPassword(boolean letter, boolean capLetter, boolean number, boolean symbol){
         generate.setterForRandomPatternValues(letter, capLetter, number, symbol);
         generate.createRandomPatternSetting();
@@ -295,6 +305,9 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
         tvPassword.setText(generate.getPassword(etPhrase.getText().toString()));
     }
 
+    /**
+     * Metoda pro otevření dialogového okna pro uložení vzoru.
+     */
     private void openDialogWindow(){
         // https://stackoverflow.com/a/20761703
         final EditText edittext = new EditText(getContext());
@@ -331,6 +344,9 @@ public class FragmentRandomPattern extends Fragment implements View.OnClickListe
         alert.show();
     }
 
+    /**
+     * Metoda pro schování klávesnice.
+     */
     private void hideKeyBoard(){
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
         if(getActivity().getCurrentFocus() != null) {

@@ -38,6 +38,9 @@ import com.bobcikprogramming.genertorhesla.controllers.PatternListController;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
 import com.google.android.material.snackbar.Snackbar;
 
+/**
+ * Třída spravující view seznamu uložených vzorů.
+ */
 public class PatternList extends Fragment implements View.OnClickListener{
 
     private RecyclerView recyclerView;
@@ -106,6 +109,7 @@ public class PatternList extends Fragment implements View.OnClickListener{
                 intent.putExtra("pattern", bundle.getSerializable("pattern"));
                 getActivity().setResult(RESULT_OK, intent);
                 getActivity().finish();
+                break;
             case R.id.btnAccSetting:
                 Intent intentAcc = new Intent(getContext(), AccountSetting.class);
                 startActivity(intentAcc);
@@ -113,6 +117,9 @@ public class PatternList extends Fragment implements View.OnClickListener{
         }
     }
 
+    /**
+     * Metoda pro načtení GUI komponent podle id.
+     */
     private void setupUIViews(){
         recyclerView = view.findViewById(R.id.recyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity().getBaseContext());
@@ -134,6 +141,9 @@ public class PatternList extends Fragment implements View.OnClickListener{
         btnCancel.setOnClickListener(this);
     }
 
+    /**
+     * Metoda pro nastavení recycler view adaptéru.
+     */
     private void setupAdapter(){
         adapter = new RecyclerViewPattern(myClickListener);
         recyclerView.setAdapter(adapter);
@@ -189,6 +199,9 @@ public class PatternList extends Fragment implements View.OnClickListener{
         }
     };
 
+    /**
+     * Metoda pro smazání na swipnutí.
+     */
     private void swipeToDelete() {
         ItemTouchHelper.SimpleCallback itemTouchHelperSimpleCallBack = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
@@ -235,6 +248,10 @@ public class PatternList extends Fragment implements View.OnClickListener{
         itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
+    /**
+     * Metoda pro obnovení smazaného údaje.
+     * Uživatel má možnost obnovit smazaný údaj po dobu 5 sekund, poté je nanávratně smazán.
+     */
     private void snackBarForRestoreData(){
         final Snackbar snackbar = Snackbar.make(view, "Vzor '" + patternList.getRestoreDataOfPattern().name + "' smazán ze seznamu!", 5000);
         snackbar.setAction("Vrátit zpět", new View.OnClickListener() {
@@ -251,6 +268,9 @@ public class PatternList extends Fragment implements View.OnClickListener{
         snackbar.show();
     }
 
+    /**
+     * Metoda pro nastavení UI v případě, že byl seznam zobrazen z okna pro vytvoření nového vlastního vzoru.
+     */
     private void setUIIfNewManual(){
         btnHelp.setVisibility(View.GONE);
         btnLogout.setVisibility(View.INVISIBLE);
@@ -258,6 +278,9 @@ public class PatternList extends Fragment implements View.OnClickListener{
         btnCancel.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * Metoda pro nastavení UI v případě, že se má zobrazit pouze seznam vzorů (nebyl otevřen z vytvoření vzoru).
+     */
     private void setUIIfNotNewManual(){
         btnHelp.setVisibility(View.VISIBLE);
         btnLogout.setVisibility(View.VISIBLE);

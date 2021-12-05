@@ -29,7 +29,9 @@ import com.bobcikprogramming.genertorhesla.controllers.HelperHolder;
 import com.bobcikprogramming.genertorhesla.controllers.ManualPattern;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
 
-
+/**
+ * Třída pro vytvoření vlastního vzoru ve stavu nepřihlášen.
+ */
 public class NewManualPattern extends AppCompatActivity implements View.OnClickListener{
 
     private RadioButton rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird;
@@ -166,6 +168,9 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
         finish();
     }
 
+    /**
+     * Metoda pro načtení GUI komponent podle id.
+     */
     private void setupUI(){
         tvPattern = findViewById(R.id.tvPattern);
         tvFirstOptionHeadline = findViewById(R.id.tvFirstOptionHeadline);
@@ -246,6 +251,9 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
         btnInfoFourthAtThird.setOnClickListener(this);
     }
 
+    /**
+     * Metoda pro zobrazení inforamcí o vzoru, je-li už nějaký vytvořen (jedná-li se o editaci).
+     */
     private void showSettingIfNotNull(){
         PatternSetting patternSetting = generate.getPatternSetting();
 
@@ -299,6 +307,9 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    /**
+     * Pomocná metoda pro zobrazení informací o vzoru.
+     */
     private void setupOption(TextView letter, TextView number, TextView symbol, TextView option, int firstOptionSettingText, int secondOptionSettingText, int thirdOptionSettingText, int fourthOptionSettingText, RadioButton rBtnFirst, RadioButton rBtnSecond, RadioButton rBtnThird, RadioButton rBtnFourth, RadioGroup rGroup){
         resetColorOfBtns(letter, number, symbol);
         option.setTextColor(ContextCompat.getColor(this, R.color.white));
@@ -311,6 +322,9 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
         rGroup.clearCheck();
     }
 
+    /**
+     * Metoda pro obnovení tlačítek obdržených v parametru.
+     */
     private void resetColorOfBtns(TextView letter, TextView number, TextView symbol){
         letter.setTextColor(ContextCompat.getColor(this, R.color.notSelected));
         number.setTextColor(ContextCompat.getColor(this, R.color.notSelected));
@@ -352,6 +366,9 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
         });
     }
 
+    /**
+     * Metoda pro spuštění animace a změny barvy prázdného nastavení vzoru.
+     */
     private void shakeEmpty(){
         Animation animShake = AnimationUtils.loadAnimation(this, R.anim.shake);
 
@@ -375,6 +392,10 @@ public class NewManualPattern extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    /**
+     * Metoda pro otevření dialogu s nápovědou (informací).
+     * @param info pomocná třída nesoucí nápovědu (inforamaci)
+     */
     private void openDialogWindow(HelperHolder info){
         AlertDialog.Builder alert = new AlertDialog.Builder(this, R.style.MyDialog);
         alert.setTitle(info.getHeadline());

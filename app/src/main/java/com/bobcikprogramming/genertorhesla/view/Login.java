@@ -28,6 +28,9 @@ import android.widget.Toast;
 import com.bobcikprogramming.genertorhesla.R;
 import com.bobcikprogramming.genertorhesla.controllers.AccountManagement;
 
+/**
+ * Třída sloužící jako View pro přihlášení.
+ */
 public class Login extends AppCompatActivity implements View.OnClickListener{
 
     private TextView btnCreateAccount;
@@ -97,6 +100,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         }
     }
 
+    /**
+     * Metoda sloužící pro načtení GUI prvků podle id.
+     */
     private void setupUI(){
         etPassword = findViewById(R.id.etPassword);
         layoutPassword = findViewById(R.id.layoutPassword);
@@ -114,6 +120,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         layoutBackground.setOnClickListener(this);
     }
 
+    /**
+     * Metoda pro spuštění animace a změnu barvy prázdného políčka.
+     * @param passwordFirst textový řetězec hesla
+     * @param animShake animace pro zatřesení
+     * @return true v případě, že je políčko prázdné, jinak false
+     */
     private boolean shakeIfEmpty(String passwordFirst, Animation animShake){
         if(passwordFirst.isEmpty()){
             layoutPassword.startAnimation(animShake);
@@ -125,6 +137,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         }
     }
 
+    /**
+     * Metoda pro schování klávesnice.
+     */
     private void hideKeyBoard(){
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Activity.INPUT_METHOD_SERVICE);
         if(this.getCurrentFocus() != null) {

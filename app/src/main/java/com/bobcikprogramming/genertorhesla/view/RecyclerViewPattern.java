@@ -21,6 +21,9 @@ import com.bobcikprogramming.genertorhesla.model.PatternEntity;
 
 import java.util.List;
 
+/**
+ * Třída spravující recycler view.
+ */
 public class RecyclerViewPattern extends RecyclerView.Adapter<RecyclerViewPattern.ViewHolder>{
 
     private List<PatternEntity> dataList;
@@ -60,10 +63,18 @@ public class RecyclerViewPattern extends RecyclerView.Adapter<RecyclerViewPatter
         return dataList.size();
     }
 
+    /**
+     * Metoda pro inicializování listu pro zobrazení.
+     * @param dataList list pro zobrazení
+     */
     public void setPatternData(List<PatternEntity> dataList){
         this.dataList = dataList;
     }
 
+    /**
+     * Metoda pro aktulizování listu pro zobrazení.
+     * @param dataList list pro zobrazení
+     */
     public void dataListChange(List<PatternEntity> dataList){
         this.dataList = dataList;
         notifyDataSetChanged();

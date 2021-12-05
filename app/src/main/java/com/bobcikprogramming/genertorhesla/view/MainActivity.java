@@ -19,6 +19,9 @@ import android.widget.TextView;
 
 import com.bobcikprogramming.genertorhesla.R;
 
+/**
+ * Hlavní view nepřihlášeného uživatele.
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private LinearLayout btnRandomPattern, btnOwnPattern;
@@ -37,6 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /**
+     * Metoda pro načtení GUI prvků podle id.
+     */
     private void setupUI(){
         btnRandomPattern = findViewById(R.id.tabButtonRandomPattern);
         btnOwnPattern = findViewById(R.id.tabButtonOwnPattern);
@@ -77,6 +83,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * Metoda pro obnovení tlačítek spodní lišty.
+     */
     private void resetColor(){
         tvRandomPattern.setTextColor(ContextCompat.getColor(this, R.color.white));
         tvOwnPattern.setTextColor(ContextCompat.getColor(this, R.color.white));

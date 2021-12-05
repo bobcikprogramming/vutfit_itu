@@ -39,6 +39,9 @@ import com.bobcikprogramming.genertorhesla.controllers.HelperHolder;
 import com.bobcikprogramming.genertorhesla.controllers.ManualPattern;
 import com.bobcikprogramming.genertorhesla.controllers.PatternSetting;
 
+/**
+ * Třída pro vytvoření vlastního vzoru ve stavu přihlášen.
+ */
 public class NewManualPatternLogged extends Fragment implements View.OnClickListener{
 
     private RadioButton rBtnFirstAtFirst, rBtnSecondAtFirst, rBtnThirdAtFirst, rBtnFourthAtFirst, rBtnFirstAtSecond, rBtnSecondAtSecond, rBtnThirdAtSecond, rBtnFourthAtSecond, rBtnFirstAtThird, rBtnSecondAtThird, rBtnThirdAtThird, rBtnFourthAtThird;
@@ -194,6 +197,9 @@ public class NewManualPatternLogged extends Fragment implements View.OnClickList
         }
     }
 
+    /**
+     * Metoda pro načtení GUI komponent podle id.
+     */
     private void setupUI(){
         tvPattern = view.findViewById(R.id.tvPattern);
         tvFirstOptionHeadline = view.findViewById(R.id.tvFirstOptionHeadline);
@@ -276,6 +282,9 @@ public class NewManualPatternLogged extends Fragment implements View.OnClickList
         btnInfoFourthAtThird.setOnClickListener(this);
     }
 
+    /**
+     * Metoda pro zobrazení inforamcí o vzoru, je-li už nějaký vytvořen (jedná-li se o editaci).
+     */
     private void showSettingIfNotNull(){
         PatternSetting patternSetting = generate.getPatternSetting();
 
@@ -329,6 +338,9 @@ public class NewManualPatternLogged extends Fragment implements View.OnClickList
         }
     }
 
+    /**
+     * Pomocná metoda pro zobrazení informací o vzoru.
+     */
     private void setupOption(TextView letter, TextView number, TextView symbol, TextView option, int firstOptionSettingText, int secondOptionSettingText, int thirdOptionSettingText, int fourthOptionSettingText, RadioButton rBtnFirst, RadioButton rBtnSecond, RadioButton rBtnThird, RadioButton rBtnFourth, RadioGroup rGroup){
         resetColorOfBtns(letter, number, symbol);
         option.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
@@ -341,6 +353,9 @@ public class NewManualPatternLogged extends Fragment implements View.OnClickList
         rGroup.clearCheck();
     }
 
+    /**
+     * Metoda pro obnovení tlačítek obdržených v parametru.
+     */
     private void resetColorOfBtns(TextView letter, TextView number, TextView symbol){
         letter.setTextColor(ContextCompat.getColor(getContext(), R.color.notSelected));
         number.setTextColor(ContextCompat.getColor(getContext(), R.color.notSelected));
@@ -382,6 +397,9 @@ public class NewManualPatternLogged extends Fragment implements View.OnClickList
         });
     }
 
+    /**
+     * Metoda pro spuštění animace a změny barvy prázdného nastavení vzoru.
+     */
     private void shakeEmpty(){
         Animation animShake = AnimationUtils.loadAnimation(getContext(), R.anim.shake);
 
@@ -405,6 +423,9 @@ public class NewManualPatternLogged extends Fragment implements View.OnClickList
         }
     }
 
+    /**
+     * Metoda pro otevření dialogového okna pro uložení vzoru.
+     */
     private void openDialogWindow(){
         // https://stackoverflow.com/a/20761703
         final EditText edittext = new EditText(getContext());
@@ -440,6 +461,10 @@ public class NewManualPatternLogged extends Fragment implements View.OnClickList
         alert.show();
     }
 
+    /**
+     * Metoda pro otevření dialogu s nápovědou (informací).
+     * @param info pomocná třída nesoucí nápovědu (inforamaci)
+     */
     private void openDialogWindow(HelperHolder info){
         AlertDialog.Builder alert = new AlertDialog.Builder(getContext(), R.style.MyDialog);
         alert.setTitle(info.getHeadline());
