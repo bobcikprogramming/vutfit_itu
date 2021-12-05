@@ -86,7 +86,7 @@ public class PatternListController {
      */
     public void restoreData(GeneratePassword generate){
         patternListToShow.add(restoreDataOfPattern);
-        dataFromDatabase.add(positionInDataFromDb, restoreDataOfPattern);
+        dataFromDatabase.add(restoreDataOfPattern);
         generate.restorePatternInDatabase(restoreDataOfPattern);
     }
 }
